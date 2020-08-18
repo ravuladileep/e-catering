@@ -4,24 +4,23 @@
           <div class="col-lg-12">
               <div class="filter-input-text">
                   <i class="fa fa-search" aria-hidden="true"></i>
-                  <input type="filter" class="custom-search-bar col-md-12" placeholder="Search...">
+                  <input type="filter" [(ngModel)]="searchTerm" class="custom-search-bar col-md-12" placeholder="Search...">
               </div>
 
               <div class="custom-text-entrees">
                   <h1 class="custom-entries">ENTREES</h1>
               </div>
-              <span class="sub-section-one">Sub Section 1</span>
+              <ng-container *ngFor="let item of items; let i = index;">
+              <span class="sub-section-one" >Sub Section {{i+1}}</span>
 
               <div class="custom-items-wrapper">
-                  <div class="boxes-wrapper">
-                      <div class="custom-box-wrapper">
+                  <div class="boxes-wrapper nav">
+                      <div class="custom-box-wrapper" *ngFor="let data of item.subsection| filter:searchTerm">
 
                           <div class="custom-image-wrapper-text">
                               <div>
-                                  <h2 class="custom-firsthead-content">GRILLED MARINATED FLANK STEAK: GF,
-                                      DF,
-                                      NF</h2>
-                                  <p class="custom-fonts">With Smoked Tomato BBO Glaze (Serves 4)</p>
+                                  <h2 class="custom-firsthead-content">{{data.name}}</h2>
+                                  <p class="custom-fonts">{{data.description}}</p>
                               </div>
                               <div class="custom-section-image">
                                   <img src="../../../assets/images/cater/01.png" alt="" class="foodie">
@@ -29,11 +28,11 @@
                           </div>
 
                           <div class="custom-addCart-Btn d-flex">
-                              <p class="custom-dollar">$45.00</p>
+                              <p class="custom-dollar">{{data.price}}</p>
                               <i class="fa fa-plus" aria-hidden="true"></i>
                           </div>
                       </div>
-                      <div class="custom-box-wrapper custom-box-alignment">
+                      <!-- <div class="custom-box-wrapper custom-box-alignment">
                           <div class="custom-image-wrapper-text">
                               <div>
                                   <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
@@ -49,10 +48,10 @@
                               <p class="custom-dollar">$45.00</p>
                               <i class="fa fa-plus" aria-hidden="true"></i>
                           </div>
-                      </div>
+                      </div> -->
 
                   </div>
-                  <div class="boxes-wrapper">
+                  <!-- <div class="boxes-wrapper">
                       <div class="custom-box-wrapper custom-box-alignment">
                           <div class="custom-image-wrapper-text">
                               <div>
@@ -89,91 +88,11 @@
                           </div>
                       </div>
 
-                  </div>
+                  </div> -->
               </div>
+            </ng-container>
 
-              <div class="custom-text-entrees">
-                  <!-- <h1 class="custom-texts-entrees"></h1> -->
-                  <span class="sub-section">Sub Section 2</span>
-              </div>
-              <div class="custom-items-wrapper">
-                  <div class="boxes-wrapper">
-                      <div class="custom-box-wrapper">
-                          <div class="custom-image-wrapper-text">
-                              <div>
-                                  <h2 class="custom-firsthead-content">GRILLED MARINATED FLANK STEAK: GF,
-                                      DF,
-                                      NF</h2>
-                                  <p class="custom-fonts">With Smoked Tomato BBO Glaze (Serves 4)</p>
-                              </div>
-                              <div class="custom-section-image">
-                                  <img src="../../../assets/images/cater/05.png" alt="" class="foodie">
-                              </div>
-                          </div>
-                          <div class="custom-addCart-Btn d-flex">
-                              <p class="custom-dollar">$45.00</p>
-                              <i class="fa fa-plus" aria-hidden="true"></i>
-                          </div>
-                      </div>
-                      <div class="custom-box-wrapper custom-box-alignment">
-                          <div class="custom-image-wrapper-text">
-                              <div>
-                                  <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
-                                      NF
-                                  </h2>
-                                  <p class="custom-fonts">With Blistered Tomatoes (Serves 4)</p>
-                              </div>
-                              <div class="custom-section-image">
-                                  <img src="../../../assets/images/cater/06.png" alt="" class="foodie">
-                              </div>
-                          </div>
-                          <div class="custom-addCart-Btn d-flex">
-                              <p class="custom-dollar">$45.00</p>
-                              <i class="fa fa-plus" aria-hidden="true"></i>
-                          </div>
-                      </div>
-
-                  </div>
-                  <div class="boxes-wrapper">
-                      <div class="custom-box-wrapper custom-box-alignment">
-                          <div class="custom-image-wrapper-text">
-                              <div>
-                                  <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
-                                      NF
-                                  </h2>
-                                  <p class="custom-fonts">With Blistered Tomatoes (Serves 4)</p>
-                              </div>
-                              <div class="custom-section-image">
-                                  <img src="../../../assets/images/cater/07.png" alt="" class="foodie">
-                              </div>
-                          </div>
-                          <div class="custom-addCart-Btn d-flex">
-                              <p class="custom-dollar">$45.00</p>
-                              <i class="fa fa-plus" aria-hidden="true"></i>
-                          </div>
-                      </div>
-
-                      <div class="custom-box-wrapper custom-box-alignment">
-                          <div class="custom-image-wrapper-text">
-                              <div>
-                                  <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
-                                      NF
-                                  </h2>
-                                  <p class="custom-fonts">With Blistered Tomatoes (Serves 4)</p>
-                              </div>
-                              <div class="custom-section-image">
-                                  <img src="../../../assets/images/cater/08.png" alt="" class="foodie">
-                              </div>
-                          </div>
-                          <div class="custom-addCart-Btn d-flex">
-                              <p class="custom-dollar">$45.00</p>
-                              <i class="fa fa-plus" aria-hidden="true"></i>
-                          </div>
-                      </div>
-
-                  </div>
-              </div>
-              <button type="button" onclick="myFunction()" class="custom-review">Riview Order<span
+              <button type="button" [routerLink]="['/orders']" routerLinkActive="router-link-active"  class="custom-review">Riview Order<span
                       class="review-seven">7</span></button>
 
 
