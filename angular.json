@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "E-Catering"
+    }
+  },
+  "defaultProject": "E-Catering",
+  "cli": {
+    "analytics": false
+  }
 }
