@@ -19,8 +19,15 @@ body {
   }
   
   .aquilia-logo-one{
-  width: 140px;
-  height: 90px;
+    width: 160px;
+    height: 100px;
+  }
+
+  .icons-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    font-size: 20px;
   }
   
   #wrapper.toggled {
@@ -252,7 +259,8 @@ body {
   }
   
   .custom-addCart-Btn{
-  // margin-top: -53px;
+    justify-content: flex-end;
+    margin-right: 20px;
   }
   
   .custom-fonts{
@@ -594,32 +602,26 @@ body {
   
   .custom-logout{
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 0 0 -10px 0px;
   cursor: pointer;
   font-weight: 600;
   }
   .fa-sign-out{
-  margin: 0px 63px 15px 10px;
+  // margin: 0px 63px 15px 10px;
   color: darkslategrey;
   }
   .custom-info{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-right: 30px;
-  margin: 0 0 -10px -12px;
-  cursor: pointer;
-  font-weight: 600;
+    display: flex;
+    cursor: pointer;
+    font-weight: 600;
   }
   .fa-info-circle{
-  margin: 0px 77px 15px 0;
+  // margin: 0px 77px 15px 0;
   color: darkslategrey;
   }
   .custom-fa-user{
   margin: 4px 0px 0px 10px;
   color: darkslategrey;
+  font-size: 20px;
   }
   
   .custom-user-wrapper{
@@ -667,3 +669,89 @@ body {
   }
   
   /* Registration styles starts here*/
+
+
+  #contact {
+    overflow: auto;
+    position: relative;
+    top: 140px;
+    display: flex;
+    justify-content: center;
+  }
+  #contact #form {
+    width: 372px;
+    float:left;
+  }
+  #contact #form h2 {
+    font: 48px 'Bree Serif', Georgia, serif;
+  }
+  #contact #form span {
+    font-size: 15px;
+    display:block;
+    float:left;
+    width:100px;
+    padding-top:5px;
+    font-weight: 600;
+    color: darkslategrey;
+    // font: 14px/16px'Bree Serif', Georgia, serif;
+  }
+  #contact #form input {
+    font-size: 12px;
+    background-color: #e8f0fe;
+    float: left;
+    width: 270px;
+    // color: #F1F1F1;
+    padding: 10px 10px 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid lightblue;
+    outline: 0;
+  }
+  #contact #form textarea {
+    background-color: rgb(232, 240, 254);
+    float:left;
+    border:0px;
+    width: 270px;
+    height:140px;
+    padding: 10px 10px 10px 15px;
+    // font: 11px/20px'Open Sans', Verdana, Helvetica, sans-serif;
+    // color:#F1F1F1;
+    font-size: 12px;
+    resize: none;
+    border: 1px solid lightblue;
+    outline: 0;
+  }
+  
+  #contact #form input.submit {
+    cursor: pointer;
+    width:85px;
+    height:30px;
+    float:right;
+    padding:0px 0px 0px 0px;
+    margin:10px 1px 0px 0px;
+    background: #262262;
+    color: #fff;
+    font-weight: 600;
+  }
+  #contact #captcha span{
+    width: 44px;
+  }
+  #contact #captcha input{
+    margin: 5px 0 0;
+    padding: 0;
+    border: medium none;
+    cursor: pointer;
+    width: 15px;
+  }
+
+  .fa-refresh{
+    margin: 0 0 0 15px;
+    cursor: pointer;
+  }
+
+  .content{
+    background-color: rgba(255, 255, 255, 0.85);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    padding: 20px 50px 19px 50px;
+  }
