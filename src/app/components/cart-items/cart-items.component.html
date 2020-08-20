@@ -4,7 +4,20 @@
       <p class="custom-cart-text">Cart</p>
   </div>
   <div class="custom-scrollbar">
+      <div class="custom-items-cart-wrapper" *ngFor="let item of cartItems">
+          <div class="custom-add-items">
+              <h3 class="cart-text-alignment">{{item.name}}</h3>
+              <p>x<span>{{item.quantity}}</span></p>
+          </div>
+      </div>
+
       <div class="custom-items-cart-wrapper">
+          <div class="custom-add-items">
+              <h3 class="cart-text-alignment">Amount</h3>
+              <p><span>{{cartAmount}}</span></p>
+          </div>
+      </div>
+    <!--   <div class="custom-items-cart-wrapper">
           <div class="custom-add-items">
               <h3 class="cart-text-alignment">GRILLED MARINATED FLANK STEAK: GF, DF, NF</h3>
               <p>x<span>1</span></p>
@@ -45,19 +58,7 @@
               <h3 class="cart-text-alignment">GRILLED MARINATED FLANK STEAK: GF, DF, NF</h3>
               <p>x<span>1</span></p>
           </div>
-      </div>
-      <div class="custom-items-cart-wrapper">
-          <div class="custom-add-items">
-              <h3 class="cart-text-alignment">GRILLED MARINATED FLANK STEAK: GF, DF, NF</h3>
-              <p>x<span>1</span></p>
-          </div>
-      </div>
-      <div class="custom-items-cart-wrapper">
-          <div class="custom-add-items">
-              <h3 class="cart-text-alignment">GRILLED MARINATED FLANK STEAK: GF, DF, NF</h3>
-              <p>x<span>1</span></p>
-          </div>
-      </div>
+      </div> -->
 
 
   </div>
