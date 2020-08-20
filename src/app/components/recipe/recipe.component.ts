@@ -75,9 +75,9 @@ export class RecipeComponent implements OnInit {
 
 
   addToCart(product) {
-    const productExistInCart = this.cartService.cartItems.find(({name}) => name === product.name); // find product by name
+    const productExistInCart = this.cartService.cartItems.find(({name}) => name === product.name);
     if (!productExistInCart) {
-      this.cartService.cartItems.push({...product}); // enhance "porduct" opject with "num" property
+      this.cartService.cartItems.push({...product});
       return;
     }
     this.cartService.increaseItemQuantity(product.name)
