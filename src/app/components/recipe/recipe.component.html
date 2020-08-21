@@ -16,7 +16,7 @@
 
                     <div class="custom-items-wrapper">
                         <div class="boxes-wrapper nav">
-                            <div class="col-md-6 pl-0" *ngFor="let data of item.subsection| filter:searchTerm">
+                            <div class="col-md-6 pl-0" *ngFor="let data of item.subsection|filter:searchTerm">
                                 <div class="custom-box-wrapper">
 
                                     <div class="custom-image-wrapper-text">
@@ -24,8 +24,8 @@
                                             <h2 class="custom-firsthead-content">{{data.name}}</h2>
                                             <p class="custom-fonts">{{data.description}}</p>
                                             <div class="custom-addCart-Btn d-flex">
-                                                <p class="custom-dollar">{{data.price}}</p>
-                                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                                <p class="custom-dollar">${{data.price.toFixed(2)}}</p>
+                                                <i class="fa fa-plus" aria-hidden="true" (click)="addToCart(data)"></i>
                                             </div>
                                         </div>
                                         <div class="custom-section-image">
@@ -76,7 +76,7 @@
     <i class="fa fa-plus" aria-hidden="true"></i>
     </div>
     </div>
-    
+
     <div class="custom-box-wrapper custom-box-alignment">
     <div class="custom-image-wrapper-text">
     <div>
@@ -94,13 +94,13 @@
     <i class="fa fa-plus" aria-hidden="true"></i>
     </div>
     </div>
-    
+
     </div> -->
                     </div>
                 </ng-container>
 
                 <button type="button" [routerLink]="['/orders']" routerLinkActive="router-link-active"
-                    class="custom-review">Riview Order<span class="review-seven">7</span></button>
+                    class="custom-review">Review Order<span class="review-seven">{{reviewOrdersCount}}</span></button>
 
 
             </div>

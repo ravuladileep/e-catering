@@ -7,40 +7,43 @@
   </div>
 
   <div class="custom-inquiry-box custom-add-more">
-      <div class="custom-order-items-wrapper">
+      <div class="custom-order-items-wrapper" *ngFor="let item of cartItems; let i = index;">
           <form class="quantity-form">
-                  <input class="quantity" type="number" name="quantity" min="1" value="1">
+                  <input class="quantity" autocomplete="off"   type="number" name="quantity" min="1" [(ngModel)]="item.quantity" (change)="changeQuantity(i,$event)" value="1">
                 </form>
                 <div class="custom-rate">
-                    <P class="custom-summer-fonts">SUMMER GAZPACHO: V, GF, NF</P>
-                    <p class="custom-dollar-fonts">$22.00 each</p>
+                    <P class="custom-summer-fonts">{{item.name}}</P>
+                    <p class="custom-dollar-fonts">${{item.price.toFixed(2)}}</p>
                 </div>
+
                 <div class="d-flex align-items-center">
-                    <P class="custom-font-weight">$44.00</P>
+                    <P class="custom-font-weight">${{(item.quantity * item.price).toFixed(2)}}</P>
                   </div>
       </div>
-
-      <div class="custom-order-items-wrapper">
+      <!-- <ul *ngFor="let item of subTotal">
+        <li>{{item}}</li>
+      </ul> -->
+      <!-- <div class="custom-order-items-wrapper">
           <form class="quantity-form">
                   <input class="quantity" type="number" name="quantity" min="1" value="2">
                 </form>
                 <div class="custom-rate">
                     <P class="custom-summer-fonts custom-grilled-fonts">GRILLED PEACH AND HEIRLOOM TOMATO SALAD: V, GF, NF</P>
-                    <!-- <p class="custom-dollar-fonts"> NF</p> -->
+
                 </div>
                 <div class="d-flex align-items-center">
                     <P class="custom-font-weight">$24.00</P>
                   </div>
-      </div>
+      </div> -->
 
-      <button type="button" onclick="" class="custom-items-add">Add More Items</button>
+      <button type="button" [routerLink]="['/home']" routerLinkActive="router-link-active"  class="custom-items-add">Add More Items</button>
 
           </div>
 
 <div class="custom-inquiry-box custom-add-more custom-payment-align">
 <div class="custom-total-amount">
       <p class="custom-subtotal-wrapper">Subtotal</p>
-      <p class="custom-subtotal-wrapper">$68</p>
+      <p class="custom-subtotal-wrapper">${{subTotal}}</p>
   </div>
   <div class="custom-taxes">
   <p class="custom-opacity">Taxes + Fees<i class="fa fa-question-circle ml-2" aria-hidden="true"></i></p>

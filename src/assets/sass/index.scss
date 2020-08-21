@@ -4,7 +4,7 @@ body {
   background: #f1f3f5;
   margin: 0;
   }
-  
+
   #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -13,11 +13,11 @@ body {
   transition: all 0.5s ease;
   height: 100vh;
   }
-  
+
   .text-span-wrapper{
   padding-left: 30px;
   }
-  
+
   .aquilia-logo-one{
     width: 160px;
     height: 90px;
@@ -29,11 +29,11 @@ body {
     margin-bottom: 25px;
     font-size: 20px;
   }
-  
-  // #wrapper.toggled {
-  // padding-left: 250px;
-  // }
-  
+
+  #wrapper.toggled {
+  padding-left: 250px;
+  }
+
   #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
@@ -44,11 +44,11 @@ body {
   top: 92px;
   border: 1px solid lightgrey;
   }
-  
-  // #wrapper.toggled #sidebar-wrapper {
-  // width: 250px;
-  // }
-  
+
+  #wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+  }
+
   #page-content-wrapper {
   width: 100%;
   position: absolute;
@@ -56,7 +56,7 @@ body {
   height: 100%;
   width: 65%;
   }
-  
+
   .right-panel{
   position: fixed;
   right: 1px;
@@ -66,7 +66,7 @@ body {
   background: #fff;
   border-left: 1px solid lightgrey;
   }
-  
+
   .custom-cart-icon{
   display: flex;
   border-bottom: 1px solid lightgrey;
@@ -75,12 +75,12 @@ body {
   color: #fff;
   height: 55px;
   }
-  
+
   .fa-shopping-cart{
   margin: 20px 20px 0px 20px;
   font-weight: 600;
   }
-  
+
   .custom-cart-text{
   margin-top: 18px;
   }
@@ -88,9 +88,9 @@ body {
   position: absolute;
   margin-right: -250px;
   }
-  
+
   // Sidebar Styles
-  
+
   .sidebar-nav {
   position: absolute;
   top: 0;
@@ -99,12 +99,12 @@ body {
   padding: 20px 0px 0px 0px;
   list-style: none;
   }
-  
+
   .sidebar-nav li {
   text-indent: 8px;
   line-height: 55px;
   }
-  
+
   .custom-review{
   background: #262262;
   width: 98%;
@@ -116,11 +116,11 @@ body {
   // bottom: 0;
   cursor: pointer;
   }
-  
+
   button:focus {
   outline: 0;
   }
-  
+
 .boxes-wrapper-nav{
   justify-content: space-between;
 }
@@ -135,7 +135,7 @@ body {
   border-radius: 5px;
   font-size: 14px;
   }
-  
+
   .custom-entries{
   font-size: 20px;
   padding: 5px 5px 5px 5px;
@@ -147,7 +147,7 @@ body {
   top: 12px;
   font-weight: 600;
   }
-  
+
   .review-text{
   position: relative;
   top: 5px;
@@ -157,7 +157,7 @@ body {
   .col-md-6.pl-0 {
     max-width: 396px;
 }
-  
+
   .sidebar-nav li a {
   display: block;
   text-decoration: none;
@@ -180,7 +180,7 @@ body {
   max-width: 777px;
   border: 1px solid lightgrey;
   }
-  
+
   .custom-text-entrees{
   margin-top: 7px;
   display: flex;
@@ -188,21 +188,21 @@ body {
   margin-bottom: 10px;
   color: darkslategrey;
   }
-  
+
   .custom-texts-entrees{
   color: #7672f2;
   font-size: 18px;
   font-weight: 600;
   font-family: sans-serif;
   }
-  
+
   // .custom-section-image{
   // position: relative;
   // bottom: 20px;
   // }
-  
-  
-  
+
+
+
   .sub-section{
   font-size: 15px;
   font-weight: 600;
@@ -210,9 +210,9 @@ body {
   margin-left: 5px;
   // color: #f08b2d;
   }
-  
+
   .custom-box-wrapper{
-  
+
   // padding: 20px 0px 0px 15px;
   background-color: rgba(255, 255, 255, 0.85);
   background-clip: padding-box;
@@ -223,7 +223,7 @@ body {
   margin: 0px 0px 5px 0px;
   // margin: 0px 20px 12px 0px;
   }
-  
+
   .custom-image-section{
   width: 21px;
   align-items: center;
@@ -232,13 +232,13 @@ body {
   .custom-items-description{
     padding: 20px 15px 0px 15px;
   }
-  
+
   .image{
   width: 100%;
   margin-left: 10px;
   height: 100%;
   }
-  
+
   .fa-plus{
   margin-top: 3px;
   background: #f08b2d;
@@ -251,26 +251,26 @@ body {
   cursor: pointer;
   left: 20px;
   }
-  
+
   .fa-plus:before {
   position: relative;
   top: 8px;
   left: 10px;
   }
-  
+
   .custom-addCart-Btn{
     justify-content: flex-end;
     margin-right: 20px;
   }
-  
+
   .custom-fonts{
   font-size: 12px;
   }
-  
+
   .boxes-wrapper{
   // display: flex;
   }
-  
+
   .custom-add-items{
   display: flex;
   align-items: center;
@@ -278,19 +278,19 @@ body {
   padding: 15px 15px 0 15px;
   border-bottom: 1px solid lightgrey;
   }
-  
+
   .custom-scrollbar{
   overflow-y: scroll;
   height: calc(100vh + -153px);
   }
-  
+
   .cart-text-alignment{
   font-size: 14px;
   padding: 0px 45px 0px 0px;
   font-weight: 600;
   line-height: 1.5;
   }
-  
+
   .custom-dollar{
   position: relative;
   right: 0;
@@ -298,18 +298,18 @@ body {
   font-weight: 600;
   font-size: 13px;
   }
-  
-  
-  
+
+
+
   ::-webkit-scrollbar-thumb {
   background: #262262;
   }
-  
+
   ::-webkit-scrollbar {
   width: 8px;
   }
-  
-  
+
+
   .fa-search{
   position: relative;
   top: 10px;
@@ -317,7 +317,7 @@ body {
   z-index: 99;
   opacity: 0.7;
   }
-  
+
   input::-webkit-input-placeholder {
   position: relative;
   left: 0px;
@@ -326,75 +326,75 @@ body {
   .sidebar-nav li a:focus {
   text-decoration: none;
   }
-  
+
   .sidebar-nav > .sidebar-brand {
   height: 65px;
   font-size: 18px;
   line-height: 60px;
   }
-  
+
   .sidebar-nav > .sidebar-brand a {
   color: #999999;
   }
-  
+
   .custom-firsthead-content{
   // width: 256px;
   font-size: 13px;
   font-weight: 600;
   color: #000;
   }
-  
+
   .sidebar-nav > .sidebar-brand a:hover {
   color: #fff;
   background: none;
   }
-  
+
   @media(min-width:768px) {
-  
+
   #wrapper.toggled {
   padding-left: 0;
   }
-  
+
   #sidebar-wrapper {
   width: 292px;
   overflow-x: hidden;
   }
-  
+
   .custom-image-wrapper-text{
   // margin-left: -5px;
   justify-content: space-between;
   display: flex;
   }
-  
+
   #wrapper.toggled #sidebar-wrapper {
   width: 0;
   }
-  
+
   #page-content-wrapper {
   position: relative;
   left: 270px;
   top: 92px;
-  
+
   }
-  
+
   #wrapper.toggled #page-content-wrapper {
   position: relative;
   margin-right: 0;
   }
   }
-  
-  
+
+
   .form-control{
   width: 145px;
   border-radius: 0 !important;
   font-size: 15px;
   font-weight: 600;
   }
-  
+
   .custom-items-wrapper{
   margin-top: 12px;
   }
-  
+
   .sub-section-one{
   font-size: 15px;
   font-weight: 600;
@@ -404,15 +404,15 @@ body {
   position: relative;
   top: 5px;
   }
-  
+
   .form-control:focus {
   border-color: lightgrey;
   outline: 0;
   box-shadow: none;
   }
-  
+
   /*order custom styles starts*/
-  
+
   @media (min-width: 1200px){
   .container {
   max-width: 635px;
@@ -421,7 +421,7 @@ body {
   top: 92px;
   }
   }
-  
+
   .panel-default{
   padding: 10px;
   border-color: #ddd;
@@ -429,9 +429,9 @@ body {
   font-size: 15px;
   opacity: 0.7;
   border-radius: 5px;
-  
+
   }
-  
+
   .custom-inquiry-box{
   background-color: rgba(255, 255, 255, 0.85);
   background-clip: padding-box;
@@ -442,25 +442,25 @@ body {
   top: 5px;
   border-radius: 5px;
   }
-  
+
   .order-text{
   font-size: 1.3rem;
   opacity: 0.7;
   font-weight: 600;
   }
-  
+
   .custom-add-more{
-  height: 195px;
+  min-height: 195px;
   margin-top: 20px;
   }
-  
+
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button {
-  
+
   opacity: 1;
-  
+
   }
-  
+
   .quantity {
   width: 35%;
   padding: 5px 5px 5px 6px;
@@ -470,7 +470,7 @@ body {
   position: relative;
   top: 4px;
   }
-  
+
   .custom-order-items-wrapper{
   display: flex;
   justify-content: space-between;
@@ -478,13 +478,13 @@ body {
   width: 100%;
   margin-bottom: 5px;
   }
-  
+
   .custom-rate{
   position: relative;
   right: 80px;
   width: 100%;
   }
-  
+
   .custom-summer-fonts{
   font-size: 14px;
   margin: 0;
@@ -493,7 +493,7 @@ body {
   font-size: 14px;
   opacity: 0.7;
   }
-  
+
   .custom-items-add{
   background: #262262;
   height: 45px;
@@ -512,7 +512,7 @@ body {
   justify-content: space-between;
   border-bottom: 1px solid lightgrey;
   margin-bottom: 5px;
-  
+
   }
   .custom-taxes{
   display: flex;
@@ -558,10 +558,10 @@ body {
   font-weight: 600;
   font-size: 15px;
   }
-  
-  
+
+
   /*info styles starts here*/
-  
+
   .header {
   overflow: hidden;
   background-color: gainsboro;
@@ -574,7 +574,7 @@ body {
   position: fixed;
   z-index: 9999;
   }
-  
+
   .header a {
   float: left;
   color: black;
@@ -585,21 +585,21 @@ body {
   line-height: 25px;
   border-radius: 4px;
   }
-  
+
   .header a.logo {
   font-size: 25px;
   font-weight: bold;
   }
-  
+
   .aquilia-logo{
   width: 100px;
   // height: 70px;
   }
-  
+
   .header-right {
   float: right;
   }
-  
+
   .custom-logout{
   display: flex;
   cursor: pointer;
@@ -623,17 +623,17 @@ body {
   color: darkslategrey;
   font-size: 20px;
   }
-  
+
   .custom-user-wrapper{
   display: flex;
   margin: 0 0 -10px 0px;
   font-weight: 600;
   }
-  
-  
+
+
   /*footer style*/
-  
-  
+
+
   .footer {
   position: fixed;
   left: 0;
@@ -648,26 +648,26 @@ body {
   margin-top: 20px !important;
   margin-bottom: 20px !important;
   }
-  
+
   /* footer styles end*/
-  
+
   .custom-text-colour{
   color:#000;
   }
-  
-  
+
+
   @media screen and (max-width: 500px) {
   .header a {
   float: none;
   display: block;
   text-align: left;
   }
-  
+
   .header-right {
   float: none;
   }
   }
-  
+
   /* Registration styles starts here*/
 
 
@@ -718,7 +718,7 @@ body {
     border: 1px solid lightblue;
     outline: 0;
   }
-  
+
   #contact #form input.submit {
     cursor: pointer;
     width:85px;
