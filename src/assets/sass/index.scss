@@ -171,7 +171,7 @@ body {
   position: relative;
   top: 10px;
   right: 20px;
-  padding: 0px 0px 0px 50px;
+  padding: 0px 0px 0px 45px;
   height: 32px;
   opacity: 0.9;
   border-radius: 10px;
@@ -240,17 +240,36 @@ body {
   }
 
   .fa-plus{
-  margin-top: 3px;
-  background: #f08b2d;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  position: relative;
-  top: -8px;
-  color: white;
-  cursor: pointer;
-  left: 20px;
+    background: #f08b2d;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    top: -8px;
+    color: white;
+    cursor: pointer;
+    left: 20px;
   }
+
+  .fa-minus{
+    background: #f08b2d;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    top: -8px;
+    color: white;
+    cursor: pointer;
+    left: 20px;
+  }
+
+  .fa-minus:before {
+    position: relative;
+    top: 8px;
+    left: 10px;
+}
+
+// .minus{
+//   visibility: hidden;
+// }
 
   .fa-plus:before {
   position: relative;
@@ -259,8 +278,12 @@ body {
   }
 
   .custom-addCart-Btn{
-    justify-content: flex-end;
-    margin-right: 20px;
+    justify-content: space-between;
+    margin-left: 90px;
+    align-items: center;
+    width: 150px;
+    background: lightgrey;
+    border-radius: 20px;
   }
 
   .custom-fonts{
@@ -275,7 +298,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 15px 0 15px;
+  padding: 5px 15px 0 15px;
   border-bottom: 1px solid lightgrey;
   }
 
@@ -292,11 +315,10 @@ body {
   }
 
   .custom-dollar{
-  position: relative;
-  right: 0;
-  color: #000;
-  font-weight: 600;
-  font-size: 13px;
+    color: #000;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 0;;
   }
 
 
@@ -541,7 +563,9 @@ body {
   text-decoration: underline;
   color: #262262;
   opacity: 0.8;
+  cursor: pointer;
   }
+
   .fa-question-circle{
   color: #262262;
   font-size: 16px

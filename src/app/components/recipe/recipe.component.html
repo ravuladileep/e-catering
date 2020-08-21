@@ -24,7 +24,12 @@
                                             <h2 class="custom-firsthead-content">{{data.name}}</h2>
                                             <p class="custom-fonts">{{data.description}}</p>
                                             <div class="custom-addCart-Btn d-flex">
-                                                <p class="custom-dollar">${{data.price.toFixed(2)}}</p>
+                                                    <i class="fa fa-minus" aria-hidden="true" (click)="addToCart(data)"></i>
+                                                    <div class="custom-text-numbers">
+                                                <p class="custom-dollar  d-none">${{data.price.toFixed(2)}}</p>
+                                                <p class="custom-dollar">1</p>
+                                                    </div>
+                                                <!-- <i class="fa fa-plus" aria-hidden="true" (click)="addToCart(data)"></i> -->
                                                 <i class="fa fa-plus" aria-hidden="true" (click)="addToCart(data)"></i>
                                             </div>
                                         </div>
