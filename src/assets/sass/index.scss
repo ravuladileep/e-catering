@@ -20,7 +20,7 @@ body {
   
   .aquilia-logo-one{
     width: 160px;
-    height: 100px;
+    height: 90px;
   }
 
   .icons-wrapper{
@@ -30,9 +30,9 @@ body {
     font-size: 20px;
   }
   
-  #wrapper.toggled {
-  padding-left: 250px;
-  }
+  // #wrapper.toggled {
+  // padding-left: 250px;
+  // }
   
   #sidebar-wrapper {
   z-index: 1000;
@@ -45,9 +45,9 @@ body {
   border: 1px solid lightgrey;
   }
   
-  #wrapper.toggled #sidebar-wrapper {
-  width: 250px;
-  }
+  // #wrapper.toggled #sidebar-wrapper {
+  // width: 250px;
+  // }
   
   #page-content-wrapper {
   width: 100%;
@@ -674,13 +674,14 @@ body {
   #contact {
     overflow: auto;
     position: relative;
-    top: 140px;
+    top: 95px;
     display: flex;
     justify-content: center;
   }
   #contact #form {
     width: 372px;
-    float:left;
+    // float:left;
+    height: 518px;
   }
   #contact #form h2 {
     font: 48px 'Bree Serif', Georgia, serif;
@@ -707,14 +708,11 @@ body {
     outline: 0;
   }
   #contact #form textarea {
-    background-color: rgb(232, 240, 254);
-    float:left;
-    border:0px;
+    background-color: #e8f0fe;
+    float: left;
     width: 270px;
-    height:140px;
-    padding: 10px 10px 10px 15px;
-    // font: 11px/20px'Open Sans', Verdana, Helvetica, sans-serif;
-    // color:#F1F1F1;
+    height: 39px;
+    padding: 10px 10px 8px 12px;
     font-size: 12px;
     resize: none;
     border: 1px solid lightblue;
@@ -748,6 +746,18 @@ body {
     cursor: pointer;
   }
 
+  .custom-alert-login{
+    font-size: 14px;
+    // margin-top: 30px;
+  }
+  .ml-10{
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: underline;
+    color: #262262;
+  }
+
   .content{
     background-color: rgba(255, 255, 255, 0.85);
     background-clip: padding-box;
@@ -755,3 +765,32 @@ body {
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
     padding: 20px 50px 19px 50px;
   }
+
+  /* login styles starts here*/
+
+  .forget-pass{
+    margin-left: 68%;
+    font-size: 14px;
+    color: darkslategrey;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .form-height{
+    height: 150px !important;
+  }
+
+  // .alert-login{
+  //   font-size: 14px;
+  //   margin-top: 30px;
+  // }
+
+  // .custom-alert-login{
+  //   position: relative;
+  //   left: 40px;
+  //   top: 10px;
+  //   font-size: 14px;  
+  // }
+ 
+  // .ml-10{
+  //   margin-left: 10px;
+  // }
