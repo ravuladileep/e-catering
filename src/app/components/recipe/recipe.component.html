@@ -4,7 +4,7 @@
         <div class="col-lg-12">
            <div class="filter-input-text">
               <i class="fa fa-search" aria-hidden="true"></i>
-              <input type="filter" [(ngModel)]="searchTerm" (input)="filterItem($event.target.value)"  class="custom-search-bar col-md-12"
+              <input type="filter" #searchInput  class="custom-search-bar col-md-12"
               placeholder="Search...">
            </div>
            <ng-container *ngFor="let item of category; let j=index;" >
@@ -16,7 +16,7 @@
                  <h6 *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
                  <div class="custom-items-wrapper" >
                     <div class="boxes-wrapper nav">
-                       <ng-container   *ngFor="let data of newMenu| filter: searchTerm; let i=index;" >
+                       <ng-container   *ngFor="let data of newMenu; let i=index;" >
                           <div class="col-md-6 pl-0"  *ngIf="data.sectionName === category[j].sectionName && data.subSectionName === subCategory[k].subSectionName">
                              <div class="custom-box-wrapper"   >
                                 <div class="custom-image-wrapper-text">

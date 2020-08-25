@@ -1,20 +1,22 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import {debounceTime} from 'rxjs/operators';
+import {debounceTime, map, distinctUntilChanged} from 'rxjs/operators';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ComboItemDialogComponent } from 'src/app/shared/dialogs/combo-item-dialog/combo-item-dialog.component';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
-export class RecipeComponent implements OnInit, DoCheck {
-  public searchTerm;
+export class RecipeComponent implements OnInit, DoCheck, AfterViewInit {
+  @ViewChild('searchInput') searchInput: ElementRef;
+    search: string;
   public reviewOrdersCount;
   public limit = 'showLess';
-  public newMenu= [];
+  public newMenu = [];
   public category;
   public subCategory;
   public loading = false;
@@ -28,41 +30,49 @@ export class RecipeComponent implements OnInit, DoCheck {
     this.getItems();
   }
 
-  filterItem(value){
-    if(!value){
-      this.getItems();
-    }else {
-      this.spinner.show();
-      this.loading = true;
-      this.cartService.getItems().pipe(debounceTime(250)).subscribe(res => {
-        let filteredItems;
-        filteredItems = res.itemsList.filter(
-          item => item.itemName.toLowerCase().indexOf(value.toLowerCase()) > -1
-       )
-       this.newMenu = filteredItems;
-        if(this.cartService.cartItems.length){
-         this.assignQuantity()
-        }
-        let cat = new Map();
-        let sub = new Map();
-        for (let obj of filteredItems) {
-          cat.set(obj.sectionName, obj);
-          sub.set(obj.subSectionName, obj);
-        }
-        this.category = [...cat.values()];
-        this.subCategory = [...sub.values()];
-      },err => {this.loading = false; this.spinner.hide();}, ()=> {this.loading = false; this.spinner.hide();});
 
-    }
- }
+  ngAfterViewInit(){
+    fromEvent(this.searchInput.nativeElement, 'keyup').pipe(
+      map((evt: any) => evt.target.value),
+      debounceTime(1000),
+      distinctUntilChanged())
+     .subscribe((text: string) => {
+       if (!text){
+         this.getItems();
+       }else {
+        this.spinner.show();
+        this.loading = true;
+        this.cartService.getItems().subscribe(res => {
+          let filteredItems;
+          filteredItems = res.itemsList.filter(
+            item => item.itemName.toLowerCase().indexOf(text.toLowerCase()) > -1
+         );
+          this.newMenu = filteredItems;
+          if (this.cartService.cartItems.length){
+           this.assignQuantity();
+          }
+          let cat = new Map();
+          let sub = new Map();
+          for (let obj of filteredItems) {
+            cat.set(obj.sectionName, obj);
+            sub.set(obj.subSectionName, obj);
+          }
+          this.category = [...cat.values()];
+          this.subCategory = [...sub.values()];
+        }, err => {this.loading = false; this.spinner.hide(); }, () => {this.loading = false; this.spinner.hide(); });
+      }
+     });
+  }
+
+
 
   getItems(): void {
-    this.spinner.show()
+    this.spinner.show();
     this.loading = true;
     this.cartService.getItems().subscribe(res => {
       this.newMenu = res.itemsList;
-      if(this.cartService.cartItems.length){
-       this.assignQuantity()
+      if (this.cartService.cartItems.length){
+       this.assignQuantity();
       }
       let cat = new Map();
       let sub = new Map();
@@ -72,18 +82,18 @@ export class RecipeComponent implements OnInit, DoCheck {
       }
       this.category = [...cat.values()];
       this.subCategory = [...sub.values()];
-    },err => {this.loading = false; this.spinner.hide();}, ()=> {this.loading = false;this.spinner.hide();});
+    }, err => {this.loading = false; this.spinner.hide(); }, () => {this.loading = false; this.spinner.hide(); });
   }
 
   assignQuantity(): void {
-    if(this.cartService.cartItems.length) {
-      this.cartService.cartItems.forEach((cartItem)=>{
+    if (this.cartService.cartItems.length) {
+      this.cartService.cartItems.forEach((cartItem) => {
         this.newMenu.forEach(menuItem => {
-          if(cartItem.itemId === menuItem.itemId){
+          if (cartItem.itemId === menuItem.itemId){
             menuItem.quantity = +cartItem.quantity;
           }
         });
-      })
+      });
     }
   }
 
@@ -95,7 +105,7 @@ export class RecipeComponent implements OnInit, DoCheck {
   addToCart(product) {
     this.modalService.show(ComboItemDialogComponent, { class: 'modal-dialog-custom modal-dialog-centered',
     keyboard: false
-  })
+  });
     product.quantity++;
     const productExistInCart = this.cartService.cartItems.find(({itemId}) => itemId === product.itemId);
     if (!productExistInCart) {
