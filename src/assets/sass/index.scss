@@ -792,7 +792,58 @@ body {
   height: 150px !important;
 }
 
+// order details styles
 
+.custom-select {
+  font-size: 16px;
+  background-color: #e8f0fe;
+  float: left;
+  max-width: 270px;
+  margin-bottom: 10px;
+  border: 1px solid lightblue;
+  outline: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 14px;
+  }
+
+  .custom-select:focus {
+  border-color: lightblue;
+  outline: 0;
+  box-shadow: none;
+  }
+
+  .custom-order-details{
+  position: relative;
+  top: 97px;
+  display: flex;
+  justify-content: center;
+  color: darkslategrey;
+  font-weight: 600;
+  font-size: 30px;
+  }
+
+  .custom-hidden-text{
+  visibility: hidden;
+  }
+  .custom-date-time{
+  letter-spacing: 1px;
+  }
+
+  //myOrder styles starts
+
+  .table {
+  position: relative;
+  top: 94px;
+  }
+  tbody{
+  border: 1px solid lightgrey;
+  background: white;
+  }
+  .table .thead-dark th {
+  background-color: #262262;
+  border-color: #262262;
+  }
 // ngx modal dialog
 modal-container.modal{
 z-index: 99999!important;
