@@ -1,8 +1,11 @@
 body {
-  overflow-x: hidden;
-  height: 100vh;
   background: #f1f3f5;
-  margin: 0;
+  overflow: hidden;;
+  }
+
+  .main{
+    display: flex;
+    margin-top: 92px;
   }
 
   #wrapper {
@@ -35,14 +38,11 @@ body {
   }
 
   #sidebar-wrapper {
-  z-index: 1000;
-  position: fixed;
-  left: 0px;
-  height: 100%;
-  overflow-y: auto;
-  background: #262262;
-  top: 92px;
-  border: 1px solid lightgrey;
+    z-index: 1000;
+    height: 86vh;
+    overflow: auto;
+    background: #262262;
+    border: 1px solid lightgrey;
   }
 
   #wrapper.toggled #sidebar-wrapper {
@@ -50,21 +50,22 @@ body {
   }
 
   #page-content-wrapper {
-  width: 100%;
-  position: absolute;
-  padding: 15px;
-  height: 100%;
-  width: 65%;
+    width: 100%;
+    padding: 15px;
+    height: 86vh;
+    overflow: auto;
+  }
+
+  .container-fluid{
+    padding: 0 !important;
   }
 
   .right-panel{
-  position: fixed;
-  right: 1px;
-  top: 93px;
-  height: -webkit-fill-available;
-  width: 235px;
-  background: #fff;
-  border-left: 1px solid lightgrey;
+    width: 235px;
+    background: #fff;
+    border-left: 1px solid lightgrey;
+    height: 86vh;
+    overflow: auto;
   }
 
   .custom-cart-icon{
@@ -92,12 +93,10 @@ body {
   // Sidebar Styles
 
   .sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 300px;
-  margin: 0;
-  padding: 20px 0px 0px 0px;
-  list-style: none;
+    width: 300px;
+    margin: 0;
+    padding: 20px 0px 0px 0px;
+    list-style: none;
   }
 
   .sidebar-nav li {
@@ -113,7 +112,7 @@ body {
   border-radius: 5px;
   font-weight: 600;
   position: sticky;
-  bottom: 15px;
+  bottom: -15px;
   cursor: pointer;
   }
 
@@ -168,9 +167,9 @@ body {
   white-space: nowrap;
   }
   .custom-search-bar{
-  position: relative;
-  top: 10px;
-  right: 20px;
+  // position: relative;
+  // top: 10px;
+  // right: 20px;
   padding: 0px 0px 0px 50px;
   height: 32px;
   opacity: 0.9;
@@ -231,7 +230,7 @@ body {
 
   .custom-items-description{
     padding: 20px 15px 0px 15px;
-    min-width: 335px;
+    // min-width: 335px;
   }
 
   .image{
@@ -289,7 +288,7 @@ body {
 
   .custom-scrollbar{
   overflow-y: scroll;
-  height: calc(100vh + -153px);
+  // height: calc(100vh + -153px);
   }
 
   .cart-text-alignment{
@@ -319,16 +318,16 @@ body {
 
 
   .fa-search{
-  position: relative;
-  top: 10px;
-  left: 12px;
-  z-index: 99;
-  opacity: 0.7;
+    position: relative;
+    top: 28px;
+    left: 15px;
+    z-index: 99;
+    opacity: 0.7;
   }
 
   input::-webkit-input-placeholder {
-  position: relative;
-  left: 0px;
+    position: relative;
+    left: 30px;
   }
   .sidebar-nav li a:active,
   .sidebar-nav li a:focus {
@@ -379,9 +378,9 @@ body {
   }
 
   #page-content-wrapper {
-  position: relative;
-  left: 300px;
-  top: 92px;
+  // position: relative;
+  // left: 300px;
+  // top: 92px;
 
   }
 
@@ -423,10 +422,8 @@ body {
 
   @media (min-width: 1200px){
   .container {
-  max-width: 635px;
-  height: 100%;
-  position: relative;
-  top: 92px;
+  // max-width: 635px !important;
+  // height: 100%;
   }
   }
 
@@ -441,14 +438,16 @@ body {
   }
 
   .custom-inquiry-box{
-  background-color: rgba(255, 255, 255, 0.85);
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
-  padding: 15px 20px 22px 20px;
-  position: relative;
-  top: 5px;
-  border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.85);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+    padding: 15px 20px 22px 20px;
+    position: relative;
+    top: 5px;
+    border-radius: 5px;
+    max-width: 635px;
+    margin: 0 auto;
   }
 
   .order-text{
@@ -458,8 +457,12 @@ body {
   }
 
   .custom-add-more{
-  min-height: 195px;
+  // min-height: 195px;
   margin-top: 20px;
+  }
+
+  .lodaer-width{
+    min-width: 60%;
   }
 
   input[type=number]::-webkit-inner-spin-button,
@@ -571,16 +574,17 @@ body {
   /*info styles starts here*/
 
   .header {
-  overflow: hidden;
-  background-color: gainsboro;
-  padding: 5px 10px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-height: 92px;
-  position: fixed;
-  z-index: 9999;
+    overflow: hidden;
+    background-color: gainsboro;
+    padding: 5px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 92px;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
   }
 
   .header a {
