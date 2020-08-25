@@ -725,11 +725,11 @@ body {
     background-color: #e8f0fe;
     float: left;
     width: 270px;
-    // color: #F1F1F1;
     padding: 10px 10px 10px 15px;
     margin-bottom: 10px;
     border: 1px solid lightblue;
     outline: 0;
+    color: dimgrey;
   }
   #contact #form textarea {
     background-color: #e8f0fe;
@@ -741,6 +741,7 @@ body {
     resize: none;
     border: 1px solid lightblue;
     outline: 0;
+    height: 130px;
   }
 
   #contact #form input.submit {
@@ -803,18 +804,56 @@ body {
     height: 150px !important;
   }
 
-  // .alert-login{
-  //   font-size: 14px;
-  //   margin-top: 30px;
-  // }
+  // order details styles
 
-  // .custom-alert-login{
-  //   position: relative;
-  //   left: 40px;
-  //   top: 10px;
-  //   font-size: 14px;  
-  // }
- 
-  // .ml-10{
-  //   margin-left: 10px;
-  // }
+  .custom-select {
+    // transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-size: 16px;
+    background-color: #e8f0fe;
+    float: left;
+    max-width: 270px;
+    margin-bottom: 10px;
+    border: 1px solid lightblue;
+    outline: 0;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.custom-select:focus {
+  border-color: lightblue;
+  outline: 0;
+  box-shadow: none;
+}
+
+.custom-order-details{
+  position: relative;
+  top: 97px;
+  display: flex;
+  justify-content: center;
+  color: darkslategrey;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.custom-hidden-text{
+  visibility: hidden;
+}
+.custom-date-time{
+  letter-spacing: 1px;
+}
+
+//myOrder styles starts
+
+.table {
+  position: relative;
+  top: 94px;
+}
+tbody{
+  border: 1px solid lightgrey;
+    background: white;
+}
+.table .thead-dark th {
+  background-color: #262262;
+  border-color: #262262;
+}

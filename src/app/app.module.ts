@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CartService } from './services/cart.service';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CartService } from './services/cart.service';
     DashboardComponent,
     OrdersComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    OrderDetailsComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
