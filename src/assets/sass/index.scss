@@ -684,11 +684,10 @@ body {
 
 
   #contact {
-    overflow: auto;
-    position: relative;
-    top: 140px;
     display: flex;
-    justify-content: center;
+    // height: 86vh;
+    overflow: auto;
+    margin-top: 95px;
   }
   #contact #form {
     width: 372px;
@@ -699,13 +698,16 @@ body {
   }
   #contact #form span {
     font-size: 15px;
-    display:block;
-    float:left;
-    width:100px;
-    padding-top:5px;
+    display: block;
+    float: left;
+    width: 100px;
+    padding-top: 5px;
     font-weight: 600;
     color: darkslategrey;
-    // font: 14px/16px'Bree Serif', Georgia, serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
   }
   #contact #form input {
     font-size: 12px;
@@ -723,7 +725,7 @@ body {
     float:left;
     border:0px;
     width: 270px;
-    height:140px;
+    height:125px;
     padding: 10px 10px 10px 15px;
     // font: 11px/20px'Open Sans', Verdana, Helvetica, sans-serif;
     // color:#F1F1F1;
@@ -766,6 +768,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
     padding: 20px 50px 19px 50px;
+    margin: 0 auto;
   }
 
 
