@@ -19,8 +19,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CartService } from './services/cart.service';
 import {HttpClientModule} from '@angular/common/http';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ComboItemDialogComponent } from './shared/dialogs/combo-item-dialog/combo-item-dialog.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
+  entryComponents: [
+    ComboItemDialogComponent
+  ],
   declarations: [
     AppComponent,
     FooterComponent,
@@ -31,7 +36,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DashboardComponent,
     OrdersComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ComboItemDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ModalModule.forRoot()
   ],
   providers: [CartService],
   bootstrap: [AppComponent]

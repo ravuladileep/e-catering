@@ -2,6 +2,8 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import {debounceTime} from 'rxjs/operators';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ComboItemDialogComponent } from 'src/app/shared/dialogs/combo-item-dialog/combo-item-dialog.component';
 
 @Component({
   selector: 'app-recipe',
@@ -17,7 +19,9 @@ export class RecipeComponent implements OnInit, DoCheck {
   public subCategory;
   public loading = false;
 
-  constructor(private cartService: CartService,private spinner: NgxSpinnerService ) { }
+  constructor(private cartService: CartService,
+              private spinner: NgxSpinnerService,
+              private modalService: BsModalService ) { }
 
   ngOnInit(): void {
     this.calcReviewCount();
@@ -89,6 +93,9 @@ export class RecipeComponent implements OnInit, DoCheck {
 
 
   addToCart(product) {
+    this.modalService.show(ComboItemDialogComponent, { class: 'modal-dialog-custom modal-dialog-centered',
+    keyboard: false
+  })
     product.quantity++;
     const productExistInCart = this.cartService.cartItems.find(({itemId}) => itemId === product.itemId);
     if (!productExistInCart) {

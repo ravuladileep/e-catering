@@ -784,3 +784,9 @@ body {
 .form-height{
   height: 150px !important;
 }
+
+
+// ngx modal dialog
+modal-container.modal{
+z-index: 99999!important;
+}
