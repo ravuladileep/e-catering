@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -15,10 +15,7 @@ public cartAmount;
     this.cartItems = this.cartService.cartItems;
     this.calcTotal();
   }
-  // ngOnChanges(): void {
-  //   this.cartItems = this.cartService.cartItems;
-  //   this.calcTotal();
-  // }
+
 
   ngDoCheck(): void {
     this.cartItems = this.cartService.cartItems;

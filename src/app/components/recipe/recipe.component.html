@@ -1,109 +1,52 @@
 <div id="page-content-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="filter-input-text">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="filter" [(ngModel)]="searchTerm" class="custom-search-bar col-md-12"
-                        placeholder="Search...">
-                </div>
+  <div class="container-fluid">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="filter-input-text">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <input type="filter" [(ngModel)]="searchTerm" (input)="filterItem($event.target.value)"  class="custom-search-bar col-md-12"
+              placeholder="Search...">
+           </div>
+           <ng-container *ngFor="let item of category; let j=index;" >
+              <div class="custom-text-entrees" >
+                 <h1 class="custom-entries" *ngIf="!loading" id="{{item.sectionName}}">{{item.sectionName}}</h1>
+              </div>
 
-                <div class="custom-text-entrees">
-                    <h1 class="custom-entries">ENTREES</h1>
-                </div>
-                <ng-container *ngFor="let item of items; let i = index;">
-                    <span class="sub-section-one">Sub Section {{i+1}}</span>
-
-                    <div class="custom-items-wrapper">
-                        <div class="boxes-wrapper nav">
-                            <div class="col-md-6 pl-0" *ngFor="let data of item.subsection|filter:searchTerm">
-                                <div class="custom-box-wrapper">
-
-                                    <div class="custom-image-wrapper-text">
-                                        <div class="custom-items-description">
-                                            <h2 class="custom-firsthead-content">{{data.name}}</h2>
-                                            <p class="custom-fonts">{{data.description}}</p>
-                                            <div class="custom-addCart-Btn d-flex">
-                                                <p class="custom-dollar">${{data.price.toFixed(2)}}</p>
-                                                <i class="fa fa-plus" aria-hidden="true" (click)="addToCart(data)"></i>
-                                            </div>
-                                        </div>
-                                        <div class="custom-section-image">
-                                            <img src="../../../assets/images/cater/01.png" alt="" class="foodie">
-                                        </div>
-                                    </div>
-
-                                    <!-- <div class="custom-addCart-Btn d-flex">
-                                    <p class="custom-dollar">{{data.price}}</p>
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </div> -->
+              <ng-container *ngFor="let sub of subCategory  let k = index;">
+                 <h6 *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
+                 <div class="custom-items-wrapper" >
+                    <div class="boxes-wrapper nav">
+                       <ng-container   *ngFor="let data of newMenu| filter: searchTerm; let i=index;" >
+                          <div class="col-md-6 pl-0"  *ngIf="data.sectionName === category[j].sectionName && data.subSectionName === subCategory[k].subSectionName">
+                             <div class="custom-box-wrapper"   >
+                                <div class="custom-image-wrapper-text">
+                                   <div class="custom-items-description">
+                                      <h2 class="custom-firsthead-content">{{data.itemName.toUpperCase()}}</h2>
+                                      <p class="custom-fonts">{{data.description |slice:0:40}}</p>
+                                      <div class="custom-addCart-Btn d-flex align-items-center justify-content-between">
+                                         <span class="custom-dollar">${{data.price}}</span>
+                                         <div class="d-flex align-items-center">
+                                            <i class="fa fa-minus-circle px-1 orange " *ngIf="data.quantity > 0"  aria-hidden="true"  (click)="decreaseQuantity(data)"></i>
+                                            <span class="px-1 my-0 py-0" *ngIf="data.quantity > 0">{{data.quantity}}</span>
+                                            <i class="fa fa-plus-circle px-1 orange" aria-hidden="true" (click)="addToCart(data)"></i>
+                                         </div>
+                                      </div>
+                                   </div>
+                                   <div class="custom-section-image">
+                                      <img src="assets/images/cater/01.png" alt="" class="foodie">
+                                   </div>
                                 </div>
-                            </div>
-                            <!-- <div class="custom-box-wrapper custom-box-alignment">
-    <div class="custom-image-wrapper-text">
-    <div>
-    <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
-    NF
-    </h2>
-    <p class="custom-fonts">With Blistered Tomatoes (Serves 4)</p>
-    </div>
-    <div class="custom-section-image">
-    <img src="../../../assets/images/cater/02.png" alt="" class="foodie">
-    </div>
-    </div>
-    <div class="custom-addCart-Btn d-flex">
-    <p class="custom-dollar">$45.00</p>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    </div>
-    </div> -->
+                             </div>
+                          </div>
+                       </ng-container>
 
-                        </div>
-                        <!-- <div class="boxes-wrapper">
-    <div class="custom-box-wrapper custom-box-alignment">
-    <div class="custom-image-wrapper-text">
-    <div>
-    <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
-    NF
-    </h2>
-    <p class="custom-fonts">With Blistered Tomatoes (Serves 4)</p>
-    </div>
-    <div class="custom-section-image">
-    <img src="../../../assets/images/cater/03.png" alt="" class="foodie">
-    </div>
-    </div>
-    <div class="custom-addCart-Btn d-flex">
-    <p class="custom-dollar">$45.00</p>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    </div>
-    </div>
-
-    <div class="custom-box-wrapper custom-box-alignment">
-    <div class="custom-image-wrapper-text">
-    <div>
-    <h2 class="custom-firsthead-content">LEMON DIJON CRUSTED SALMON: GF, DF,
-    NF
-    </h2>
-    <p class="custom-fonts">With Blistered Tomatoes (Serves 4)</p>
-    </div>
-    <div class="custom-section-image">
-    <img src="../../../assets/images/cater/04.png" alt="" class="foodie">
-    </div>
-    </div>
-    <div class="custom-addCart-Btn d-flex">
-    <p class="custom-dollar">$45.00</p>
-    <i class="fa fa-plus" aria-hidden="true"></i>
-    </div>
-    </div>
-
-    </div> -->
                     </div>
-                </ng-container>
-
-                <button type="button" [routerLink]="['/orders']" routerLinkActive="router-link-active"
-                    class="custom-review">Review Order<span class="review-seven">{{reviewOrdersCount}}</span></button>
-
-
-            </div>
+                 </div>
+              </ng-container>
+           </ng-container>
+           <button type="button" [routerLink]="['/orders']"   routerLinkActive="router-link-active"
+           class="custom-review" *ngIf="reviewOrdersCount>0 && !loading">Review Order<span class="review-seven">{{reviewOrdersCount}}</span></button>
         </div>
-    </div>
+     </div>
+  </div>
 </div>

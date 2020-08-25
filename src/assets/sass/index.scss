@@ -112,8 +112,8 @@ body {
   color: #fff;
   border-radius: 5px;
   font-weight: 600;
-  // position: fixed;
-  // bottom: 0;
+  position: sticky;
+  bottom: 15px;
   cursor: pointer;
   }
 
@@ -138,7 +138,7 @@ body {
 
   .custom-entries{
   font-size: 20px;
-  padding: 5px 5px 5px 5px;
+  padding: 5px 5px 5px 0px;
   text-align: center;
   align-items: center;
   // color: #fff;
@@ -155,15 +155,15 @@ body {
   }
 
   .col-md-6.pl-0 {
-    max-width: 396px;
+    max-width: 591px;
 }
 
   .sidebar-nav li a {
   display: block;
   text-decoration: none;
   color: #fff;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 550;
   font-family: sans-serif;
   white-space: nowrap;
   }
@@ -231,6 +231,7 @@ body {
 
   .custom-items-description{
     padding: 20px 15px 0px 15px;
+    min-width: 335px;
   }
 
   .image{
@@ -239,28 +240,35 @@ body {
   height: 100%;
   }
 
-  .fa-plus{
-  margin-top: 3px;
-  background: #f08b2d;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  position: relative;
-  top: -8px;
-  color: white;
-  cursor: pointer;
-  left: 20px;
-  }
+  // .fa-plus{
+  // margin-top: 3px;
+  // background: #f08b2d;
+  // width: 32px;
+  // height: 32px;
+  // border-radius: 50%;
+  // position: relative;
+  // top: -8px;
+  // color: white;
+  // cursor: pointer;
+  // left: 20px;
+  // }
 
-  .fa-plus:before {
-  position: relative;
-  top: 8px;
-  left: 10px;
+  // .fa-plus:before {
+  // position: relative;
+  // top: 8px;
+  // left: 10px;
+  // }
+
+  .orange{
+    color: #f08b2d;
   }
 
   .custom-addCart-Btn{
-    justify-content: flex-end;
-    margin-right: 20px;
+    // justify-content: flex-end;
+    // margin-right: 20px;
+      i{
+        font-size:25px;
+      }
   }
 
   .custom-fonts{
@@ -372,7 +380,7 @@ body {
 
   #page-content-wrapper {
   position: relative;
-  left: 270px;
+  left: 300px;
   top: 92px;
 
   }
@@ -392,7 +400,7 @@ body {
   }
 
   .custom-items-wrapper{
-  margin-top: 12px;
+  // margin-top: 12px;
   }
 
   .sub-section-one{
@@ -755,3 +763,24 @@ body {
     box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
     padding: 20px 50px 19px 50px;
   }
+
+
+
+  .cart-items-footer{
+    font-size: 14px;
+  }
+
+  .cart-items-footer-wrapper{
+    padding: 8px 15px;
+  }
+// login styles
+.forget-pass{
+  margin-left: 68%;
+  font-size: 14px;
+  color: darkslategrey;
+  font-weight: 600;
+  cursor: pointer;
+}
+.form-height{
+  height: 150px !important;
+}
