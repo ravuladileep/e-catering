@@ -807,6 +807,11 @@ body {
   font-size: 14px;
   }
 
+  .main-container-wrapper{
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  
   .custom-select:focus {
   border-color: lightblue;
   outline: 0;
