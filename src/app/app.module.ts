@@ -23,6 +23,7 @@ import { ComboItemDialogComponent } from './shared/dialogs/combo-item-dialog/com
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   entryComponents: [
@@ -53,7 +54,8 @@ import { MyOrdersListComponent } from './components/my-orders-list/my-orders-lis
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxCaptchaModule
   ],
   providers: [CartService],
   bootstrap: [AppComponent]

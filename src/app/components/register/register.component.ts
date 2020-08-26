@@ -8,10 +8,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   public register: FormGroup;
+  public siteKey = sessionStorage.getItem('captchaKey');
+  public size = 'Normal';
+  public theme = 'Light';
+  public type = 'Image';
+  public lang = 'en';
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm();
+    console.log(this.siteKey, 'sitekey')
   }
 
   registerForm(): void {
@@ -24,11 +30,16 @@ export class RegisterComponent implements OnInit {
       email : ['', [Validators.required]],
       phone : ['', [Validators.required]],
       address : ['', [Validators.required]],
+      recaptcha: ['', Validators.required]
     });
   }
 
+  handleSuccess(event): void {
+    console.log(event);
+  }
+
   submit(): void{
-    console.log(this.register.value)
+    console.log(this.register.value);
   }
 
 }
