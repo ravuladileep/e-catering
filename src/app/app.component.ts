@@ -16,10 +16,10 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.http.get(this.baseUrl).subscribe((res)=>{
       this.res = res;
-
+      sessionStorage.setItem('captchaKey', this.res.captchaKey);
       let webService = this.res.webserviceUrl;
       localStorage.setItem('webServiceUrl', webService);
       this.cartService.getUrl();
-    })
+    });
   }
 }

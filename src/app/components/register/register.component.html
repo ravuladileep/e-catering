@@ -1,30 +1,44 @@
 <section id="contact">
         <div class="content">
             <div id="form">
-                <!-- <form action="" id="contactForm" method="post"> -->
+                <form  [formGroup]="register" (ngSubmit)="submit()">
                     <span>First Name</span>
-                    <input type="text" name="name" class="name" placeholder="Enter your name">
+                    <input type="text" formControlName="firstName"  class="name" placeholder="Enter your firstname">
                     <span>Last Name</span>
-                    <input type="text" name="name" class="name" placeholder="Enter your name">
+                    <input type="text" formControlName="lastName" class="name" placeholder="Enter your lastname">
                     <span>Username</span>
-                    <input type="text" name="name" class="name" placeholder="Enter your name">
+                    <input type="text" formControlName="userName"  class="name" placeholder="Enter your name">
                     <span>Password</span>
-                    <input type="text" name="name" class="name" placeholder="Enter your name">
+                    <input type="password" formControlName="password" class="name" placeholder="Enter your password">
                     <span>Confirm Password</span>
-                    <input type="text" name="name" class="name" placeholder="Enter your name">
+                    <input type="password" formControlName="confirmPassword"class="name" placeholder="Enter your confirmpassword">
                     <span>Email</span>
-                    <input type="text" name="email" class="email" placeholder="Enter your email">
+                    <input type="text" formControlName="email"  class="email" placeholder="Enter your email">
                     <span>Phone</span>
-                    <input type="" name="" class="email" placeholder="Enter your number">
+                    <input type="" name="" formControlName="phone" class="email" placeholder="Enter your mobile">
+
                     <!-- <div>
                     <span id="captcha">5218 <i class="fa fa-refresh" aria-hidden="true"></i></span>
 
                     </div> -->
                     <!-- <input type="text" name="captcha" class="captcha" maxlength="4" size="4" placeholder="Enter captcha code"> -->
                     <span>Address</span>
-                    <textarea class="message" placeholder="Enter your address"></textarea>
+                    <textarea class="message" formControlName="address" placeholder="Enter your address"></textarea>
+                    <div class="p-3">
+                      <ngx-recaptcha2 #captchaElem
+                      [siteKey]="siteKey"
+                      (success)="handleSuccess($event)"
+                      [useGlobalDomain]="false"
+                      [size]="size"
+                      [hl]="lang"
+                      [theme]="theme"
+                      [type]="type"
+                      formControlName="recaptcha">
+                      </ngx-recaptcha2>
+                    </div>
+
                     <input type="submit" name="submit" value="Sign Up" class="submit">
-                <!-- </form> -->
+                </form>
             </div>
         </div>
 </section>

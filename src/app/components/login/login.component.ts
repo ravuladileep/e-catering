@@ -22,4 +22,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  submit(): void {
+    console.log(this.login.value)
+  }
 }

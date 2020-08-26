@@ -3,39 +3,39 @@
 <section id="contact">
   <div class="content">
     <div id="form">
-
+      <form  [formGroup]="orderDetails" #orderDetailsForm (ngSubmit)="Submit()">
       <span>Order Name</span>
-      <input type="text" name="name" class="name">
-      <span>Date & Time</span>
+      <input type="text" formControlName="orderName"  name="name" class="name">
+      <!-- <span>Date & Time</span>
 
-      <input type="date" id="start" name="trip-start" value="" min="" max="">
+      <input type="date" id="start" name="trip-start" value="" min="" max=""> -->
 
       <span>Order Type</span>
-      <select class="custom-select col-sm-8" id="draftStatus">
-        <option selected>Choose...</option>
-        <option value="1">Delivery</option>
-        <option value="2">Pickup</option>
+      <select class="custom-select col-sm-8" formControlName="orderType" id="draftStatus">
+        <option selected value="Delivery">Delivery</option>
+        <option value="Pickup">Pickup</option>
 
       </select>
 
-      <span class="custom-hidden-text">Order Type</span>
+      <span class="">{{orderDetailsData.orderType.value}} date</span>
 
-      <input type="text" name="name" class="name">
-
-
+      <input type="date" name="name" formControlName="Date" class="name">
 
       <span>Street</span>
-      <input type="" name="" class="">
+      <input type=""  formControlName="street" >
       <span>Suite</span>
-      <input type="" name="" class="">
+      <input type=""  formControlName="suite" >
       <span>City</span>
-      <input type="" name="" class="">
+      <input type="" formControlName="city">
       <span>State</span>
-      <input type="" name="" class="">
+      <input type=""  formControlName="state" >
       <span>Zip Code</span>
-      <input type="" name="" class="">
+      <input type="number"  formControlName="zipCode" >
       <span>Notes:</span>
-      <textarea class="form-control" rows="3"></textarea>
+      <textarea formControlName="notes" class="form-control" rows="3"></textarea>
+
+      <button type="submit" class="btn btn-primary ">Submit</button>
+    </form>
     </div>
   </div>
 </section>
