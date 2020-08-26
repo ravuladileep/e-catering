@@ -3,15 +3,15 @@
             <div id="form">
                 <form  [formGroup]="register" (ngSubmit)="submit()">
                     <span>First Name</span>
-                    <input type="text" formControlName="firstName"  class="name" placeholder="Enter your firstname">
+                    <input type="text" formControlName="firstName"  class="name" placeholder="Enter your first name">
                     <span>Last Name</span>
-                    <input type="text" formControlName="lastName" class="name" placeholder="Enter your lastname">
+                    <input type="text" formControlName="lastName" class="name" placeholder="Enter your last name">
                     <span>Username</span>
                     <input type="text" formControlName="userName"  class="name" placeholder="Enter your name">
                     <span>Password</span>
                     <input type="password" formControlName="password" class="name" placeholder="Enter your password">
                     <span>Confirm Password</span>
-                    <input type="password" formControlName="confirmPassword"class="name" placeholder="Enter your confirmpassword">
+                    <input type="password" formControlName="confirmPassword"class="name" placeholder="Enter your confirm password">
                     <span>Email</span>
                     <input type="text" formControlName="email"  class="email" placeholder="Enter your email">
                     <span>Phone</span>
@@ -25,7 +25,7 @@
                     <span>Address</span>
                     <textarea class="message" formControlName="address" placeholder="Enter your address"></textarea>
                     <div class="p-3">
-                      <ngx-recaptcha2 #captchaElem
+                      <!-- <ngx-recaptcha2 #captchaElem
                       [siteKey]="siteKey"
                       (success)="handleSuccess($event)"
                       [useGlobalDomain]="false"
@@ -34,7 +34,22 @@
                       [theme]="theme"
                       [type]="type"
                       formControlName="recaptcha">
-                      </ngx-recaptcha2>
+                      </ngx-recaptcha2> -->
+                    </div>
+
+                    <div class="form-group">
+                        <div class="g-recaptcha"></div>
+                        <ngx-recaptcha2 #captchaElem
+                        [siteKey]="siteKey"
+                        (success)="handleSuccess($event)"
+                        [useGlobalDomain]="false"
+                        [size]="size"
+                        [hl]="lang"
+                        [theme]="theme"
+                        [type]="type"
+                        formControlName="recaptcha">
+                        </ngx-recaptcha2>
+                        <div class="help-block with-errors"></div>
                     </div>
 
                     <input type="submit" name="submit" value="Sign Up" class="submit">
