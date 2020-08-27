@@ -24,6 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { PlaceOrderComponent } from './components/place-order/place-order.component';
 
 @NgModule({
   entryComponents: [
@@ -42,7 +43,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     LoginComponent,
     ComboItemDialogComponent,
     OrderDetailsComponent,
-    MyOrdersListComponent
+    MyOrdersListComponent,
+    PlaceOrderComponent
   ],
   imports: [
     BrowserModule,
