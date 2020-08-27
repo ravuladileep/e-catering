@@ -15,9 +15,9 @@
                  <h6 *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
                  <div class="custom-items-wrapper" >
                     <div class="boxes-wrapper nav">
-                       <ng-container   *ngFor="let data of newMenu; let i=index;" >
-                          <div class="col-md-6 pl-0"  *ngIf="data.sectionName === category[j].sectionName && data.subSectionName === subCategory[k].subSectionName">
-                             <div class="custom-box-wrapper"   >
+                       <ng-container   *ngFor="let data of newMenu; let i=index;">
+                          <div class="col-md-6 pl-0 "  *ngIf="data.sectionName === category[j].sectionName && data.subSectionName === subCategory[k].subSectionName" >
+                             <div class="custom-box-wrapper" >
                                 <div class="custom-image-wrapper-text">
                                    <div class="custom-items-description">
                                       <h2 class="custom-firsthead-content">{{data.itemName.toUpperCase()}}</h2>
@@ -38,7 +38,6 @@
                              </div>
                           </div>
                        </ng-container>
-
                     </div>
                  </div>
               </ng-container>

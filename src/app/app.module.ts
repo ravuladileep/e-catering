@@ -17,8 +17,8 @@ import { LoginComponent } from './components/login/login.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CartService } from './services/cart.service';
-import {HttpClientModule} from '@angular/common/http';
-import { NgxSpinnerModule } from "ngx-spinner";
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ComboItemDialogComponent } from './shared/dialogs/combo-item-dialog/combo-item-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
@@ -57,7 +57,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     ModalModule.forRoot(),
     NgxCaptchaModule
   ],
-  providers: [CartService],
+  providers: [
+    CartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
