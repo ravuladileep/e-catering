@@ -16,14 +16,18 @@ public cartItems = [];
   }
   getItems(): Observable<any>{
     this.getUrl();
-    console.log(this.webServiceUrl)
     return this.http.get(`${this.webServiceUrl}/getItemsList?catererId=menuscat`);
   }
 
+  getComboItems(id): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/showPackageOrComboDetails?itemId=${id}&catererId=menuscat`);
+  }
+
   increaseItemQuantity(itemId){
-    this.cartItems.map((x)=>{
-      if(x.itemId === itemId) {
-        x.quantity++
+    this.cartItems.map((x) => {
+      if (x.itemId === itemId) {
+        x.quantity++;
       }
     });
   }
