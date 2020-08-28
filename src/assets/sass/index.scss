@@ -1,6 +1,6 @@
 body {
   background: #f1f3f5;
-  overflow-x: hidden;;
+  overflow-x: hidden;
   }
 
   .main{
@@ -325,10 +325,10 @@ body {
     opacity: 0.7;
   }
 
-  input::-webkit-input-placeholder {
-    position: relative;
-    left: 0;
-  }
+  // input::-webkit-input-placeholder {
+  //   position: relative;
+  //   left: 0;
+  // }
   .sidebar-nav li a:active,
   .sidebar-nav li a:focus {
   text-decoration: none;
@@ -514,6 +514,7 @@ body {
   cursor: pointer;
   width: 100%;
   margin-top: 3px;
+  height: 32px;
   }
   .custom-payment-align{
   margin-top: 2px;
@@ -739,14 +740,18 @@ body {
   #contact #form input.submit {
     cursor: pointer;
     width: 85px;
-    height: 30px;
+    height: 32px;
     float: right;
     padding: 0px 0px 0px 0px;
     margin: 30px 1px 0px 0px;
     background: #262262;
     color: #fff;
     font-weight: 600;
+    border-radius: 5px;
+    font-size: 16px;
   }
+
+  
 
 
   #contact #captcha span{
@@ -774,7 +779,13 @@ body {
     margin: 0 auto;
   }
 
+  .register-alignment {
+    padding: 20px 0px 50px 50px !important;   
+}
 
+.register-screen {
+    margin-top: 87px !important;
+}
 
   .cart-items-footer{
     font-size: 14px;
@@ -797,12 +808,21 @@ body {
 .login-submit:disabled{
 opacity: 0.5;
 }
-
+.custom-signIN{
+  margin: 0px 1px 0px 0px !important;
+  width: 100% !important;
+  // border-radius: 5px;
+}
 
 
 // order details styles
 .order-details-submit:disabled{
   opacity: 0.5;
+}
+
+.contact-submit {
+  margin: 5px 0px 0px 0px !important;  
+  width: 100% !important; 
 }
 
 .custom-select {
@@ -912,5 +932,71 @@ z-index: 99999!important;
 // owl date time picker
 owl-date-time-container{
   // margin-top: 30%;
+}
+
+// place-order-styles
+
+.card {
+  top: 92px;
+  // height: 88vh;
+}
+.card-header{
+  display: none;
+}
+
+.table-striped {
+  position: relative;
+  top: 0;
+}
+.place-order-color {
+  background-color: #262262 !important;
+  border-color: #262262 !important;
+  border-radius: 5px;
+  outline: 0;
+  font-weight: 600;
+  border: 0;
+}
+.place-order-color:not(:disabled):not(.disabled):active, .show>.place-order-color.dropdown-toggle {
+  background-color: #262262 !important;
+  border-color: #262262 !important;
+  outline: 0;
+}
+
+.place-order-color:not(:disabled):not(.disabled):active:focus, .show>.place-order-color.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem transparent;
+}
+
+.dropdown-menu {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  border-radius: 0;
+  min-width: 10.3rem;
+}
+
+.bg-hover:hover {
+  background-color: lightgrey;
+}
+
+.bg-hover a:hover {
+  text-decoration: none;
+}
+
+.place-order-button{
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-header-order{
+  background: #262262;
+  color: #fff;
+}
+
+.mb-3 {
+  margin-bottom: 10px !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.2rem!important;
 }
 
