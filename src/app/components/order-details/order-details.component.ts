@@ -27,7 +27,6 @@ export class OrderDetailsComponent implements OnInit {
       state : ['', Validators.required],
       zipCode : ['', Validators.required],
       notes : ['', Validators.required],
-
     });
   }
 
@@ -40,7 +39,7 @@ export class OrderDetailsComponent implements OnInit {
     // this.orderDetails.controls['Date'].setValue(new Date(this.orderDetails.controls['Date'].value));
     console.log(this.orderDetails.value);
     localStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value))
-    this.router.navigate(['home']);
+    // this.router.navigate(['home']);
   }
 
 

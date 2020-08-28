@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
   public webServiceUrl;
+  public cartItems = [];
 
-public cartItems = [];
+
   constructor(private http: HttpClient){
   }
   getUrl(){

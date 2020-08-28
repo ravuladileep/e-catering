@@ -707,7 +707,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    
+
   }
   #contact #form input {
     font-size: 12px;
@@ -747,7 +747,7 @@ body {
     font-weight: 600;
   }
 
-  
+
   #contact #captcha span{
     width: 44px;
   }
@@ -791,10 +791,18 @@ body {
   cursor: pointer;
 }
 .form-height{
-  height: 150px !important;
+  // height: 150px !important;
+}
+.login-submit:disabled{
+opacity: 0.5;
 }
 
+
+
 // order details styles
+.order-details-submit:disabled{
+  opacity: 0.5;
+}
 
 .custom-select {
   font-size: 16px;
@@ -898,3 +906,10 @@ z-index: 99999!important;
 .custom-dialog-input{
   outline: 0;
 }
+
+
+// owl date time picker
+owl-date-time-container{
+  margin-top:30%;
+}
+

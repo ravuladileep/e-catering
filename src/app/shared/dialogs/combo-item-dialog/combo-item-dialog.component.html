@@ -4,35 +4,36 @@
   </div>
   <div class="description-dialog">
     <div class="custom-package-items">
-      <p class="custom-weight-font">{{ packageData?.PackageDetails[0]?.packageName}}</p>
+      <p class="custom-weight-font">{{ packageData?.PackageDetails?.packageName}}</p>
       <p class="custom-font-dialog">BAKER'S BEST BASKET - ASSORTMENT OF OUR FINEST BRE</p>
-      <span>Note: </span>
-      <input type="text" class="name custom-dialog-input" placeholder="">
     </div>
     <div class="custom-currency-dialog d-flex justify-content-between">
-      <p class="custom-weight-font">${{packageData?.PackageDetails[0]?.packageCost}}</p>
+      <p class="custom-weight-font">${{packageData?.PackageDetails?.packageCost}}</p>
       <div class="custom-addCart-Btn">
-        <div class="">
-          <i class="fa fa-minus-circle px-1 orange"></i>
-          <span class="">1</span>
-          <i class="fa fa-plus-circle px-1 orange" aria-hidden="true"></i>
+        <div class="" >
+          <i class="fa fa-minus-circle px-1 orange" (click)="decreasePackageQty()"></i>
+          <span class="">{{packageData?.PackageDetails?.PkgQty}}</span>
+          <i class="fa fa-plus-circle px-1 orange" (click)="increasePackageQty()" aria-hidden="true"></i>
         </div>
       </div>
     </div>
     <div>
+      <div class="alert alert-info mt-2" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1'">
+        Note : Please select your items from this list. The total item quantity should be less than or equal to 23.
+      </div>
       <div *ngFor="let item of packageData?.PackageItems" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper">
         <p class="custom-weight-font">{{item.pkgItemname}}</p>
         <div class="custom-addCart-Btn">
-          <div class="">
-            <i class="fa fa-minus-circle px-1 orange"></i>
-            <span class="">1</span>
-            <i class="fa fa-plus-circle px-1 orange" aria-hidden="true"></i>
+          <div class="" *ngIf="packageData?.PackageDetails?.packageType === '1'">
+            <i class="fa fa-minus-circle px-1 orange" *ngIf="item.pkgItemQty>0" (click)="decreaseItemQty(item)"></i>
+            <span class=""  *ngIf="item.pkgItemQty>0">{{item.pkgItemQty}}</span>
+            <i class="fa fa-plus-circle px-1 orange" (click)="increaseItemQty(item)" aria-hidden="true"></i>
           </div>
         </div>
       </div>
     </div>
     <div>
-      <button class="pull-right" type="save" value="save">Save</button>
+      <button class="pull-right" type="save" value="save" (click)="onSave()">Save</button>
     </div>
   </div>
 </div>
