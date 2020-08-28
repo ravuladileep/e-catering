@@ -25,6 +25,8 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { AuthService } from './services/auth.service';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 @NgModule({
   entryComponents: [
@@ -57,10 +59,13 @@ import { PlaceOrderComponent } from './components/place-order/place-order.compon
     HttpClientModule,
     NgxSpinnerModule,
     ModalModule.forRoot(),
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [
-    CartService
+    CartService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

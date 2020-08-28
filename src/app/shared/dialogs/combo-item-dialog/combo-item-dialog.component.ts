@@ -20,9 +20,35 @@ export class ComboItemDialogComponent implements OnInit {
   public getComboItems(itemId): void {
     this.cartService.getComboItems(itemId).pipe(untilDestroyed(this))
     .subscribe((data) => {
-      console.log(data)
+      console.log(data);
       this.packageData = data;
     });
+  }
+
+  public decreasePackageQty(){
+    console.log(this.packageData.PackageDetails.PkgQty--);
+  }
+
+  public increasePackageQty(){
+    console.log(this.packageData.PackageDetails.PkgQty++);
+  }
+
+  public decreaseItemQty(item){
+    item.pkgItemQty--;
+  }
+
+  public increaseItemQty(item){
+    item.pkgItemQty++;
+  }
+
+  onSave(): void {
+  }
+
+  calculateTotalQty(){
+    // let total = [];
+    // this.packageData.PackageItems.forEach((x)=>{
+
+    // })
   }
 
 }
