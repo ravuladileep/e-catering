@@ -27,6 +27,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { AuthService } from './services/auth.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   entryComponents: [
@@ -65,7 +66,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
   ],
   providers: [
     CartService,
-    AuthService
+    AuthService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

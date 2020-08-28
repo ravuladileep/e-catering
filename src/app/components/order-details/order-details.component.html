@@ -1,13 +1,15 @@
 <div class="main-container-wrapper">
-<h1 class="custom-order-details">Order Details</h1>
+<!-- <h1 class="custom-order-details">Order Details</h1> -->
 <section id="contact">
   <div class="content">
     <div id="form">
       <form  [formGroup]="orderDetails" #orderDetailsForm (ngSubmit)="Submit()">
       <span>Order#</span>
-      <input type="text" formControlName="orderName"  name="name" class="name">
+      <input type="text" formControlName="orderNumber" >
+      <div class="text-danger" *ngIf="orderDetailsData.orderNumber.touched && orderDetailsData.orderNumber.errors?.required">Order Number is required</div>
       <span>Order Name</span>
-      <input type="text" formControlName="orderName"  name="name" class="name">
+      <input type="text" formControlName="orderName" >
+      <div class="text-danger" *ngIf="orderDetailsData.orderName.touched && orderDetailsData.orderName.errors?.required">OrderName is required</div>
       <!-- <span>Date & Time</span>
 
       <input type="date" id="start" name="trip-start" value="" min="" max=""> -->
@@ -16,37 +18,57 @@
       <select class="custom-select col-sm-8" formControlName="orderType" id="draftStatus">
         <option selected value="Delivery">Delivery</option>
         <option value="Pickup">Pickup</option>
-
       </select>
+      <div class="text-danger" *ngIf="orderDetailsData.orderType.touched && orderDetailsData.orderType.errors?.required">OrderType is required</div>
+
 
       <span class="">{{orderDetailsData.orderType.value}} date</span>
-      <input formControlName="Date" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
-
+      <input formControlName="date" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
       <owl-date-time #dt1 [hour12Timer]="true" ></owl-date-time>
+      <div class="text-danger" *ngIf="orderDetailsData.date.touched && orderDetailsData.date.errors?.required">Date&time is required</div>
+
       <span>Name</span>
-      <input type="text" formControlName="orderName"  name="name" class="name">
+      <input type="text" formControlName="name" >
+      <div class="text-danger" *ngIf="orderDetailsData.name.touched && orderDetailsData.name.errors?.required">Name is required</div>
       <span>Phone</span>
-      <input type="text" formControlName="orderName"  name="name" class="name">
+      <input   formControlName="phone" >
+      <div class="text-danger" *ngIf="orderDetailsData.phone.touched && orderDetailsData.phone.errors?.required">Phone is required</div>
+      <div class="text-danger" *ngIf="orderDetailsData.phone.errors?.minlength || orderDetailsData.phone.errors?.maxlength
+       ">Phone is must be 10 digits</div>
       <span>Email</span>
-      <input type="text" formControlName="orderName"  name="name" class="name">
+      <input type="text" formControlName="email" >
+      <div class="text-danger" *ngIf="orderDetailsData.email.touched && orderDetailsData.email.errors?.required">Email is required</div>
+      <div class="text-danger" *ngIf="orderDetailsData.email.errors?.email ">Please Enter a valid email</div>
 
       <span>Street</span>
       <input type=""  formControlName="street" >
+      <div class="text-danger" *ngIf="orderDetailsData.street.touched && orderDetailsData.street.errors?.required">street  is required</div>
+
       <span>Suite</span>
       <input type=""  formControlName="suite" >
+      <div class="text-danger" *ngIf="orderDetailsData.suite.touched && orderDetailsData.suite.errors?.required">Order Number is required</div>
+
       <span>City</span>
       <input type="" formControlName="city">
+      <div class="text-danger" *ngIf="orderDetailsData.city.touched && orderDetailsData.city.errors?.required">city is required</div>
+
       <span>State</span>
       <input type=""  formControlName="state" >
+      <div class="text-danger" *ngIf="orderDetailsData.state.touched && orderDetailsData.state.errors?.required">state is required</div>
+
       <span>Zip Code</span>
       <input type="number"  formControlName="zipCode" >
+      <div class="text-danger" *ngIf="orderDetailsData.zipCode.touched && orderDetailsData.zipCode.errors?.required">zipCode is required</div>
+
       <span>Notes:</span>
       <textarea formControlName="notes" class="form-control" rows="3"></textarea>
 
       <input type="submit" name="submit"  [disabled]="!orderDetails.valid" value="Place Order" class="submit order-details-submit contact-submit">
-      <input type="button" name="back" value="Back" class="submit contact-submit">
+      <input type="button" name="back" value="Back" [routerLink]="['/orders']" routerLinkActive="router-link-active"  class="submit contact-submit">
     </form>
     </div>
   </div>
 </section>
 </div>
+
+

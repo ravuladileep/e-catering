@@ -1,11 +1,5 @@
 <div class="" style="height: 86vh; overflow: auto; margin-top: 92px;">
-  <div class="custom-inquiry-box">
-    <h2 class="order-text">Order Notes</h2>
-    <div class="panel panel-default">
-      <div class="panel-body">Please enter your phone number and email address so that we can contact you about your
-        order if necessary.</div>
-    </div>
-  </div>
+
 
   <div class="custom-inquiry-box custom-add-more">
     <div class="custom-order-items-wrapper" *ngFor="let item of cartItems; let i = index;">
@@ -44,8 +38,8 @@
       <p class="custom-subtotal-wrapper">Total</p>
       <p class="custom-subtotal-wrapper">${{subTotal.toFixed(2)}}</p>
     </div>
-    <button type="button" onclick="" class="custom-items-add">Checkout As Guest</button>
-    <button type="button" onclick="" class="custom-items-add">Checkout As User</button>
+    <button type="button"  [routerLink]="['/order-details']" routerLinkActive="router-link-active"  class="custom-items-add">Checkout As Guest</button>
+    <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active"  class="custom-items-add">Checkout As User</button>
 
 
   </div>

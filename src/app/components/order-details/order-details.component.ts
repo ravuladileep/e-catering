@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-order-details',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class OrderDetailsComponent implements OnInit {
   public orderDetails: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router,  private date: DatePipe) { }
 
   ngOnInit(): void {
     this.orderDetailsForm();
@@ -18,9 +19,15 @@ export class OrderDetailsComponent implements OnInit {
 
   orderDetailsForm(): void {
     this.orderDetails = this.fb.group({
+      orderNumber: ['', Validators.required],
       orderName : ['', Validators.required],
       orderType : ['Delivery', Validators.required],
-      Date : ['', Validators.required],
+      date : ['', Validators.required],
+      name: ['', Validators.required],
+      phone: ['', [Validators.required,
+                   Validators.minLength(10),
+                   Validators.maxLength(10)]],
+      email: ['', [Validators.required, Validators.email]],
       street : ['', Validators.required],
       suite : ['', Validators.required],
       city : ['', Validators.required],
@@ -36,10 +43,9 @@ export class OrderDetailsComponent implements OnInit {
 
 
   Submit(): void {
-    // this.orderDetails.controls['Date'].setValue(new Date(this.orderDetails.controls['Date'].value));
     console.log(this.orderDetails.value);
-    localStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value))
-    // this.router.navigate(['home']);
+    sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value))
+    this.router.navigate(['place-order']);
   }
 
 
