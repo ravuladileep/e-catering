@@ -4,6 +4,8 @@
   <div class="content">
     <div id="form">
       <form  [formGroup]="orderDetails" #orderDetailsForm (ngSubmit)="Submit()">
+      <span>Order#</span>
+      <input type="text" formControlName="orderName"  name="name" class="name">
       <span>Order Name</span>
       <input type="text" formControlName="orderName"  name="name" class="name">
       <!-- <span>Date & Time</span>
@@ -18,9 +20,15 @@
       </select>
 
       <span class="">{{orderDetailsData.orderType.value}} date</span>
-
       <input formControlName="Date" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
+
       <owl-date-time #dt1 [hour12Timer]="true" ></owl-date-time>
+      <span>Name</span>
+      <input type="text" formControlName="orderName"  name="name" class="name">
+      <span>Phone</span>
+      <input type="text" formControlName="orderName"  name="name" class="name">
+      <span>Email</span>
+      <input type="text" formControlName="orderName"  name="name" class="name">
 
       <span>Street</span>
       <input type=""  formControlName="street" >
@@ -35,7 +43,8 @@
       <span>Notes:</span>
       <textarea formControlName="notes" class="form-control" rows="3"></textarea>
 
-      <input type="submit" name="submit" [disabled]="!orderDetails.valid" value="Submit" class="submit order-details-submit">
+      <input type="submit" name="submit"  [disabled]="!orderDetails.valid" value="Place Order" class="submit order-details-submit">
+      <input type="button" name="back" value="Back" class="submit">
     </form>
     </div>
   </div>
