@@ -1,6 +1,6 @@
 <div class="" style="height: 86vh; overflow: auto; margin-top: 92px;">
 
-
+<!-- menu items -->
   <div class="custom-inquiry-box custom-add-more">
     <div class="custom-order-items-wrapper" *ngFor="let item of cartItems; let i = index;">
       <form class="quantity-form">
@@ -13,6 +13,20 @@
 
       <div class="d-flex align-items-center">
         <P class="custom-font-weight">${{(item.quantity * item.price).toFixed(2)}}</P>
+      </div>
+    </div>
+    <!-- package -->
+    <div class="custom-order-items-wrapper" *ngFor="let item of packageItems; let i = index;">
+      <form class="quantity-form">
+        <input class="quantity" disabled autocomplete="off" type="number" name="quantity" min="1" [(ngModel)]="item.PackageDetails.PkgQty "
+         >
+      </form>
+      <div class="custom-rate">
+        <P class="custom-summer-fonts">{{item.PackageDetails.packageName}}</P>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <P class="custom-font-weight">${{(item.PackageDetails.PkgQty * item.PackageDetails.packageCost).toFixed(2)}}</P>
       </div>
     </div>
 

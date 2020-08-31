@@ -12,7 +12,7 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.cartItems;
+    this.cartItems = this.cartService.cart.menuItems;
     this.orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
   }
 

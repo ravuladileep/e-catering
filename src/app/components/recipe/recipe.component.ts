@@ -66,7 +66,7 @@ export class RecipeComponent
                     item.itemName.toLowerCase().indexOf(text.toLowerCase()) > -1
                 );
                 this.newMenu = filteredItems;
-                if (this.cartService.cartItems.length) {
+                if (this.cartService.cart.menuItems.length) {
                   this.assignQuantity();
                 }
                 let cat = new Map();
@@ -106,7 +106,7 @@ export class RecipeComponent
       .subscribe(
         (res) => {
           this.newMenu = res.itemsList;
-          if (this.cartService.cartItems.length) {
+          if (this.cartService.cart.menuItems.length) {
             this.assignQuantity();
           }
           let cat = new Map();
@@ -135,8 +135,8 @@ export class RecipeComponent
    * any items assign those items quanity to the menulist
    */
   assignQuantity(): void {
-    if (this.cartService.cartItems.length) {
-      this.cartService.cartItems.forEach((cartItem) => {
+    if (this.cartService.cart.menuItems.length) {
+      this.cartService.cart.menuItems.forEach((cartItem) => {
         this.newMenu.forEach((menuItem) => {
           if (cartItem.itemId === menuItem.itemId) {
             menuItem.quantity = +cartItem.quantity;
@@ -165,11 +165,11 @@ export class RecipeComponent
       });
     } else {
       product.quantity++;
-      const productExistInCart = this.cartService.cartItems.find(
+      const productExistInCart = this.cartService.cart.menuItems.find(
         ({ itemId }) => itemId === product.itemId
       );
       if (!productExistInCart) {
-        this.cartService.cartItems.push({ ...product });
+        this.cartService.cart.menuItems.push({ ...product });
         return;
       }
       this.cartService.increaseItemQuantity(product.itemId);
@@ -185,15 +185,15 @@ export class RecipeComponent
   decreaseQuantity(product) {
     product.quantity--;
     if (product.quantity === 0) {
-      this.cartService.cartItems.forEach((x, i) => {
+      this.cartService.cart.menuItems.forEach((x, i) => {
         if (x.itemId === product.itemId) {
-          this.cartService.cartItems.splice(i, 1);
+          this.cartService.cart.menuItems.splice(i, 1);
         }
       });
     } else {
-      this.cartService.cartItems.forEach((x, i) => {
+      this.cartService.cart.menuItems.forEach((x, i) => {
         if (x.itemId === product.itemId) {
-          this.cartService.cartItems[i].quantity--;
+          this.cartService.cart.menuItems[i].quantity--;
         }
       });
     }
@@ -207,8 +207,11 @@ export class RecipeComponent
 
   calcReviewCount() {
     let count = [];
-    this.cartService.cartItems.forEach((x) => {
+    this.cartService.cart.menuItems.forEach((x) => {
       count.push(+x.quantity);
+    });
+    this.cartService.cart.package.forEach((x) => {
+      count.push(+x.PackageDetails.PkgQty);
     });
     this.reviewOrdersCount = count.reduce((a, b) => a + b, 0);
   }

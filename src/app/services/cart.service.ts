@@ -7,7 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
   public webServiceUrl;
-  public cartItems = [];
+  public cart = {
+    menuItems : [],
+    package   : [],
+    combo     : []
+  };
 
 
   constructor(private http: HttpClient){
@@ -26,7 +30,7 @@ export class CartService {
   }
 
   increaseItemQuantity(itemId){
-    this.cartItems.map((x) => {
+    this.cart.menuItems.map((x) => {
       if (x.itemId === itemId) {
         x.quantity++;
       }
