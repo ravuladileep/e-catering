@@ -860,6 +860,24 @@ opacity: 0.5;
   align-items: center;
 }
 
+.autocomplete-container {
+  box-shadow: none !important;
+  height: 50px !important;
+  left: 47px;
+}
+
+.autocomplete-container .suggestions-container {
+  max-width: 270px;
+  top: 45px;
+}
+
+// .confirmation-container{
+//   max-width: 635px;
+
+.autocomplete-container .input-container .x i {
+  display: none;
+}
+
 .order-number{
   white-space: nowrap;
   font-size: 15px;
@@ -1061,3 +1079,28 @@ owl-date-time-container{
   margin-bottom: 1.2rem!important;
 }
 
+// order-confirmation styles
+
+.table-right-confirm{
+  width: 1%;
+    white-space: nowrap;
+}
+.custom-successful-order{
+  font-weight: 600;
+}
+.successful-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+}
+.custom-check{
+  margin: 0px 15px 5px 0px;
+  font-size: 30px;
+  color: green;
+}
+
+.custom-confirm-table{
+  background: #262262;
+  color: #fff;
+}

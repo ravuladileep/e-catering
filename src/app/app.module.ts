@@ -28,7 +28,8 @@ import { PlaceOrderComponent } from './components/place-order/place-order.compon
 import { AuthService } from './services/auth.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
-
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 @NgModule({
   entryComponents: [
     ComboItemDialogComponent
@@ -47,11 +48,13 @@ import { DatePipe } from '@angular/common';
     ComboItemDialogComponent,
     OrderDetailsComponent,
     MyOrdersListComponent,
-    PlaceOrderComponent
+    PlaceOrderComponent,
+    OrderConfirmationComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AutocompleteLibModule,
     AppRoutingModule,
     RouterModule,
     Ng2SearchPipeModule,
