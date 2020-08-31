@@ -1,14 +1,23 @@
 <div class="main-container-wrapper">
-<!-- <h1 class="custom-order-details">Order Details</h1> -->
-<section id="contact">
+<h1 class="custom-order-details">Order Details</h1>
+<section id="contact" class="contact-align-wrapper">
   <div class="content">
     <div id="form">
       <form  [formGroup]="orderDetails" #orderDetailsForm (ngSubmit)="Submit()">
-      <span>Order#</span>
-      <input type="text" formControlName="orderNumber" >
+        <div class="open-dialog-wrapper">
+          <p class="order-number">Order #</p>
+          <select name="address" id="address" class="custom-details-select-box">
+              <option value="Tirupathi">Tirupathi</option>
+              <option value="Rohit">Rohit</option>
+              <option value="Dileep">Dileep</option>
+              <option value="Lalitha">Lalitha</option>
+            </select>
+          </div>
+      <!-- <span>Order #</span>
+      <input type="text" formControlName="orderNumber"> -->
       <div class="text-danger" *ngIf="orderDetailsData.orderNumber.touched && orderDetailsData.orderNumber.errors?.required">Order Number is required</div>
       <span>Order Name</span>
-      <input type="text" formControlName="orderName" >
+      <input type="text" formControlName="orderName">
       <div class="text-danger" *ngIf="orderDetailsData.orderName.touched && orderDetailsData.orderName.errors?.required">OrderName is required</div>
       <!-- <span>Date & Time</span>
 
