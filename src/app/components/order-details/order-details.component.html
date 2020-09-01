@@ -4,38 +4,11 @@
   <div class="content">
     <div id="form">
       <form  [formGroup]="orderDetails" #orderDetailsForm (ngSubmit)="Submit()">
-        <div class="open-dialog-wrapper">
-          <p class="order-number">Order #</p>
-          <!-- <select name="address" id="address" class="custom-details-select-box">
-              <option value="Tirupathi">Tirupathi</option>
-              <option value="Rohit">Rohit</option>
-              <option value="Dileep">Dileep</option>
-              <option value="Lalitha">Lalitha</option>
-            </select> -->
-            <div class="ng-autocomplete">
-              <ng-autocomplete
-                [data]="countries"
-                [searchKeyword]="keyword"
-                placeHolder="Enter the Address"
-                (selected)='selectEvent($event)'
-                (inputChanged)='onChangeSearch($event)'
-                (inputFocused)='onFocused($event)'
-                historyIdentifier="countries"
-                [itemTemplate]="itemTemplate"
-                [notFoundTemplate]="notFoundTemplate">
-              </ng-autocomplete>
+        <div class="open-dialog-wrapper"> 
             
-              <ng-template #itemTemplate let-item>
-                <a [innerHTML]="item.name"></a>
-              </ng-template>
-            
-              <ng-template #notFoundTemplate let-notFound>
-                <div [innerHTML]="notFound"></div>
-              </ng-template>
-            </div>
           </div>
-      <!-- <span>Order #</span>
-      <input type="text" formControlName="orderNumber"> -->
+      <span>Order #</span>
+      <input type="text" formControlName="orderNumber">
       <div class="text-danger" *ngIf="orderDetailsData.orderNumber.touched && orderDetailsData.orderNumber.errors?.required">Order Number is required</div>
       <span>Order Name</span>
       <input type="text" formControlName="orderName">
