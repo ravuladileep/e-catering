@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @UntilDestroy()
 @Component({
@@ -14,7 +15,7 @@ export class ComboItemDialogComponent implements OnInit {
   public packItemQuantity = [];
   public itemsTotalQuantity;
   public product; // coming from component reciepe component as intial value
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private modalRef: BsModalRef) { }
 
   ngOnInit(): void {
     this.getComboItems(this.product.itemId);
@@ -60,17 +61,39 @@ export class ComboItemDialogComponent implements OnInit {
     });
     this.itemsTotalQuantity = Total.reduce((a, b) => a + b, 0);
 
-    // validation for minselect
+
     if(this.packageData.PackageDetails.packageType === '1' &&
      this.packageData.PackageDetails.pkgMaxItems !== '0' &&
      this.packageData.PackageDetails.pkgMinItems !== '0') {
-      if(this.itemsTotalQuantity <=  this.packageData.PackageDetails.PkgQty){
-        if(this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length >=  this.packageData.PackageDetails.pkgMinItems){
-          console.log('take order')
-        }
+      if(this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length >=  this.packageData.PackageDetails.pkgMinItems
+      && this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length <=  this.packageData.PackageDetails.pkgMaxItems
+      && this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
+        this.takeOrder();
+      }else {
+        alert(`total items quantity should lessthan or equal to package quantity and should select min ${this.packageData.PackageDetails.pkgMinItems} & max different items`);
       }
     }
 
+
+    if(this.packageData.PackageDetails.packageType === '1' &&
+    this.packageData.PackageDetails.pkgMaxItems === '0' &&
+    this.packageData.PackageDetails.pkgMinItems === '0') {
+     if(this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
+       this.takeOrder();
+     }else {
+       alert('total items quantity should lessthan or equal to package quantity');
+     }
+    }
+
+
+    if(this.packageData.PackageDetails.packageType === '0') {
+       this.takeOrder();
+    }
+
+  }
+
+
+  takeOrder(){
     this.cartService.cart.package.find(
       ({ PackageDetails, PackageItems }) => {
         if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
@@ -85,7 +108,6 @@ export class ComboItemDialogComponent implements OnInit {
     if(!productExistInCart){
       this.cartService.cart.package.push(this.packageData);
     }
-
   }
 
   calculateTotalQty(){
