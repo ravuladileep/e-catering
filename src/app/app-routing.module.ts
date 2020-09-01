@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'order-details', component: OrderDetailsComponent},
   {path: 'orders-list', component: MyOrdersListComponent},
   {path: 'place-order', component: PlaceOrderComponent},
+  {path: 'order-confirmation',component: OrderConfirmationComponent},
 
   {path: '**', redirectTo: 'home'}
 
