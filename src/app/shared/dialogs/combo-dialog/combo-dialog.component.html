@@ -11,7 +11,7 @@
       <p class="custom-weight-font">${{comboData?.ComboDetails?.comboCost}}</p>
       <div class="custom-addCart-Btn">
         <div class="" >
-          <input type="number" class="quantity-input" min="1" >
+          <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input" min="0" >
 
         </div>
       </div>
@@ -25,7 +25,7 @@
         <ng-container *ngFor="let data of comboData?.ComboItems;let i=index;">
             <div class="d-flex justify-content-between m-1" *ngIf="item === data.packName">
               <p >{{data.itemName}}</p>
-              <input type="number" class="quantity-input" [id]="data.itemId" min="0" value="0">
+              <input type="number"  class="quantity-input"   [id]="data.itemId" [value]="data.itemQty" min="0" >
             </div>
         </ng-container>
 

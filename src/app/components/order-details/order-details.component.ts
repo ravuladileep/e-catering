@@ -36,8 +36,8 @@ export class OrderDetailsComponent implements OnInit {
       notes : ['', Validators.required],
     });
     const loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
-    if(loginres.newOrderId){
-    this.orderDetails.get('orderNumber').setValue(loginres.newOrderId);
+    if(loginres.AuthenticateUser.newOrderId){
+    this.orderDetails.get('orderNumber').setValue(loginres.AuthenticateUser.newOrderId);
     }
   }
 

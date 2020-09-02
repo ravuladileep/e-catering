@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-my-orders-list',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-orders-list.component.scss']
 })
 export class MyOrdersListComponent implements OnInit {
-
-  constructor() { }
+  public ordersList;
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.getOrderList();
+  }
+
+  getOrderList() {
+    this.cartService.getPreviousOrders()
+    .subscribe((data) => {
+      this.ordersList = data;
+    });
   }
 
 }

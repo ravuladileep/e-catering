@@ -10,11 +10,13 @@ export class OrdersComponent implements OnInit {
   public cartItems;
   public subTotal;
   public packageItems;
+  public comboItems;
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.cart.menuItems;
     this.packageItems = this.cartService.cart.package;
+    this.comboItems = this.cartService.cart.combo;
     this.calcSubTotal();
   }
   changeQuantity(i, $event) {

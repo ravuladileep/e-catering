@@ -34,6 +34,11 @@ export class CartService {
     return this.http.get(`${this.webServiceUrl}/showComboDetails?itemId=${id}&catererId=menuscat`);
   }
 
+  getPreviousOrders(): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/getMyOrderList?userId=1008&catererId=menuscat`);
+  }
+
   increaseItemQuantity(itemId){
     this.cart.menuItems.map((x) => {
       if (x.itemId === itemId) {

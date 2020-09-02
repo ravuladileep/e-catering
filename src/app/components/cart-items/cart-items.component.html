@@ -19,7 +19,7 @@
       <div class="custom-items-cart-wrapper" *ngFor="let item of comboItems">
         <div class="custom-add-items" >
             <h3 class="cart-text-alignment">{{item.ComboDetails.comboName}}</h3>
-            <p>x<span>quantity</span></p>
+            <p>x<span>{{item.ComboDetails.comboQty}}</span></p>
         </div>
       </div>
 <!-- amount div when greater than zero -->

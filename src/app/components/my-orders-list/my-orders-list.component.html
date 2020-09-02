@@ -11,15 +11,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Mark</td>
+    <tr *ngFor="let item of ordersList?.myOrderList">
+      <td>{{item.orderNumber}}</td>
+      <td>{{item.orderName}}</td>
+      <td>{{item.orderType}}</td>
+      <td>{{item.deliveryDate}}</td>
+      <td>{{item.city}}</td>
       <td><i class="fa fa-repeat" aria-hidden="true"></i></td>
     </tr>
-    <tr>
+    <!-- <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
       <td>Thornton</td>
@@ -34,6 +34,6 @@
       <td>@twitter</td>
       <td>Larry</td>
       <td><i class="fa fa-repeat" aria-hidden="true"></i></td>
-    </tr>
+    </tr> -->
   </tbody>
 </table>
