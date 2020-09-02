@@ -19,7 +19,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CartService } from './services/cart.service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ComboItemDialogComponent } from './shared/dialogs/combo-item-dialog/combo-item-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
@@ -29,10 +28,12 @@ import { AuthService } from './services/auth.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { PackageDialogComponent } from './shared/dialogs/package-dialog/package-dialog.component';
+import { ComboDialogComponent } from './shared/dialogs/combo-dialog/combo-dialog.component';
 @NgModule({
   entryComponents: [
-    ComboItemDialogComponent
+    PackageDialogComponent,
+    ComboDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -45,16 +46,16 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     OrdersComponent,
     RegisterComponent,
     LoginComponent,
-    ComboItemDialogComponent,
     OrderDetailsComponent,
     MyOrdersListComponent,
     PlaceOrderComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    PackageDialogComponent,
+    ComboDialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AutocompleteLibModule,
     AppRoutingModule,
     RouterModule,
     Ng2SearchPipeModule,

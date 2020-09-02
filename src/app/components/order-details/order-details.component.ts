@@ -35,6 +35,10 @@ export class OrderDetailsComponent implements OnInit {
       zipCode : ['', Validators.required],
       notes : ['', Validators.required],
     });
+    const loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
+    if(loginres.newOrderId){
+    this.orderDetails.get('orderNumber').setValue(loginres.newOrderId);
+    }
   }
 
   get orderDetailsData() {
@@ -43,8 +47,9 @@ export class OrderDetailsComponent implements OnInit {
 
 
   Submit(): void {
+    this.orderDetails.get('date').setValue(this.date.transform(this.orderDetails.value.date, 'MM/dd/yyyy hh:mm a'));
     console.log(this.orderDetails.value);
-    sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value))
+    sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value));
     this.router.navigate(['place-order']);
   }
 }

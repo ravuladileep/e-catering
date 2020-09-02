@@ -966,12 +966,15 @@ z-index: 99999!important;
 }
 
 .modal-content{
-  min-height: 350px;
+  // min-height: 350px;
+  max-height: 500px;
+    overflow: auto;
 }
 
 .custom-dialog-header{
   padding: 10px 0 0 10px;
     background: #262262;
+
 }
 
 .label-header-dialog{
@@ -1108,4 +1111,5 @@ owl-date-time-container{
 
 .quantity-input {
   width:50px;
+  height: 30px;
 }

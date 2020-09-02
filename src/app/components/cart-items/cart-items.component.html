@@ -16,6 +16,12 @@
             <p>x<span>{{item.PackageDetails.PkgQty}}</span></p>
         </div>
       </div>
+      <div class="custom-items-cart-wrapper" *ngFor="let item of comboItems">
+        <div class="custom-add-items" >
+            <h3 class="cart-text-alignment">{{item.ComboDetails.comboName}}</h3>
+            <p>x<span>quantity</span></p>
+        </div>
+      </div>
 <!-- amount div when greater than zero -->
 <div *ngIf="cartAmount > 0" class="cart-items-footer-wrapper">
     <div class="d-flex align-items-center justify-content-between pb-2">

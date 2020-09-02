@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'order-details', component: OrderDetailsComponent},
   {path: 'orders-list', component: MyOrdersListComponent},
   {path: 'place-order', component: PlaceOrderComponent},
-  {path: 'order-confirmation',component: OrderConfirmationComponent},
+  {path: 'order-confirmation', component: OrderConfirmationComponent},
 
   {path: '**', redirectTo: 'home'}
 

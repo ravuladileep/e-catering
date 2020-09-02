@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
-@UntilDestroy()
 @Component({
-  selector: 'app-combo-item-dialog',
-  templateUrl: './combo-item-dialog.component.html',
-  styleUrls: ['./combo-item-dialog.component.scss']
+  selector: 'app-package-dialog',
+  templateUrl: './package-dialog.component.html',
+  styleUrls: ['./package-dialog.component.scss']
 })
-export class ComboItemDialogComponent implements OnInit {
+export class PackageDialogComponent implements OnInit {
   public packageData;
   public packQuantity;
   public packItemQuantity = [];
@@ -22,27 +20,34 @@ export class ComboItemDialogComponent implements OnInit {
   }
 
   public getComboItems(itemId): void {
-    this.cartService.getComboItems(itemId)
+    this.cartService.getPackage(itemId)
     .subscribe((data) => {
       this.packageData = data;
       this.packageData.PackageDetails.PkgQty++;
       this.packQuantity =  this.packageData.PackageDetails.PkgQty;
-      if(this.cartService.cart.package.length){
-        this.cartService.cart.package.find(
-          ({ PackageDetails, PackageItems }) => {
-            if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
-              this.packageData.PackageDetails = PackageDetails;
-              this.packageData.PackageItems = PackageItems;
-              this.packQuantity =  this.packageData.PackageDetails.PkgQty;
-              this.packageData.PackageItems.forEach((x,i)=>{
-                this.packItemQuantity[i] = x.pkgItemQty;
-              });
-            }
-          }
-        );
-      }
-
+      this.assignQuantity();
     });
+  }
+
+/**
+ * function : assignQuantity
+ * purpose : if the selected item already in the cart we are assigning the quantity on load
+ */
+  assignQuantity(){
+    if(this.cartService.cart.package.length){
+      this.cartService.cart.package.find(
+        ({ PackageDetails, PackageItems }) => {
+          if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
+            this.packageData.PackageDetails = PackageDetails;
+            this.packageData.PackageItems = PackageItems;
+            this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+            this.packageData.PackageItems.forEach((x,i)=>{
+              this.packItemQuantity[i] = x.pkgItemQty;
+            });
+          }
+        }
+      );
+    }
   }
 
   onSave(): void {
@@ -69,6 +74,7 @@ export class ComboItemDialogComponent implements OnInit {
       && this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length <=  this.packageData.PackageDetails.pkgMaxItems
       && this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
         this.takeOrder();
+        this.modalRef.hide();
       }else {
         alert(`total items quantity should lessthan or equal to package quantity and should select min ${this.packageData.PackageDetails.pkgMinItems} & max different items`);
       }
@@ -80,6 +86,7 @@ export class ComboItemDialogComponent implements OnInit {
     this.packageData.PackageDetails.pkgMinItems === '0') {
      if(this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
        this.takeOrder();
+       this.modalRef.hide();
      }else {
        alert('total items quantity should lessthan or equal to package quantity');
      }
@@ -88,6 +95,7 @@ export class ComboItemDialogComponent implements OnInit {
 
     if(this.packageData.PackageDetails.packageType === '0') {
        this.takeOrder();
+       this.modalRef.hide();
     }
 
   }
@@ -113,5 +121,5 @@ export class ComboItemDialogComponent implements OnInit {
   calculateTotalQty(){
   }
 
-}
 
+}

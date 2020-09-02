@@ -10,11 +10,13 @@ export class CartItemsComponent implements OnInit, DoCheck {
 public menuItems;
 public packageItems;
 public cartAmount;
+public comboItems;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.menuItems = this.cartService.cart.menuItems;
     this.packageItems = this.cartService.cart.package;
+    this.comboItems = this.cartService.cart.combo;
     this.calcTotal();
   }
 
