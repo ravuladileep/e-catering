@@ -30,6 +30,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme-one.component';
 @NgModule({
   entryComponents: [
     ComboItemDialogComponent
@@ -49,7 +50,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     OrderDetailsComponent,
     MyOrdersListComponent,
     PlaceOrderComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    CaterThemeOneComponent
   ],
   imports: [
     BrowserModule,

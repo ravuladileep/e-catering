@@ -40,6 +40,12 @@
        ">Phone is must be 10 digits</div>
       <span>Email</span>
       <input type="text" formControlName="email" >
+      <div class="d-flex">
+      <span>Address</span>
+      <div class="input-group">
+      <input type="text" formControlName="choose address" class="form-control" placeholder="choose address"> <i class="fa fa-get-pocket" aria-hidden="true"></i>
+    </div>
+  </div>
       <div class="text-danger" *ngIf="orderDetailsData.email.touched && orderDetailsData.email.errors?.required">Email is required</div>
       <div class="text-danger" *ngIf="orderDetailsData.email.errors?.email ">Please Enter a valid email</div>
 
