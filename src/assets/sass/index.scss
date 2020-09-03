@@ -22,7 +22,7 @@ body {
   }
 
   .aquilia-logo-one{
-    width: 160px;
+    width: 190px;
     height: 100px;
   }
 
@@ -1155,6 +1155,7 @@ owl-date-time-container{
 .navbar-expand-lg{
     margin-top: 92px;
     background-color: #262262 !important;
+    padding: 0 !important;
 }
 
 .dropdown-toggle::after {
@@ -1176,9 +1177,9 @@ owl-date-time-container{
 }
 
 .custom-theme-description{
-    text-align: center;
-    position: relative;
-    top: 60px;
+  text-align: center;
+  position: relative;
+  top: 45px;
 }
 
 .card-product .img-wrap {
@@ -1195,7 +1196,7 @@ owl-date-time-container{
 }
 .card-product .info-wrap {
   overflow: hidden;
-  padding: 0px 0px 0px 20px;
+  // padding: 0px 0px 0px 20px;
   border-top: 1px solid #eee;
 }
 .card-product .bottom-wrap {
@@ -1253,19 +1254,26 @@ owl-date-time-container{
   border: #f08b2d;
   color: #fff;
   font-weight: 600;
+  font-size: 15px;
 }
 .foodie-theme{
-  min-height: 150px;
+  min-height: 170px;
 }
 .button-customize{
   background: #f08b2d;
   border: #f08b2d;
   color: #fff;
   font-weight: 600;
-  margin: 0 10px 0px 0px;
+  margin: 0 5px 0px 0px;
+  font-size: 15px;
   // margin: 0 -8px 0px 0px;
 }
 // .foodie{
 //     min-width: 130px;
 //     height: 160px;
 // }
+
+.width-alignments-description{
+  padding: 0px 0px 0px 20px;
+  width: 100%;
+}
