@@ -727,6 +727,7 @@ body {
     background: #262262;
     color: #fff;
     font-weight: 600;
+    min-width: 474px;
   }
 
   #contact #form h2 {
@@ -858,6 +859,12 @@ opacity: 0.5;
   width: 270px !important;
 }
 
+.text-danger {
+  position: relative;
+  left: 110px;
+  bottom: 10px;
+}
+
 .fa-get-pocket{
   position: absolute;
   right: 15px;
@@ -930,6 +937,7 @@ opacity: 0.5;
   .main-container-wrapper{
     // overflow-y: scroll;
     // height: 100vh;
+    min-width: 474px;
   }
 
   .custom-select:focus {
@@ -1034,8 +1042,13 @@ owl-date-time-container{
   display: none;
 }
 
-.delivery-content-width{
-  min-width: 1750px;
+// .delivery-content-width{
+//   min-width: 1750px;
+// }
+
+.custom-pickupInfo{
+  display: flex;
+  justify-content: flex-end;
 }
 
 .table-striped {
@@ -1049,6 +1062,18 @@ owl-date-time-container{
   outline: 0;
   font-weight: 600;
   border: 0;
+}
+
+.responsive-header-custom{
+  position: relative;
+  top: 92px;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  background: #262262;
+  color: #fff;
+  font-weight: 600;
+  min-width: 0;
 }
 .place-order-color:not(:disabled):not(.disabled):active, .show>.place-order-color.dropdown-toggle {
   background-color: #262262 !important;
@@ -1065,7 +1090,7 @@ owl-date-time-container{
   margin: 0;
   text-align: center;
   border-radius: 0;
-  min-width: 10.3rem;
+  min-width: 9.2rem;
 }
 
 .bg-hover:hover {
@@ -1142,8 +1167,8 @@ owl-date-time-container{
 @media all and (min-width: 992px) {
 	.navbar .nav-item .dropdown-menu{ display: none; }
 	.navbar .nav-item:hover .nav-link{ color: #fff;  }
-	.navbar .nav-item:hover .dropdown-menu{ display: block; }
-	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+	.navbar .nav-item:hover .dropdown-menu{ display: block;}
+	.navbar .nav-item .dropdown-menu{ margin-top:0;}
 }	
 
 @media (min-width: 992px){}
@@ -1276,4 +1301,9 @@ owl-date-time-container{
 .width-alignments-description{
   padding: 0px 0px 0px 20px;
   width: 100%;
+}
+
+.dropdown-item:hover {
+  color: #007bff !important; 
+  background: lightgrey;
 }
