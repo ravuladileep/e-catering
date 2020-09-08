@@ -32,6 +32,10 @@ body {
     margin-bottom: 25px;
     font-size: 20px;
   }
+//   @media(min-width:320px){}
+//   .foodie{
+//   width: 100% !important;
+// }
 
   #wrapper.toggled {
   padding-left: 250px;
@@ -204,10 +208,10 @@ body {
   font-family: sans-serif;
   }
 
-  // .custom-section-image{
-  // position: relative;
-  // bottom: 20px;
-  // }
+  .custom-section-image{
+    display: flex;
+    justify-content: center;
+  }
 
 
 
@@ -435,6 +439,13 @@ body {
   // height: 100%;
   }
   }
+
+  @media(max-width:320px) {
+
+    .custom-rate {
+      right: 55px !important; 
+  }
+    }
 
   .panel-default{
   padding: 10px;
@@ -966,6 +977,17 @@ opacity: 0.5;
 
   //myOrder styles starts
 
+  @media(max-width:320px) {
+
+    .aquilia-logo-one {
+      width: 138px;
+  }
+  .header-right {
+    line-height: initial;
+}
+    }
+  
+  
   .table {
   position: relative;
   top: 94px;
@@ -1041,6 +1063,13 @@ owl-date-time-container{
 .card-header{
   display: none;
 }
+
+@media(max-width:320px) {
+
+  .custom-pickupInfo {
+    justify-content: flex-start !important;
+}
+  }
 
 // .delivery-content-width{
 //   min-width: 1750px;
@@ -1135,6 +1164,12 @@ owl-date-time-container{
   margin: 0px auto;
 }
 
+@media(max-width:320px) {
+
+  .table-right-confirm {
+    white-space: normal !important;
+}
+  }
 
 
 .custom-check{
@@ -1176,6 +1211,12 @@ owl-date-time-container{
     justify-content: space-around;
 }
 
+@media(max-width:320px) {
+
+  .foodie-theme {
+    width: 110px !important;
+}
+  }
 
 .navbar-expand-lg{
     margin-top: 92px;
