@@ -43,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of cartItems; let i=index;">
+            <tr *ngFor="let item of cart.menuItems; let i=index;">
               <td class="center">{{i+1}}</td>
               <td class="left strong">{{item.itemName}}</td>
               <!-- <td class="left">Extended License</td> -->
@@ -51,6 +51,24 @@
               <td class="right">{{item.quantity}}</td>
               <td class="center">{{item.price}}</td>
               <td class="right">{{item.quantity * item.price}}</td>
+            </tr>
+            <tr *ngFor="let item of cart.package; let i=index;">
+              <td class="center">{{i+1}}</td>
+              <td class="left strong">{{item.PackageDetails.packageName}}</td>
+              <!-- <td class="left">Extended License</td> -->
+
+              <td class="right">{{item.PackageDetails.PkgQty}}</td>
+              <td class="center">{{item.PackageDetails.packageCost}}</td>
+              <td class="right">{{item.PackageDetails.PkgQty * item.PackageDetails.packageCost}}</td>
+            </tr>
+            <tr *ngFor="let item of cart.combo; let i=index;">
+              <td class="center">{{i+1}}</td>
+              <td class="left strong">{{item.ComboDetails.comboName}}</td>
+              <!-- <td class="left">Extended License</td> -->
+
+              <td class="right">{{item.ComboDetails.comboQty}}</td>
+              <td class="center">{{item.ComboDetails.comboCost}}</td>
+              <td class="right">{{item.ComboDetails.comboQty * item.ComboDetails.comboCost}}</td>
             </tr>
 
           </tbody>

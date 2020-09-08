@@ -223,6 +223,9 @@ export class RecipeComponent
     this.cartService.cart.package.forEach((x) => {
       count.push(+x.PackageDetails.PkgQty);
     });
+    this.cartService.cart.combo.forEach((x) => {
+      count.push(+x.ComboDetails.comboQty);
+    });
     this.reviewOrdersCount = count.reduce((a, b) => a + b, 0);
   }
 

@@ -23,7 +23,7 @@ export class PackageDialogComponent implements OnInit {
     this.cartService.getPackage(itemId)
     .subscribe((data) => {
       this.packageData = data;
-      this.packageData.PackageDetails.PkgQty++;
+      this.packageData.PackageDetails.PkgQty = 1;
       this.packQuantity =  this.packageData.PackageDetails.PkgQty;
       this.assignQuantity();
     });
@@ -76,7 +76,7 @@ export class PackageDialogComponent implements OnInit {
         this.takeOrder();
         this.modalRef.hide();
       }else {
-        alert(`total items quantity should lessthan or equal to package quantity and should select min ${this.packageData.PackageDetails.pkgMinItems} & max different items`);
+        alert(`Total items quantity should lessthan or equal to ${this.packageData.PackageDetails.PkgQty} and should select min ${this.packageData.PackageDetails.pkgMinItems} & max ${this.packageData.PackageDetails.pkgMaxItems} different items`);
       }
     }
 
@@ -88,7 +88,7 @@ export class PackageDialogComponent implements OnInit {
        this.takeOrder();
        this.modalRef.hide();
      }else {
-       alert('total items quantity should lessthan or equal to package quantity');
+       alert(`Total items quantity should lessthan or equal to ${this.packageData.PackageDetails.PkgQty}`);
      }
     }
 
@@ -118,8 +118,6 @@ export class PackageDialogComponent implements OnInit {
     }
   }
 
-  calculateTotalQty(){
-  }
 
 
 }

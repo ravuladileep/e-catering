@@ -29,6 +29,12 @@ export class OrdersComponent implements OnInit {
     this.cartService.cart.menuItems.forEach((x) => {
       subTotal.push(x.price * x.quantity);
     });
+    this.cartService.cart.package.forEach((x)=>{
+      subTotal.push(+x.PackageDetails.PkgQty * +x.PackageDetails.packageCost)
+    });
+    this.cartService.cart.combo.forEach((x)=>{
+      subTotal.push(+x.ComboDetails.comboQty * +x.ComboDetails.comboCost)
+    });
     this.subTotal = subTotal.reduce((a, b) => a + b, 0);
   }
 }

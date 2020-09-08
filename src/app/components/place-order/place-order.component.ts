@@ -7,12 +7,12 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./place-order.component.scss']
 })
 export class PlaceOrderComponent implements OnInit, OnDestroy {
-  public cartItems = [];
+  public cart;
   public orderDetails;
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.cart.menuItems;
+    this.cart = this.cartService.cart;
     this.orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-order-details',
@@ -11,7 +12,10 @@ import { DatePipe } from '@angular/common';
 export class OrderDetailsComponent implements OnInit {
   public orderDetails: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router,  private date: DatePipe) { }
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private date: DatePipe,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
     this.orderDetailsForm();
@@ -36,7 +40,7 @@ export class OrderDetailsComponent implements OnInit {
       notes : ['', Validators.required],
     });
     const loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
-    if(loginres.AuthenticateUser.newOrderId){
+    if(JSON.parse(sessionStorage.getItem('loginResponse')) && loginres.AuthenticateUser.newOrderId ){
     this.orderDetails.get('orderNumber').setValue(loginres.AuthenticateUser.newOrderId);
     }
   }
@@ -48,7 +52,7 @@ export class OrderDetailsComponent implements OnInit {
 
   Submit(): void {
     this.orderDetails.get('date').setValue(this.date.transform(this.orderDetails.value.date, 'MM/dd/yyyy hh:mm a'));
-    console.log(this.orderDetails.value);
+    console.log({orderDetails : this.orderDetails.value, ...this.cartService.cart});
     sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value));
     this.router.navigate(['place-order']);
   }

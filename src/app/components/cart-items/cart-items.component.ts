@@ -30,10 +30,13 @@ public comboItems;
   calcTotal(){
     let Total = []
     this.cartService.cart.menuItems.forEach((x)=>{
-      Total.push(x.price * x.quantity)
+      Total.push(+x.price * +x.quantity)
     });
     this.cartService.cart.package.forEach((x)=>{
-      Total.push(x.PackageDetails.PkgQty * x.packageCost)
+      Total.push(+x.PackageDetails.PkgQty * +x.PackageDetails.packageCost)
+    });
+    this.cartService.cart.combo.forEach((x)=>{
+      Total.push(+x.ComboDetails.comboQty * +x.ComboDetails.comboCost)
     });
     this.cartAmount = Total.reduce((a, b) => a + b, 0)
   }

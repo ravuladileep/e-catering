@@ -10,7 +10,7 @@ declare var $:any;
 })
 export class ComboDialogComponent implements OnInit {
   public comboData;
-  // public comboQuantity;
+  public comboQuantityTotal;
   public packNames = [];
   public itemsList = [];
   public product; // coming from component reciepe component as intial value
@@ -23,8 +23,9 @@ export class ComboDialogComponent implements OnInit {
   public getComboItems(itemId): void {
     this.cartService.getCombo(itemId)
     .subscribe((data) => {
-      console.log(data)
       this.comboData = data;
+      this.comboData.ComboDetails.comboQty = 1;
+      this.comboQuantityTotal = this.comboData.ComboDetails.comboQty;
       this.removeDuplicate();
       this.assignQuantity();
     });
@@ -36,17 +37,17 @@ export class ComboDialogComponent implements OnInit {
    */
 
   removeDuplicate(){
-    let temp = [];
+    let temp = new Map();
     let temp2 = [];
-    this.comboData.ComboItems.forEach(x => {
-      if(x.packageId !== '0') {
-        temp.push(x.packName);
+    for (let obj of this.comboData.ComboItems) {
+      if(obj.packageId !== '0') {
+      temp.set(obj.packName, obj);
       }
-      if(x.packageId === '0') {
-        temp2.push(x);
+      if(obj.packageId === '0') {
+      temp2.push(obj);
       }
-    });
-    this.packNames = [...new Set(temp)];
+    }
+    this.packNames = [...temp.values()];
     this.itemsList = temp2;
   }
 
@@ -74,6 +75,7 @@ export class ComboDialogComponent implements OnInit {
   }
 
   changeItemsQuantity(e){
+    this.comboQuantityTotal = +e.target.value;
     this.itemsList.forEach((x)=>{
       if(e.target.value > 0){
       $(`#${x.itemId}`).val(+x.itemQty * e.target.value);
@@ -92,6 +94,7 @@ export class ComboDialogComponent implements OnInit {
       }
     });
 
+    // classifying the selected items data into different arrays according to the packageName
 
     let group = this.comboData.ComboItems.reduce((acc, item) => {
       if (!acc[item.packName]) {
@@ -109,24 +112,38 @@ export class ComboDialogComponent implements OnInit {
     itemsForValidation.push(Object.values(group))
     console.log(itemsForValidation);
 
+    // validating the data onsubmit
     let result = [];
-    itemsForValidation.forEach((x,i)=>{
+    itemsForValidation.forEach((x,i) => {
       x.forEach(item => {
-        if(item.filter(y => y.itemQty > 0).length >= item[i].minItems &&
-        item.filter(y => y.itemQty > 0).length <= item[i].maxItems &&
-        item.reduce((a, b) => a + b, 0) <= +this.comboData.ComboDetails.comboQty
-        ){
-          result.push(true);
-        }else{
-          result.push(false);
+        // if packtype one
+        if(item.packType === "1"){
+          if(item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
+          item.filter(y => +y.itemQty > 0).length <= +item[0].maxItems &&
+          item.reduce((a, b) => +a + +b.itemQty, 0) <= +this.comboData.ComboDetails.comboQty
+          ){
+            result.push(true);
+          }else{
+            result.push(false);
+          }
         }
+        // if packtype not equal to one
+        if(item.packType !== "1"){
+          if(item.reduce((a, b) => +a + +b.itemQty, 0) <= +this.comboData.ComboDetails.comboQty){
+            result.push(true);
+          }else{
+            result.push(false);
+          }
+        }
+
       });
     });
 
     if(result.includes(false)){
       console.log('err')
     }else {
-      console.log('take order')
+      console.log('take order');
+      this.takeOrder();
     }
 
   }
@@ -148,6 +165,7 @@ export class ComboDialogComponent implements OnInit {
     if(!productExistInCart){
       this.cartService.cart.combo.push(this.comboData);
     }
+    this.modalRef.hide();
   }
 
 }
