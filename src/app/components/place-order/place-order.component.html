@@ -1,22 +1,22 @@
-<h1 class="register-header-wrapper">Placed Orders</h1>
-<div class="container">
+<h1 class="register-header-wrapper responsive-header-custom">Place Order</h1>
+<div class="container responsive-container">
   <div class="card">
     <div class="card-header">
 
     </div>
-    <div class="card-body">
-      <div class="row mb-4">
-        <div class="col-sm-6">
+    <div class="card-body" >
+      <div class="row mb-4 delivery-content-width">
+        <div class="col-sm-6"  *ngIf="customerAddress">
           <div>
-            <strong>Tirupathi Naidu</strong>
+            <strong>{{customerAddress.billAddress_contactName}}</strong>
           </div>
-          <div>R & R Enclave</div>
-          <div>Suit 300</div>
-          <div>Hyderabad - 500050</div>
+          <div>{{customerAddress.billAddress_street}}</div>
+          <div>{{customerAddress.billAddress_suite}}</div>
+          <div>{{customerAddress.billAddress_state}} - {{customerAddress.billAddress_zip}}</div>
         </div>
 
         <div class="col-sm-6">
-          <div>
+          <div class="custom-pickupInfo">
             <strong>Delivery / PickUp Info</strong>
           </div>
           <div>{{orderDetails.street}}</div>
@@ -86,7 +86,7 @@
             <li class="bg-hover"><a class="text-place-order" href="#">Pay Later</a></li>
           </ul>
         </div>
-        <input type="submit" name="submit" value="Confirm Order" class="btn-primary place-order-color">
+        <input type="submit" (click)="confirmOrder()" name="submit" value="Confirm Order" class="btn-primary place-order-color">
       </div>
 
     </div>

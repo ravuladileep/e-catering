@@ -8,6 +8,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
+import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme-one.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   {path: 'orders-list', component: MyOrdersListComponent},
   {path: 'place-order', component: PlaceOrderComponent},
   {path: 'order-confirmation', component: OrderConfirmationComponent},
-
+  {path: 'cater-theme-one', component: CaterThemeOneComponent},
   {path: '**', redirectTo: 'home'}
 
 ];

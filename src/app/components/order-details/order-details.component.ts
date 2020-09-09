@@ -11,6 +11,9 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class OrderDetailsComponent implements OnInit {
   public orderDetails: FormGroup;
+  public stateList = [];
+  public addressList = [];
+  keyword = 'street';
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -19,6 +22,8 @@ export class OrderDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderDetailsForm();
+    this.getStateList();
+    this.getAddressList();
   }
 
   orderDetailsForm(): void {
@@ -40,9 +45,33 @@ export class OrderDetailsComponent implements OnInit {
       notes : ['', Validators.required],
     });
     const loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
-    if(JSON.parse(sessionStorage.getItem('loginResponse')) && loginres.AuthenticateUser.newOrderId ){
+    if(loginres){
     this.orderDetails.get('orderNumber').setValue(loginres.AuthenticateUser.newOrderId);
     }
+  }
+
+  selectChange(e){
+    this.orderDetails.get('street').setValue(e.street);
+    this.orderDetails.get('suite').setValue(e.suite);
+    this.orderDetails.get('city').setValue(e.city);
+    this.orderDetails.get('zipCode').setValue(e.zip);
+    this.stateList.find((x)=>{
+      if(x.name === e.state){
+        this.orderDetails.get('state').setValue(x.id);
+      }
+    });
+  }
+
+  getStateList(){
+    this.cartService.getStateList().subscribe((res)=>{
+      this.stateList = res.StateList;
+    });
+  }
+
+  getAddressList(){
+    this.cartService.getAddressList().subscribe((res) => {
+      this.addressList = res.LocationAddress;
+    });
   }
 
   get orderDetailsData() {
@@ -52,8 +81,14 @@ export class OrderDetailsComponent implements OnInit {
 
   Submit(): void {
     this.orderDetails.get('date').setValue(this.date.transform(this.orderDetails.value.date, 'MM/dd/yyyy hh:mm a'));
-    let data = {orderDetails : this.orderDetails.value, ...this.cartService.cart};
-    this.cartService.saveOrderDetails(data).subscribe((res)=>{
+    let data = {OrderDetails : this.orderDetails.value, ...this.cartService.cart};
+    let loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
+    if(loginres){
+      data.OrderDetails['customerId'] = loginres.AuthenticateUser.customerId;
+      data.OrderDetails['regUserId'] = loginres.AuthenticateUser.userId;
+    }
+    console.log(data);
+    this.cartService.saveOrderDetails(data).subscribe((res) => {
       console.log(res);
     });
     sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value));

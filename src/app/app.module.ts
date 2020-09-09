@@ -30,6 +30,9 @@ import { DatePipe } from '@angular/common';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { PackageDialogComponent } from './shared/dialogs/package-dialog/package-dialog.component';
 import { ComboDialogComponent } from './shared/dialogs/combo-dialog/combo-dialog.component';
+import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme-one.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+
 @NgModule({
   entryComponents: [
     PackageDialogComponent,
@@ -51,7 +54,8 @@ import { ComboDialogComponent } from './shared/dialogs/combo-dialog/combo-dialog
     PlaceOrderComponent,
     OrderConfirmationComponent,
     PackageDialogComponent,
-    ComboDialogComponent
+    ComboDialogComponent,
+    CaterThemeOneComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,8 @@ import { ComboDialogComponent } from './shared/dialogs/combo-dialog/combo-dialog
     ModalModule.forRoot(),
     NgxCaptchaModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    AutocompleteLibModule
   ],
   providers: [
     CartService,

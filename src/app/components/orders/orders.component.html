@@ -67,8 +67,8 @@
       <p class="custom-subtotal-wrapper">Total</p>
       <p class="custom-subtotal-wrapper">${{subTotal.toFixed(2)}}</p>
     </div>
-    <button type="button"  [routerLink]="['/order-details']" routerLinkActive="router-link-active"  class="custom-items-add">Checkout As Guest</button>
-    <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active"  class="custom-items-add">Checkout As User</button>
+    <button type="button"   (click)="checkOutGuest()"  class="custom-items-add">Checkout As Guest</button>
+    <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active"   class="custom-items-add">Checkout As User</button>
 
 
   </div>

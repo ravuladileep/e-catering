@@ -26,7 +26,7 @@ export class CartService {
 
   getPackage(id): Observable<any>{
     this.getUrl();
-    return this.http.get(`${this.webServiceUrl}/showPackageOrComboDetails?itemId=${id}&catererId=menuscat`);
+    return this.http.get(`${this.webServiceUrl}/showPackageDetails?itemId=${id}&catererId=menuscat`);
   }
 
   getCombo(id): Observable<any>{
@@ -34,14 +34,34 @@ export class CartService {
     return this.http.get(`${this.webServiceUrl}/showComboDetails?itemId=${id}&catererId=menuscat`);
   }
 
-  getPreviousOrders(): Observable<any>{
+  getPreviousOrders(userid): Observable<any>{
     this.getUrl();
-    return this.http.get(`${this.webServiceUrl}/getMyOrderList?userId=1008&catererId=menuscat`);
+    return this.http.get(`${this.webServiceUrl}/getMyOrderList?userId=${userid}&catererId=menuscat`);
   }
 
   saveOrderDetails(data): Observable<any>{
     this.getUrl();
-    return this.http.post(`${this.webServiceUrl}/saveOrderDetails?catererId=menusdev`, data);
+    return this.http.post(`${this.webServiceUrl}/saveOrderDetails?catererId=menuscat`, JSON.stringify(data));
+  }
+
+  confirmOrder(orderId): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/confirmOrder?orderId=${orderId}&catererId=menuscat`);
+  }
+
+  getCustomerAddress(customerId): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/getCustomerAddresses?customerId=${customerId}&catererId=menuscat`);
+  }
+
+  getStateList(): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/getStateList?catererId=menuscat`);
+  }
+
+  getAddressList(): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/getLocationAddress?catererId=menuscat`);
   }
 
   increaseItemQuantity(itemId){

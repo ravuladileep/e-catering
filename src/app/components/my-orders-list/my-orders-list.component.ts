@@ -8,14 +8,15 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class MyOrdersListComponent implements OnInit {
   public ordersList;
+  public loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.getOrderList();
+    this.getOrderList(this.loginres.AuthenticateUser.userId);
   }
 
-  getOrderList() {
-    this.cartService.getPreviousOrders()
+  getOrderList(id) {
+    this.cartService.getPreviousOrders(id)
     .subscribe((data) => {
       this.ordersList = data;
     });
