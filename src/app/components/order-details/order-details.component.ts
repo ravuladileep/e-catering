@@ -52,7 +52,10 @@ export class OrderDetailsComponent implements OnInit {
 
   Submit(): void {
     this.orderDetails.get('date').setValue(this.date.transform(this.orderDetails.value.date, 'MM/dd/yyyy hh:mm a'));
-    console.log({orderDetails : this.orderDetails.value, ...this.cartService.cart});
+    let data = {orderDetails : this.orderDetails.value, ...this.cartService.cart};
+    this.cartService.saveOrderDetails(data).subscribe((res)=>{
+      console.log(res);
+    });
     sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value));
     this.router.navigate(['place-order']);
   }
