@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-order-details',
@@ -18,7 +20,9 @@ export class OrderDetailsComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private router: Router,
               private date: DatePipe,
-              private cartService: CartService) { }
+              private cartService: CartService,
+              private orderService: OrderService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.orderDetailsForm();
@@ -50,7 +54,7 @@ export class OrderDetailsComponent implements OnInit {
     }
   }
 
-  selectChange(e){
+  public selectChange(e){
     this.orderDetails.get('street').setValue(e.street);
     this.orderDetails.get('suite').setValue(e.suite);
     this.orderDetails.get('city').setValue(e.city);
@@ -62,14 +66,23 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
-  getStateList(){
-    this.cartService.getStateList().subscribe((res)=>{
+  /**
+   * function : getStateList
+   * purpose : based on the user selected state assigning the id
+   */
+
+  public getStateList(){
+    this.orderService.getStateList().subscribe((res)=>{
       this.stateList = res.StateList;
     });
   }
 
-  getAddressList(){
-    this.cartService.getAddressList().subscribe((res) => {
+  /**
+   * function : getAddressList
+   * purpose : list of address for autofilling the address fields
+   */
+  public getAddressList(){
+    this.orderService.getAddressList().subscribe((res) => {
       this.addressList = res.LocationAddress;
     });
   }
@@ -79,7 +92,8 @@ export class OrderDetailsComponent implements OnInit {
   }
 
 
-  Submit(): void {
+  public Submit(): void {
+    this.spinner.show();
     this.orderDetails.get('date').setValue(this.date.transform(this.orderDetails.value.date, 'MM/dd/yyyy hh:mm a'));
     let data = {OrderDetails : this.orderDetails.value, ...this.cartService.cart};
     let loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
@@ -87,11 +101,11 @@ export class OrderDetailsComponent implements OnInit {
       data.OrderDetails['customerId'] = loginres.AuthenticateUser.customerId;
       data.OrderDetails['regUserId'] = loginres.AuthenticateUser.userId;
     }
-    console.log(data);
-    this.cartService.saveOrderDetails(data).subscribe((res) => {
-      console.log(res);
-    });
     sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value));
-    this.router.navigate(['place-order']);
+    console.log(data);
+    this.orderService.saveOrderDetails(data).subscribe((res) => {
+      console.log(res);
+      this.router.navigate(['place-order']);
+    }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
   }
 }

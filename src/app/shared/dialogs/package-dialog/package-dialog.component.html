@@ -32,7 +32,7 @@
         <p class="custom-weight-font">{{item.pkgItemname}}</p>
         <div class="custom-addCart-Btn">
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1'">
-            <input type="number"  [(ngModel)]="packItemQuantity[i]" class="quantity-input" [ngModel]="item['pkgItemQty']"  min="0">
+            <input type="number"  [(ngModel)]="packItemQuantity[i]" class="quantity-input" [ngModel]="item['pkgItemQty']"   min="0">
           </div>
         </div>
       </div>

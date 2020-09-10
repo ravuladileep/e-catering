@@ -20,6 +20,11 @@ export class ComboDialogComponent implements OnInit {
     this.getComboItems(this.product.itemId);
   }
 
+  /**
+   * function : getComboItems
+   * purpose  : this function used for list of combo items by passing product.itemId
+   */
+
   public getComboItems(itemId): void {
     this.cartService.getCombo(itemId)
     .subscribe((data) => {
@@ -36,7 +41,7 @@ export class ComboDialogComponent implements OnInit {
    * purpose  : this function used for ngFor to display the packageitems and menu items
    */
 
-  removeDuplicate(){
+  public removeDuplicate(){
     let temp = new Map();
     let temp2 = [];
     for (let obj of this.comboData.ComboItems) {
@@ -55,7 +60,7 @@ export class ComboDialogComponent implements OnInit {
    * function : assignQuantity
    * purpose : if the selected item already in the cart we are assigning the quantity on load
    */
-  assignQuantity(){
+  public assignQuantity(){
     if(this.cartService.cart.combo.length){
       this.cartService.cart.combo.find(
         ({ ComboDetails, ComboItems }) => {
@@ -74,7 +79,7 @@ export class ComboDialogComponent implements OnInit {
     }
   }
 
-  changeItemsQuantity(e){
+  public changeItemsQuantity(e){
     this.comboQuantityTotal = +e.target.value;
     this.itemsList.forEach((x)=>{
       if(e.target.value > 0){
@@ -83,7 +88,7 @@ export class ComboDialogComponent implements OnInit {
     });
   }
 
-  onSave(){
+  public onSave(){
     this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
     this.comboData.ComboItems.forEach((x)=>{
       if(x.packageId !== '0'){
@@ -150,7 +155,7 @@ export class ComboDialogComponent implements OnInit {
 
 
 
-  takeOrder(){
+  public takeOrder(){
     this.cartService.cart.combo.find(
       ({ ComboDetails, ComboItems }) => {
         if(ComboDetails.comboId === this.comboData.ComboDetails.comboId) {

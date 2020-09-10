@@ -32,6 +32,8 @@ import { PackageDialogComponent } from './shared/dialogs/package-dialog/package-
 import { ComboDialogComponent } from './shared/dialogs/combo-dialog/combo-dialog.component';
 import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme-one.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { OrderService } from './services/order.service';
+import { DomsanitizePipe } from './shared/pipes/domsanitize.pipe';
 
 @NgModule({
   entryComponents: [
@@ -55,7 +57,8 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     OrderConfirmationComponent,
     PackageDialogComponent,
     ComboDialogComponent,
-    CaterThemeOneComponent
+    CaterThemeOneComponent,
+    DomsanitizePipe
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
   providers: [
     CartService,
     AuthService,
-    DatePipe
+    DatePipe,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

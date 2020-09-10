@@ -7,16 +7,13 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-items.component.scss']
 })
 export class CartItemsComponent implements OnInit, DoCheck {
-public menuItems;
-public packageItems;
-public cartAmount;
-public comboItems;
+  public cart;
+  public cartAmount;
+
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.menuItems = this.cartService.cart.menuItems;
-    this.packageItems = this.cartService.cart.package;
-    this.comboItems = this.cartService.cart.combo;
+    this.cart = this.cartService.cart;
     this.calcTotal();
   }
 

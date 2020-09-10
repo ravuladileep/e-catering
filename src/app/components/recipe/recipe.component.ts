@@ -42,6 +42,7 @@ export class RecipeComponent
     this.getItems();
   }
 
+
   ngAfterViewInit() {
     fromEvent(this.searchInput.nativeElement, 'keyup')
       .pipe(
@@ -98,7 +99,7 @@ export class RecipeComponent
    * any items assign those items quanity to the menulist
    */
 
-  getItems(): void {
+  public getItems(): void {
     this.spinner.show();
     this.loading = true;
     this.cartService
@@ -135,7 +136,7 @@ export class RecipeComponent
    * purpose  : if already cart contains
    * any items assign those items quanity to the menulist
    */
-  assignQuantity(): void {
+  public assignQuantity(): void {
     if (this.cartService.cart.menuItems.length) {
       this.cartService.cart.menuItems.forEach((cartItem) => {
         this.newMenu.forEach((menuItem) => {
@@ -157,7 +158,7 @@ export class RecipeComponent
    * @param product
    */
 
-  addToCart(product) {
+  public addToCart(product) {
     if (product.packageComboFlag === 2) {
       this.modalService.show(ComboDialogComponent, {
        class: 'modal-dialog-custom modal-lg modal-dialog-centered',
@@ -186,13 +187,14 @@ export class RecipeComponent
       this.calcReviewCount();
     }
   }
+
   /**
    * function : decreaseQuantity
    * purpose  : removing the item from Cart (if already cart contain same item it will decrease quantity)
    * @param product
    */
 
-  decreaseQuantity(product) {
+  public decreaseQuantity(product) {
     product.quantity--;
     if (product.quantity === 0) {
       this.cartService.cart.menuItems.forEach((x, i) => {
@@ -215,7 +217,7 @@ export class RecipeComponent
    * @param product
    */
 
-  calcReviewCount() {
+  public calcReviewCount() {
     let count = [];
     this.cartService.cart.menuItems.forEach((x) => {
       count.push(+x.quantity);

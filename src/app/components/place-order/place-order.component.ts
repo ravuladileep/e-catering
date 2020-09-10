@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-place-order',
@@ -15,7 +16,8 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
   public customerAddress;
   constructor(private cartService: CartService,
               private router: Router,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.cart = this.cartService.cart;
@@ -24,18 +26,30 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
     this.orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
   }
 
+  /**
+   * function : getCustomerAdress
+   * purpose  : getting the customer address to display left side of the place order screen
+   */
 
-  getCustomerAdress(){
-    this.cartService.getCustomerAddress(this.loginres.AuthenticateUser.customerId)
+  public getCustomerAdress(){
+    this.orderService.getCustomerAddress(this.loginres.AuthenticateUser.customerId)
     .subscribe((res) => {
       this.customerAddress = res.CustBillAddressObject;
     });
   }
-  confirmOrder(){
+
+  /**
+   * function : confirmOrder
+   * purpose  : confirm order and navigating to the order-confirmation page
+   */
+
+  public confirmOrder(){
+    if(confirm('Are you sure want to confirm order')){
     this.spinner.show();
-    this.cartService.confirmOrder(this.loginres.AuthenticateUser.userId).subscribe((res)=>{
+    this.orderService.confirmOrder(this.loginres.AuthenticateUser.userId).subscribe((res)=>{
       this.router.navigate(['order-confirmation']);
-    }, err => { this.spinner.hide(); }, () => {this.spinner.hide();});
+    }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
+    }
   }
 
   ngOnDestroy(): void {

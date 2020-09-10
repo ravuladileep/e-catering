@@ -17,7 +17,7 @@
       <td>{{item.orderType}}</td>
       <td>{{item.deliveryDate}}</td>
       <td>{{item.city}}</td>
-      <td><i class="fa fa-repeat" aria-hidden="true"></i></td>
+      <td><i class="fa fa-repeat" aria-hidden="true" (click)="repeatOrder(item.orderNumber)"></i></td>
     </tr>
     <!-- <tr>
       <th scope="row">2</th>

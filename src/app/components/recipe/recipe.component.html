@@ -32,8 +32,10 @@
                                       </div>
                                    </div>
                                    <div class="custom-section-image">
-                                      <img src="assets/images/cater/01.png" alt="" class="foodie">
-                                      <!-- <img [src]="data.blobcontent" alt="" class="foodie"> -->
+                                      <!-- <img src="assets/images/cater/01.png" alt="" class="foodie"> -->
+                                      <!-- <img src="data:image/JPEG;base64,{{data.blobcontent}}" alt="" class="foodie img-fluid"> -->
+                                      <img *ngIf="data.blobcontent" [src]="('data:image/JPEG;base64,' + data.blobcontent) | domsanitize" alt="" class="foodie img-fluid">
+
 
                                    </div>
                                 </div>

@@ -59,7 +59,7 @@ export class PackageDialogComponent implements OnInit {
 
     // validating whether total quantity lessthan the packageqty
     let Total = []
-    this.packageData.PackageItems.forEach((x)=>{
+    this.packageData.PackageItems.forEach((x) => {
       if(x.pkgItemQty !== undefined){
       Total.push(x.pkgItemQty);
       }
