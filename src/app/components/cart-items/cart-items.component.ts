@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
+declare var $: any;
 @Component({
   selector: 'app-cart-items',
   templateUrl: './cart-items.component.html',
@@ -35,5 +36,10 @@ public cartAmount;
     });
     this.cartAmount = Total.reduce((a, b) => a + b, 0)
   }
+
+  // toggle
+  icontoggle() {
+    $('.right-panel').toggleClass('hide');
+    }
 
 }

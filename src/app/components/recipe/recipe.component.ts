@@ -15,6 +15,8 @@ import { ComboItemDialogComponent } from 'src/app/shared/dialogs/combo-item-dial
 import { fromEvent, interval, timer } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+declare var $: any;
+
 @UntilDestroy()
 @Component({
   selector: 'app-recipe',
@@ -217,4 +219,9 @@ export class RecipeComponent
   }
 
   ngOnDestroy(): void {}
+  
+// toggle
+  icontoggle() {
+    $('#sidebar-wrapper').toggleClass('hide');
+    }
 }

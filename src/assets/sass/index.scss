@@ -106,7 +106,7 @@ body {
   // Sidebar Styles
 
   .sidebar-nav {
-    width: 290px;
+    width: 218px;
     margin: 0;
     padding: 20px 0px 0px 0px;
     list-style: none;
@@ -183,7 +183,7 @@ body {
   // position: relative;
   // top: 10px;
   // right: 20px;
-  padding: 0px 0px 0px 50px;
+  padding: 0px 0px 0px 25px;
   height: 32px;
   opacity: 0.9;
   border-radius: 10px;
@@ -202,10 +202,10 @@ body {
   }
 
   .custom-texts-entrees{
-  color: #7672f2;
-  font-size: 18px;
-  font-weight: 600;
-  font-family: sans-serif;
+    color: #7672f2;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
   }
 
   .custom-section-image{
@@ -295,7 +295,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 15px 0 15px;
+  padding: 5px 15px 0 10px;
   border-bottom: 1px solid lightgrey;
   }
 
@@ -376,9 +376,11 @@ body {
   }
 
   #sidebar-wrapper {
-  width: 292px;
-  overflow-x: hidden;
+    width: 228px;
+  // overflow-x: hidden;
   }
+
+  
 
   .custom-image-wrapper-text{
   // margin-left: -5px;
@@ -401,6 +403,10 @@ body {
   position: relative;
   margin-right: 0;
   }
+  }
+
+  .hide{
+    display: none;
   }
 
 
@@ -495,7 +501,7 @@ body {
   }
 
   .lodaer-width{
-    min-width: 62%;
+    min-width: 67%;
   }
 
   input[type=number]::-webkit-inner-spin-button,
@@ -645,6 +651,7 @@ body {
 
   .header-right {
   float: right;
+  margin-right: 10px;
   }
 
   .custom-logout{
@@ -1071,6 +1078,11 @@ owl-date-time-container{
 }
   }
 
+  @media (max-width: 575.98px){}
+  .table-responsive-sm {
+      margin: 0px 0px 5px 0px;
+  }
+
 // .delivery-content-width{
 //   min-width: 1750px;
 // }
@@ -1161,7 +1173,12 @@ owl-date-time-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0px auto;
+  width: 100%;
+}
+
+  @media(min-width:320px){}
+    .successful-icon {
+    margin-left: 30px;
 }
 
 @media(max-width:320px) {
@@ -1199,6 +1216,13 @@ owl-date-time-container{
   top: 0 !important;
 }
 
+@media(min-width:768px) {
+
+  .card-product{
+    margin-right: -20px !important;
+  }
+  }
+
 @media all and (min-width: 992px) {
 	.navbar .nav-item .dropdown-menu{ display: none; }
 	.navbar .nav-item:hover .nav-link{ color: #fff;  }
@@ -1217,6 +1241,14 @@ owl-date-time-container{
     width: 110px !important;
 }
   }
+
+  @media(max-width:768px) {
+
+    .foodie-theme {
+      width: 100% !important;
+  }
+    }
+  
 
 .navbar-expand-lg{
     margin-top: 92px;
