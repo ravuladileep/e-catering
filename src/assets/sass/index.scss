@@ -405,9 +405,9 @@ body {
   }
   }
 
-  .hide{
-    display: none;
-  }
+  // .hide{
+  //   display: none;
+  // }
 
 
   .form-control{
@@ -646,6 +646,7 @@ body {
 
   .aquilia-logo{
   width: 100px;
+  margin-right: 10px;
   // height: 70px;
   }
 
@@ -992,7 +993,11 @@ opacity: 0.5;
   .header-right {
     line-height: initial;
 }
+.aquilia-logo {
+  width: 85px;
+  margin-right:10px;
     }
+  }
   
   
   .table {
@@ -1380,3 +1385,55 @@ owl-date-time-container{
   color: #007bff !important; 
   background: lightgrey;
 }
+
+@media(min-width:770px){
+  .hide-toggle{
+    display: none;
+  }
+}
+
+.sidebar-button-cross{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background: transparent;
+  border: tan;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer; 
+}
+
+@media(max-width:768px){
+  .hide{
+    display: none;
+  }
+}
+
+@media(max-width:320px) {
+.responsive-side{
+    position: fixed !important;
+    z-index: 1;
+    overflow: auto;
+}
+}
+
+@media(max-width:768px) {
+  .responsive-side{
+      position: fixed !important;
+      z-index: 1;
+      overflow: auto;
+  }
+  }
+
+  @media(max-width:320px) {
+    .sidebar-nav {
+      width: 203px;
+    }
+    }
+
+ 
+  @media(max-width:768px) {
+    #page-content-wrapper {
+      height: 77vh; 
+  }
+  }

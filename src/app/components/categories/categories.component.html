@@ -1,5 +1,6 @@
-<!-- <div class="w3-sidebar w3-bar-block w3-border-right" id="mySidebar"> -->
-<div id="sidebar-wrapper">
+<div class="w3-sidebar w3-bar-block w3-border-right responsive-side" id="mySidebar">
+<div id="sidebar-wrapper" class="hide">
+    <button (click)="icontoggle()" class="w3-bar-item w3-large hide-toggle sidebar-button-cross"> &times;</button>
   <ul class="sidebar-nav">
       <li *ngFor="let item of category">
           <div class="d-flex custom-image-section">
@@ -10,5 +11,5 @@
 
   </ul>
 </div>
-<!-- </div>  -->
+</div> 
 
