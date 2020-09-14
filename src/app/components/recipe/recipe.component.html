@@ -16,7 +16,7 @@
               </div>
 
               <ng-container *ngFor="let sub of subCategory  let k = index;">
-                 <h6 *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
+                 <h6 class="sub-sec-align" *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
                  <div class="custom-items-wrapper" >
                     <div class="boxes-wrapper nav">
                        <ng-container   *ngFor="let data of newMenu; let i=index;">

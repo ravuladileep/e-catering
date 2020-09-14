@@ -148,9 +148,13 @@ body {
   font-size: 14px;
   }
 
+.sub-sec-align{
+  padding: 0 0 0 5px;
+}
+
   .custom-entries{
   font-size: 20px;
-  padding: 5px 5px 5px 0px;
+  padding: 5px 5px 5px 5px;
   text-align: center;
   align-items: center;
   // color: #fff;
@@ -976,6 +980,7 @@ opacity: 0.5;
     font-size: 30px;
     background: #262262;
     color: #fff;
+    min-width: 538px;
   }
 
   .custom-hidden-text{
@@ -1015,6 +1020,7 @@ opacity: 0.5;
   .table .thead-dark th {
   background-color: #262262;
   border-color: #262262;
+  // padding: 5px 10px 5px 10px !important;
   }
 
 // ngx modal dialog
@@ -1449,3 +1455,15 @@ owl-date-time-container{
   .delivery-content-width{
     justify-content: flex-end;
   }
+
+  .img-fluid {
+    max-width: 108px !important;
+    height: 120px;
+}
+
+.table thead th{
+  padding: 5px 10px 5px 10px;
+}
+// .custom-row-width{
+//   width: 169px;
+// }
