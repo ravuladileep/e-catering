@@ -86,9 +86,14 @@
 
       <span>State</span>
       <!-- <input type="number"  formControlName="state" > -->
-      <select  formControlName="state" >
+      <select class="custom-select col-sm-8" formControlName="state" id="draftStatus">
+        <!-- <option selected value="Delivery">Delivery</option>
+        <option value="Pickup">Pickup</option> -->
         <option *ngFor="let item of stateList" [value]="item.id">{{item.name}}</option>
       </select>
+      <!-- <select  formControlName="state" >
+        <option *ngFor="let item of stateList" [value]="item.id">{{item.name}}</option>
+      </select> -->
       <div class="text-danger" *ngIf="orderDetailsData.state.touched && orderDetailsData.state.errors?.required">state is required</div>
 
       <span>Zip Code</span>

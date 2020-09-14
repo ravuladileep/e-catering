@@ -902,7 +902,7 @@ opacity: 0.5;
 .autocomplete-container {
   box-shadow: none !important;
   height: 50px !important;
-  left: 47px;
+  left: 0;
 }
 
 .autocomplete-container .suggestions-container {
@@ -1101,7 +1101,7 @@ owl-date-time-container{
 
 .custom-pickupInfo{
   display: flex;
-  justify-content: flex-end;
+  // justify-content: flex-end;
 }
 
 .table-striped {
@@ -1444,4 +1444,8 @@ owl-date-time-container{
     #page-content-wrapper {
       height: 77vh; 
   }
+  }
+
+  .delivery-content-width{
+    justify-content: flex-end;
   }
