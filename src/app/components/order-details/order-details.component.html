@@ -4,8 +4,8 @@
   <div class="content">
     <div id="form">
       <form  [formGroup]="orderDetails" #orderDetailsForm (ngSubmit)="Submit()">
-        <div class="open-dialog-wrapper"> 
-            
+        <div class="open-dialog-wrapper">
+
           </div>
       <span>Order #</span>
       <input type="text" formControlName="orderNumber">
@@ -52,9 +52,25 @@
       <div class="d-flex">
         <span>Address</span>
         <div class="input-group">
-        <input type="text" formControlName="choose address" class="form-control" placeholder="choose address"> <i class="fa fa-get-pocket" aria-hidden="true"></i>
+          <div class="ng-autocomplete">
+            <ng-autocomplete [data]="addressList"  [searchKeyword]="keyword"
+             (selected)="selectChange($event)" [itemTemplate]="itemTemplate">
+           </ng-autocomplete>
+           <ng-template  #itemTemplate let-item>
+             <div>
+             <a [innerHTML]="item.street"></a>
+             <a [innerHTML]="item.city"></a>
+             <a [innerHTML]="item.state"></a>
+             <a [innerHTML]="item.zip"></a>
+             <hr>
+            </div>
+           </ng-template>
+         </div>
+        <!-- <input type="text"  class="form-control" placeholder="choose address"> <i class="fa fa-get-pocket" aria-hidden="true"></i> -->
       </div>
     </div>
+
+
 
       <span>Street</span>
       <input type=""  formControlName="street" >
@@ -69,7 +85,10 @@
       <div class="text-danger" *ngIf="orderDetailsData.city.touched && orderDetailsData.city.errors?.required">city is required</div>
 
       <span>State</span>
-      <input type=""  formControlName="state" >
+      <!-- <input type="number"  formControlName="state" > -->
+      <select  formControlName="state" >
+        <option *ngFor="let item of stateList" [value]="item.id">{{item.name}}</option>
+      </select>
       <div class="text-danger" *ngIf="orderDetailsData.state.touched && orderDetailsData.state.errors?.required">state is required</div>
 
       <span>Zip Code</span>

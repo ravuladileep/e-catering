@@ -15,8 +15,13 @@ export class AuthService {
   }
 
   public login(userid, password): Observable<any>{
+  this.getUrl();
+  return this.http.get(`${this.webServiceUrl}/authenticateUser?userId=${userid}&password=${password}&catererId=menuscat&guestUserFlag=0`);
+  }
+
+  guestUser(): Observable<any>{
     this.getUrl();
-  return this.http.get(`${this.webServiceUrl}/authenticateUser?userId=${userid}&password=${password}&catererId=menuscat`);
+    return this.http.get(`${this.webServiceUrl}/authenticateUser?userId=null&password=null&catererId=menuscat&guestUserFlag=1`);
   }
 
 }

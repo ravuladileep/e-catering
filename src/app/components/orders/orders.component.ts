@@ -1,5 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-orders',
@@ -10,11 +13,16 @@ export class OrdersComponent implements OnInit {
   public cartItems;
   public subTotal;
   public packageItems;
-  constructor(private cartService: CartService) {}
+  public comboItems;
+  constructor(private cartService: CartService,
+              private authService: AuthService,
+              private router: Router,
+              private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.cartItems = this.cartService.cart.menuItems;
     this.packageItems = this.cartService.cart.package;
+    this.comboItems = this.cartService.cart.combo;
     this.calcSubTotal();
   }
   changeQuantity(i, $event) {
@@ -27,6 +35,21 @@ export class OrdersComponent implements OnInit {
     this.cartService.cart.menuItems.forEach((x) => {
       subTotal.push(x.price * x.quantity);
     });
+    this.cartService.cart.package.forEach((x)=>{
+      subTotal.push(+x.PackageDetails.PkgQty * +x.PackageDetails.packageCost)
+    });
+    this.cartService.cart.combo.forEach((x)=>{
+      subTotal.push(+x.ComboDetails.comboQty * +x.ComboDetails.comboCost)
+    });
     this.subTotal = subTotal.reduce((a, b) => a + b, 0);
   }
+
+  checkOutGuest(){
+    this.spinner.show();
+    this.authService.guestUser().subscribe((res)=>{
+      sessionStorage.setItem('loginResponse', JSON.stringify(res))
+      this.router.navigate(['order-details']);
+    }, err => { this.spinner.hide(); }, () => {this.spinner.hide();});
+  }
+
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComboItemDialogComponent } from './combo-item-dialog.component';
+import { ComboDialogComponent } from './combo-dialog.component';
 
-describe('ComboItemDialogComponent', () => {
-  let component: ComboItemDialogComponent;
-  let fixture: ComponentFixture<ComboItemDialogComponent>;
+describe('ComboDialogComponent', () => {
+  let component: ComboDialogComponent;
+  let fixture: ComponentFixture<ComboDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ComboItemDialogComponent ]
+      declarations: [ ComboDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComboItemDialogComponent);
+    fixture = TestBed.createComponent(ComboDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

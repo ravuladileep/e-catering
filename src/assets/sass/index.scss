@@ -449,7 +449,7 @@ body {
   @media(max-width:320px) {
 
     .custom-rate {
-      right: 55px !important; 
+      right: 55px !important;
   }
     }
 
@@ -776,6 +776,8 @@ body {
     border: 1px solid lightblue;
     outline: 0;
   }
+
+
   #contact #form textarea {
     background-color: rgb(232, 240, 254);
     float:left;
@@ -1000,6 +1002,8 @@ opacity: 0.5;
   }
   
   
+
+
   .table {
   position: relative;
   top: 94px;
@@ -1019,12 +1023,15 @@ z-index: 99999!important;
 }
 
 .modal-content{
-  min-height: 350px;
+  // min-height: 350px;
+  max-height: 500px;
+    overflow: auto;
 }
 
 .custom-dialog-header{
   padding: 10px 0 0 10px;
     background: #262262;
+
 }
 
 .label-header-dialog{
@@ -1208,6 +1215,7 @@ owl-date-time-container{
 
 .quantity-input {
   width:50px;
+  height: 30px;
 }
 
 
@@ -1233,7 +1241,7 @@ owl-date-time-container{
 	.navbar .nav-item:hover .nav-link{ color: #fff;  }
 	.navbar .nav-item:hover .dropdown-menu{ display: block;}
 	.navbar .nav-item .dropdown-menu{ margin-top:0;}
-}	
+}
 
 @media (min-width: 992px){}
 .navbar-expand-lg .navbar-collapse {
@@ -1382,7 +1390,7 @@ owl-date-time-container{
 }
 
 .dropdown-item:hover {
-  color: #007bff !important; 
+  color: #007bff !important;
   background: lightgrey;
 }
 

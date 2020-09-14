@@ -4,15 +4,15 @@
     <div class="card-header">
 
     </div>
-    <div class="card-body">
+    <div class="card-body" >
       <div class="row mb-4 delivery-content-width">
-        <div class="col-sm-6">
+        <div class="col-sm-6"  *ngIf="customerAddress">
           <div>
-            <strong>Tirupathi Naidu</strong>
+            <strong>{{customerAddress.billAddress_contactName}}</strong>
           </div>
-          <div>R & R Enclave</div>
-          <div>Suit 300</div>
-          <div>Hyderabad - 500050</div>
+          <div>{{customerAddress.billAddress_street}}</div>
+          <div>{{customerAddress.billAddress_suite}}</div>
+          <div>{{customerAddress.billAddress_state}} - {{customerAddress.billAddress_zip}}</div>
         </div>
 
         <div class="col-sm-6">
@@ -43,7 +43,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of cartItems; let i=index;">
+            <tr *ngFor="let item of cart.menuItems; let i=index;">
               <td class="center">{{i+1}}</td>
               <td class="left strong">{{item.itemName}}</td>
               <!-- <td class="left">Extended License</td> -->
@@ -51,6 +51,24 @@
               <td class="right">{{item.quantity}}</td>
               <td class="center">{{item.price}}</td>
               <td class="right">{{item.quantity * item.price}}</td>
+            </tr>
+            <tr *ngFor="let item of cart.package; let i=index;">
+              <td class="center">{{i+1}}</td>
+              <td class="left strong">{{item.PackageDetails.packageName}}</td>
+              <!-- <td class="left">Extended License</td> -->
+
+              <td class="right">{{item.PackageDetails.PkgQty}}</td>
+              <td class="center">{{item.PackageDetails.packageCost}}</td>
+              <td class="right">{{item.PackageDetails.PkgQty * item.PackageDetails.packageCost}}</td>
+            </tr>
+            <tr *ngFor="let item of cart.combo; let i=index;">
+              <td class="center">{{i+1}}</td>
+              <td class="left strong">{{item.ComboDetails.comboName}}</td>
+              <!-- <td class="left">Extended License</td> -->
+
+              <td class="right">{{item.ComboDetails.comboQty}}</td>
+              <td class="center">{{item.ComboDetails.comboCost}}</td>
+              <td class="right">{{item.ComboDetails.comboQty * item.ComboDetails.comboCost}}</td>
             </tr>
 
           </tbody>
@@ -68,7 +86,7 @@
             <li class="bg-hover"><a class="text-place-order" href="#">Pay Later</a></li>
           </ul>
         </div>
-        <input type="submit" name="submit" value="Confirm Order" class="btn-primary place-order-color">
+        <input type="submit" (click)="confirmOrder()" name="submit" value="Confirm Order" class="btn-primary place-order-color">
       </div>
 
     </div>

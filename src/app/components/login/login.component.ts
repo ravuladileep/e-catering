@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
         this.spinner.hide();
         return;
       }else {
-        sessionStorage.setItem('loginResponse', res)
-        console.log('login success')
+        sessionStorage.setItem('loginResponse', JSON.stringify(res))
+        console.log('login success',res)
         this.router.navigate(['order-details']);
         this.spinner.hide();
       }

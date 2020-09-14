@@ -1,0 +1,49 @@
+<div class="">
+  <div class="custom-dialog-header sticky-top">
+    <h4 class="label-header-dialog">E-Catering - Combo/Package Contents</h4>
+  </div>
+  <div class="description-dialog">
+    <div class="custom-package-items">
+      <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}}</p>
+      <p class="custom-font-dialog">BAKER'S BEST BASKET - ASSORTMENT OF OUR FINEST BRE</p>
+    </div>
+    <div class="custom-currency-dialog d-flex justify-content-between">
+      <p class="custom-weight-font">${{comboData?.ComboDetails?.comboCost}}</p>
+      <div class="custom-addCart-Btn">
+        <div class="" >
+          <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input" min="0" >
+
+        </div>
+      </div>
+    </div>
+    <div>
+      <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper">
+        <p class="custom-weight-font" > {{item.packName}}</p>
+        <div class="alert alert-info mt-2" role="alert">
+          Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be less than or equal to  {{comboQuantityTotal}}.
+        </div>
+        <ng-container *ngFor="let data of comboData?.ComboItems;let i=index;">
+            <div class="d-flex justify-content-between m-1" *ngIf="item.packName === data.packName">
+              <p >{{data.itemName}}</p>
+              <input type="number"  class="quantity-input"   [id]="data.itemId" [value]="data.itemQty" min="0" >
+            </div>
+        </ng-container>
+
+      </div>
+      <p class="custom-weight-font">Items</p>
+      <div  *ngFor="let item of itemsList" class="d-flex justify-content-between m-1" >
+        <p >{{item.itemName}}</p>
+        <input readonly type="number" class="quantity-input" [id]="item.itemId" [value]="item.itemQty">
+      </div>
+    </div>
+    <div>
+      <button class="pull-right" type="save" value="save" (click)="onSave()">Save</button>
+    </div>
+  </div>
+</div>
+
+
+
+   <!-- <div class="alert alert-info mt-2" role="alert">
+            Please select between 2 and 3 items from this list. The total item quantity should be less than or equal to  2.
+        </div> -->

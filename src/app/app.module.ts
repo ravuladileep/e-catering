@@ -19,7 +19,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CartService } from './services/cart.service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ComboItemDialogComponent } from './shared/dialogs/combo-item-dialog/combo-item-dialog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { MyOrdersListComponent } from './components/my-orders-list/my-orders-list.component';
@@ -29,11 +28,17 @@ import { AuthService } from './services/auth.service';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DatePipe } from '@angular/common';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { PackageDialogComponent } from './shared/dialogs/package-dialog/package-dialog.component';
+import { ComboDialogComponent } from './shared/dialogs/combo-dialog/combo-dialog.component';
 import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme-one.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { OrderService } from './services/order.service';
+import { DomsanitizePipe } from './shared/pipes/domsanitize.pipe';
+
 @NgModule({
   entryComponents: [
-    ComboItemDialogComponent
+    PackageDialogComponent,
+    ComboDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -46,17 +51,18 @@ import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme
     OrdersComponent,
     RegisterComponent,
     LoginComponent,
-    ComboItemDialogComponent,
     OrderDetailsComponent,
     MyOrdersListComponent,
     PlaceOrderComponent,
     OrderConfirmationComponent,
-    CaterThemeOneComponent
+    PackageDialogComponent,
+    ComboDialogComponent,
+    CaterThemeOneComponent,
+    DomsanitizePipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AutocompleteLibModule,
     AppRoutingModule,
     RouterModule,
     Ng2SearchPipeModule,
@@ -67,12 +73,14 @@ import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme
     ModalModule.forRoot(),
     NgxCaptchaModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    AutocompleteLibModule
   ],
   providers: [
     CartService,
     AuthService,
-    DatePipe
+    DatePipe,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

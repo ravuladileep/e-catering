@@ -24,10 +24,16 @@ export class CartService {
     return this.http.get(`${this.webServiceUrl}/getItemsList?catererId=menuscat`);
   }
 
-  getComboItems(id): Observable<any>{
+  getPackage(id): Observable<any>{
     this.getUrl();
-    return this.http.get(`${this.webServiceUrl}/showPackageOrComboDetails?itemId=${id}&catererId=menuscat`);
+    return this.http.get(`${this.webServiceUrl}/showPackageDetails?itemId=${id}&catererId=menuscat`);
   }
+
+  getCombo(id): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/showComboDetails?itemId=${id}&catererId=menuscat`);
+  }
+
 
   increaseItemQuantity(itemId){
     this.cart.menuItems.map((x) => {

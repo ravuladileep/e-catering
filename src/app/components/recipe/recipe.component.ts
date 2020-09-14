@@ -11,9 +11,10 @@ import { CartService } from 'src/app/services/cart.service';
 import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ComboItemDialogComponent } from 'src/app/shared/dialogs/combo-item-dialog/combo-item-dialog.component';
 import { fromEvent, interval, timer } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { PackageDialogComponent } from 'src/app/shared/dialogs/package-dialog/package-dialog.component';
+import { ComboDialogComponent } from 'src/app/shared/dialogs/combo-dialog/combo-dialog.component';
 
 declare var $: any;
 
@@ -42,6 +43,7 @@ export class RecipeComponent
     this.calcReviewCount();
     this.getItems();
   }
+
 
   ngAfterViewInit() {
     fromEvent(this.searchInput.nativeElement, 'keyup')
@@ -99,7 +101,7 @@ export class RecipeComponent
    * any items assign those items quanity to the menulist
    */
 
-  getItems(): void {
+  public getItems(): void {
     this.spinner.show();
     this.loading = true;
     this.cartService
@@ -136,7 +138,7 @@ export class RecipeComponent
    * purpose  : if already cart contains
    * any items assign those items quanity to the menulist
    */
-  assignQuantity(): void {
+  public assignQuantity(): void {
     if (this.cartService.cart.menuItems.length) {
       this.cartService.cart.menuItems.forEach((cartItem) => {
         this.newMenu.forEach((menuItem) => {
@@ -158,14 +160,23 @@ export class RecipeComponent
    * @param product
    */
 
-  addToCart(product) {
-    if (product.packageComboFlag !== 0) {
-       this.modalService.show(ComboItemDialogComponent, {
+  public addToCart(product) {
+    if (product.packageComboFlag === 2) {
+      this.modalService.show(ComboDialogComponent, {
+       class: 'modal-dialog-custom modal-lg modal-dialog-centered',
+       initialState: { product },
+       keyboard: false,
+     });
+   }
+
+    if (product.packageComboFlag === 1) {
+       this.modalService.show(PackageDialogComponent, {
         class: 'modal-dialog-custom modal-lg modal-dialog-centered',
         initialState: { product },
         keyboard: false,
       });
-    } else {
+    }
+    if (product.packageComboFlag === 0){
       product.quantity++;
       const productExistInCart = this.cartService.cart.menuItems.find(
         ({ itemId }) => itemId === product.itemId
@@ -178,13 +189,14 @@ export class RecipeComponent
       this.calcReviewCount();
     }
   }
+
   /**
    * function : decreaseQuantity
    * purpose  : removing the item from Cart (if already cart contain same item it will decrease quantity)
    * @param product
    */
 
-  decreaseQuantity(product) {
+  public decreaseQuantity(product) {
     product.quantity--;
     if (product.quantity === 0) {
       this.cartService.cart.menuItems.forEach((x, i) => {
@@ -207,13 +219,16 @@ export class RecipeComponent
    * @param product
    */
 
-  calcReviewCount() {
+  public calcReviewCount() {
     let count = [];
     this.cartService.cart.menuItems.forEach((x) => {
       count.push(+x.quantity);
     });
     this.cartService.cart.package.forEach((x) => {
       count.push(+x.PackageDetails.PkgQty);
+    });
+    this.cartService.cart.combo.forEach((x) => {
+      count.push(+x.ComboDetails.comboQty);
     });
     this.reviewOrdersCount = count.reduce((a, b) => a + b, 0);
   }
