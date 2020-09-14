@@ -1,11 +1,12 @@
 <div class="w3-teal">
       <!-- <button class="w3-button w3-teal w3-xlarge hide-toggle"(click)="icontoggle()">☰</button> -->
-      
-    
+
+
 <div id="page-content-wrapper">
   <div class="container-fluid">
      <div class="row">
         <div class="col-lg-12 recepie-wrapper">
+           <div>
            <div class="filter-input-text">
               <input type="filter" #searchInput  class="custom-search-bar col-md-12"
               placeholder="Search...">
@@ -36,7 +37,7 @@
                                       </div>
                                    </div>
                                    <div class="custom-section-image">
-                                      <!-- <img src="assets/images/cater/01.png" alt="" class="foodie"> -->
+                                      <img *ngIf="!data.blobcontent" src="assets/images/cater/01.png" alt="" class="foodie">
                                       <!-- <img src="data:image/JPEG;base64,{{data.blobcontent}}" alt="" class="foodie img-fluid"> -->
                                       <img *ngIf="data.blobcontent" [src]="('data:image/JPEG;base64,' + data.blobcontent) | domsanitize" alt="" class="foodie img-fluid">
 

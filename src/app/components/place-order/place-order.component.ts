@@ -14,6 +14,7 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
   public orderDetails;
   public loginres;
   public customerAddress;
+  public totalAmount;
   constructor(private cartService: CartService,
               private router: Router,
               private spinner: NgxSpinnerService,
@@ -24,6 +25,7 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
     this.loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
     this.getCustomerAdress();
     this.orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
+    this.totalAmount = this.cartService.cartTotalAmount();
   }
 
   /**

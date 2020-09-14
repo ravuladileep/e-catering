@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.spinner.show();
     this.authService.login(this.loginData.userName.value, this.loginData.password.value)
     .subscribe((res) => {
-      if(res.userId === '0'){
+      if(res.AuthenticateUser.userId === 0){
         this.loginError = true;
         this.spinner.hide();
         return;

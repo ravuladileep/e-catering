@@ -33,10 +33,11 @@ export class MyOrdersListComponent implements OnInit {
   public repeatOrder(orderNumber): void{
     this.spinner.show();
     this.orderService.repeatOrder(orderNumber).subscribe((res) => {
+      sessionStorage.setItem('repeatOrderData', JSON.stringify(res));
       this.cartService.cart['menuItems'] = res.menuItems;
       this.cartService.cart['package'] = res.package;
       this.cartService.cart['combo'] = res.combo;
-      this.router.navigate(['order-details']);
+      this.router.navigate(['home']);
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
   }
 

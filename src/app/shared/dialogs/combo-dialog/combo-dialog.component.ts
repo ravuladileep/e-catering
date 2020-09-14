@@ -145,7 +145,8 @@ export class ComboDialogComponent implements OnInit {
     });
 
     if(result.includes(false)){
-      console.log('err')
+      // console.log('err')
+      alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
     }else {
       console.log('take order');
       this.takeOrder();

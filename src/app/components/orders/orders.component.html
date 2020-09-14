@@ -55,20 +55,21 @@
       <p class="custom-subtotal-wrapper">Subtotal</p>
       <p class="custom-subtotal-wrapper">${{subTotal.toFixed(2)}}</p>
     </div>
-    <div class="custom-taxes">
+    <!-- <div class="custom-taxes">
       <p class="custom-opacity">Taxes + Fees<i class="fa fa-question-circle ml-2" aria-hidden="true"></i></p>
       <p class="custom-opacity">$0.00</p>
     </div>
     <div class="custom-tip">
       <p class="custom-opacity">Tip (0%) <span class="custom-underline-text">Change</span></p>
       <p class="custom-opacity">$0.00</p>
-    </div>
+    </div> -->
     <div class="custom-total-price">
       <p class="custom-subtotal-wrapper">Total</p>
       <p class="custom-subtotal-wrapper">${{subTotal.toFixed(2)}}</p>
     </div>
-    <button type="button"   (click)="checkOutGuest()"  class="custom-items-add">Checkout As Guest</button>
-    <button type="button" [routerLink]="['/login']" routerLinkActive="router-link-active"   class="custom-items-add">Checkout As User</button>
+    <button type="button"   *ngIf="repeatOrderData" [routerLink]="['/order-details']" routerLinkActive="router-link-active"   class="custom-items-add">Continue</button>
+    <button type="button"  *ngIf="!repeatOrderData"  (click)="checkOutGuest()"  class="custom-items-add">Checkout As Guest</button>
+    <button type="button"  *ngIf="!repeatOrderData" [routerLink]="['/login']" routerLinkActive="router-link-active"   class="custom-items-add">Checkout As User</button>
 
 
   </div>

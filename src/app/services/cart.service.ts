@@ -42,4 +42,20 @@ export class CartService {
       }
     });
   }
+
+  cartTotalAmount(){
+    let Total = []
+    this.cart.menuItems.forEach((x)=>{
+      Total.push(+x.price * +x.quantity)
+    });
+    this.cart.package.forEach((x)=>{
+      Total.push(+x.PackageDetails.PkgQty * +x.PackageDetails.packageCost)
+    });
+    this.cart.combo.forEach((x)=>{
+      Total.push(+x.ComboDetails.comboQty * +x.ComboDetails.comboCost)
+    });
+    let cartAmount = Total.reduce((a, b) => a + b, 0)
+    return cartAmount;
+  }
+
 }
