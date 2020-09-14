@@ -4,14 +4,15 @@
   <div class="header-right">
     <div class="icons-wrapper">
     <div class="custom-info">
-      <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Hooray!"></i>
+      <!-- <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Hooray!"></i> -->
     </div>
     <div class="custom-logout">
-      <i class="fa fa-sign-out" aria-hidden="true"></i>
+      <i class="fa fa-sign-out" aria-hidden="true" (click)="logOut()"></i>
     </div>
   </div>
     <div class="custom-user-wrapper">
-      <p class="custom-text-colour">User Name</p>
+      <p class="custom-text-colour" *ngIf="loginres && loginresponseData.AuthenticateUser.userId !== 0">{{loginresponseData.AuthenticateUser.userName}}</p>
+      <p class="custom-text-colour" *ngIf="!loginres || loginresponseData.AuthenticateUser.userId === 0 ">User Name</p>
       <i class="fa fa-user custom-fa-user" aria-hidden="true"></i>
     </div>
   </div>
