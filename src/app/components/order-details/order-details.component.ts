@@ -42,11 +42,11 @@ export class OrderDetailsComponent implements OnInit {
                    Validators.maxLength(10)]],
       email: ['', [Validators.required, Validators.email]],
       street : ['', Validators.required],
-      suite : ['', Validators.required],
+      suite : [''],
       city : ['', Validators.required],
       state : ['', Validators.required],
       zipCode : ['', Validators.required],
-      notes : ['', Validators.required],
+      notes : [''],
     });
     const loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
     if(loginres){
@@ -104,6 +104,7 @@ export class OrderDetailsComponent implements OnInit {
     sessionStorage.setItem('orderDetails', JSON.stringify(this.orderDetails.value));
     console.log(data);
     this.orderService.saveOrderDetails(data).subscribe((res) => {
+      sessionStorage.removeItem('repeatOrderData')
       console.log(res);
       this.router.navigate(['place-order']);
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });

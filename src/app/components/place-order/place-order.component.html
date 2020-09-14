@@ -70,6 +70,13 @@
               <td class="center">{{item.ComboDetails.comboCost}}</td>
               <td class="right">{{item.ComboDetails.comboQty * item.ComboDetails.comboCost}}</td>
             </tr>
+            <tr>
+              <td class="center"></td>
+              <td class="left strong"></td>
+              <td class="right"></td>
+              <td class="center">Total</td>
+              <td class="right">{{totalAmount}}</td>
+            </tr>
 
           </tbody>
         </table>
@@ -82,8 +89,8 @@
             Option
             <span class="caret"></span></button>
           <ul class="dropdown-menu">
-            <li class="bg-hover"><a class="text-place-order" href="#">Credit Card</a></li>
-            <li class="bg-hover"><a class="text-place-order" href="#">Pay Later</a></li>
+            <li class="bg-hover"><a class="text-place-order" href="javascript:void(0)">Credit Card</a></li>
+            <li class="bg-hover"><a class="text-place-order" href="javascript:void(0)">Pay Later</a></li>
           </ul>
         </div>
         <input type="submit" (click)="confirmOrder()" name="submit" value="Confirm Order" class="btn-primary place-order-color">

@@ -14,6 +14,7 @@ export class OrdersComponent implements OnInit {
   public subTotal;
   public packageItems;
   public comboItems;
+  public repeatOrderData = false;
   constructor(private cartService: CartService,
               private authService: AuthService,
               private router: Router,
@@ -24,6 +25,9 @@ export class OrdersComponent implements OnInit {
     this.packageItems = this.cartService.cart.package;
     this.comboItems = this.cartService.cart.combo;
     this.calcSubTotal();
+    if (JSON.parse(sessionStorage.getItem('repeatOrderData'))){
+      this.repeatOrderData = true;
+    };
   }
   changeQuantity(i, $event) {
     this.cartService.cart.menuItems[i].quantity = +$event.target.value;

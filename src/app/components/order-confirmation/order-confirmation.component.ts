@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-order-confirmation',
@@ -8,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class OrderConfirmationComponent implements OnInit, AfterViewInit {
   public loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
-  constructor(private router: Router) { }
+  public totalAmount;
+  constructor(private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.totalAmount = this.cartService.cartTotalAmount();
   }
 
   ngAfterViewInit(): void {
