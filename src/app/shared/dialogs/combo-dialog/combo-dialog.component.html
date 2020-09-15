@@ -1,11 +1,11 @@
 <div class="">
   <div class="custom-dialog-header sticky-top">
-    <h4 class="label-header-dialog">E-CateringXpert - Combo Contents</h4>
+    <h4 class="label-header-dialog">Combo Contents</h4>
   </div>
   <div class="description-dialog">
     <div class="custom-package-items">
       <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}}</p>
-      <p class="custom-font-dialog">BAKER'S BEST BASKET - ASSORTMENT OF OUR FINEST BRE</p>
+      <p class="custom-font-dialog">{{ comboData?.ComboDetails?.comboDescription }}</p>
     </div>
     <div class="custom-currency-dialog d-flex justify-content-between">
       <p class="custom-weight-font">${{comboData?.ComboDetails?.comboCost}}</p>
@@ -18,9 +18,10 @@
     </div>
     <div>
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper">
-        <p class="custom-weight-font "> {{item.packName}}</p>
+        <p class="custom-weight-font  text-primary"> {{item.packName}}</p>
         <div class="alert alert-info mt-2" role="alert">
-          Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be less than or equal to  {{comboQuantityTotal}}.
+          <span *ngIf="item.minItems !== item.minItems"> Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
+          <span *ngIf="item.minItems === item.minItems"> Please select {{item.minItems}} item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
         </div>
         <ng-container *ngFor="let data of comboData?.ComboItems;let i=index;">
             <div class="d-flex justify-content-between m-1" *ngIf="item.packName === data.packName">

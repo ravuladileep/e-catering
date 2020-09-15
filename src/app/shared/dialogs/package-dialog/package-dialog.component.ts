@@ -76,11 +76,15 @@ export class PackageDialogComponent implements OnInit {
      this.packageData.PackageDetails.pkgMinItems !== '0') {
       if(this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length >=  this.packageData.PackageDetails.pkgMinItems
       && this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length <=  this.packageData.PackageDetails.pkgMaxItems
-      && this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
+      && this.itemsTotalQuantity == this.packageData.PackageDetails.PkgQty){
         this.takeOrder();
         this.modalRef.hide();
       }else {
-        alert(`Total items quantity should lessthan or equal to ${this.packageData.PackageDetails.PkgQty} and should select min ${this.packageData.PackageDetails.pkgMinItems} & max ${this.packageData.PackageDetails.pkgMaxItems} different items`);
+        if(this.packageData?.PackageDetails?.pkgMinItems !== this.packageData?.PackageDetails?.pkgMaxItems){
+          alert(`Please select between ${this.packageData?.PackageDetails?.pkgMinItems} and ${this.packageData?.PackageDetails?.pkgMaxItems} items from this list. The total item quantity should be equal to  ${this.packQuantity}.`);
+        }else{
+          alert(`Please select ${this.packageData?.PackageDetails?.pkgMinItems} item(s) from this list. The total item quantity should be  equal to  ${this.packQuantity}.`);
+        }
       }
     }
 
@@ -88,11 +92,11 @@ export class PackageDialogComponent implements OnInit {
     if(this.packageData.PackageDetails.packageType === '1' &&
     this.packageData.PackageDetails.pkgMaxItems === '0' &&
     this.packageData.PackageDetails.pkgMinItems === '0') {
-     if(this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
+     if(this.itemsTotalQuantity == this.packageData.PackageDetails.PkgQty){
        this.takeOrder();
        this.modalRef.hide();
      }else {
-       alert(`Total items quantity should lessthan or equal to ${this.packageData.PackageDetails.PkgQty}`);
+       alert(`Total items quantity should  equal to ${this.packageData.PackageDetails.PkgQty}`);
      }
     }
 
