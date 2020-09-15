@@ -11,7 +11,7 @@
       <p class="custom-weight-font">${{packageData?.PackageDetails?.packageCost}}</p>
       <div class="custom-addCart-Btn">
         <div class="" >
-          <input type="number" [(ngModel)]="packQuantity" class="quantity-input" [ngModel]="packageData?.PackageDetails?.PkgQty" min="1" >
+          <input type="number" (change)="changeTotalQty($event)"  id="pkgqty" class="quantity-input" [value]="packageData?.PackageDetails?.PkgQty" min="1" >
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
         <p class="custom-weight-font">{{item.pkgItemname}}</p>
         <div class="custom-addCart-Btn">
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1'">
-            <input type="number"  [(ngModel)]="packItemQuantity[i]" class="quantity-input" [ngModel]="item['pkgItemQty']"   min="0">
+            <input type="number" [id]="item.pkgItemId"  class="quantity-input" [value]="item['pkgItemQty']"   min="0">
           </div>
         </div>
       </div>

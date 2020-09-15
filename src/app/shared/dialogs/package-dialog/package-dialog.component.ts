@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+declare var $:any;
 
 @Component({
   selector: 'app-package-dialog',
@@ -24,9 +25,13 @@ export class PackageDialogComponent implements OnInit {
     .subscribe((data) => {
       this.packageData = data;
       this.packageData.PackageDetails.PkgQty = 1;
-      this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+      this.packQuantity =  +this.packageData.PackageDetails.PkgQty;
       this.assignQuantity();
     });
+  }
+
+  changeTotalQty(e){
+    this.packQuantity = +e.target.value;
   }
 
   closeModal(){
@@ -44,9 +49,12 @@ export class PackageDialogComponent implements OnInit {
           if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
             this.packageData.PackageDetails = PackageDetails;
             this.packageData.PackageItems = PackageItems;
-            this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+            // this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+            $(`#pkgqty`).val(+this.packageData.PackageDetails.PkgQty);
+            this.packQuantity =  +$(`#pkgqty`).val()
+            // pkgqty
             this.packageData.PackageItems.forEach((x,i)=>{
-              this.packItemQuantity[i] = x.pkgItemQty;
+              $(`#${x.pkgItemId}`).val(+x.pkgItemQty);
             });
           }
         }
@@ -56,9 +64,9 @@ export class PackageDialogComponent implements OnInit {
 
   onSave(): void {
     // assing the quantities onSubmit
-    this.packageData.PackageDetails.PkgQty = +this.packQuantity;
+    this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
     this.packageData.PackageItems.forEach((x,i) => {
-      x['pkgItemQty'] = this.packItemQuantity[i];
+      x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
     });
 
     // validating whether total quantity lessthan the packageqty
