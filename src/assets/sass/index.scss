@@ -3,6 +3,10 @@ body {
   overflow-x: hidden;
   }
 
+.border-subtotal-wrapper{
+  border-bottom: 1px solid lightgrey;
+}
+
   .main{
     display: flex;
     margin-top: 89px;
@@ -193,7 +197,7 @@ body {
   border-radius: 10px;
   background-color: #fff;
   outline: 0;
-  max-width: 777px;
+  max-width: 840px;
   border: 1px solid lightgrey;
   }
 
@@ -496,7 +500,7 @@ body {
 
   .order-content-text{
     font-weight: 600;
-    font-size: 30px;
+    font-size: 22px;
   }
 
   .custom-add-more{
@@ -746,7 +750,7 @@ body {
     top: 92px;
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 22px;
     background: #262262;
     color: #fff;
     font-weight: 600;
@@ -977,7 +981,7 @@ opacity: 0.5;
     display: flex;
     justify-content: center;
     font-weight: 600;
-    font-size: 30px;
+    font-size: 22px;
     background: #262262;
     color: #fff;
     min-width: 538px;
@@ -1129,7 +1133,7 @@ owl-date-time-container{
   top: 92px;
   display: flex;
   justify-content: center;
-  font-size: 30px;
+  font-size: 22px;
   background: #262262;
   color: #fff;
   font-weight: 600;
@@ -1476,4 +1480,26 @@ owl-date-time-container{
 
 .table td{
   white-space: nowrap;
+  padding: 10px 10px 5px 10px;
+}
+
+.custom-color-save{
+  background: orangered !important;
+  border: 1px solid orangered !important;
+}
+
+.placed-order-wrapper{
+  background-color: #262262 !important; 
+    border-color: #262262 !important; 
+     border-radius: 5px; 
+    outline: 0; 
+    font-weight: 600; 
+     border: 0;
+     color: #fff;
+     padding: 5px 0px 5px 2px;
+}
+
+.custom-select-color-wrapper{
+  background: #fff !important;
+  color: black !important;
 }
