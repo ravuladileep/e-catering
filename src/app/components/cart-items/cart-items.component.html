@@ -27,7 +27,7 @@
       </div>
 <!-- amount div when greater than zero -->
 <div *ngIf="cartAmount > 0" class="cart-items-footer-wrapper">
-    <div class="d-flex align-items-center justify-content-between pb-2">
+    <div class="d-flex align-items-center justify-content-between pb-2 border-subtotal-wrapper">
       <h6 class="cart-items-footer m-0">Subtotal</h6>
       <h6 class="cart-items-footer m-0">{{cartAmount.toFixed(2)}}</h6>
     </div>
@@ -39,7 +39,7 @@
       <h6 class="cart-items-footer m-0">tip</h6>
       <h6 class="cart-items-footer m-0">0</h6>
     </div> -->
-    <div class="d-flex align-items-center justify-content-between pb-2">
+    <div class="d-flex align-items-center justify-content-between pb-2 mt-2">
       <h6 class="cart-items-footer m-0">Total</h6>
       <h6 class="cart-items-footer m-0">{{cartAmount.toFixed(2)}}</h6>
     </div>
