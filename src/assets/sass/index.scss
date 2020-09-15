@@ -1072,6 +1072,7 @@ z-index: 99999!important;
     color: white;
     font-weight: 600;
     border: 1px solid #262262;
+    border-radius: 5px;
 }
 .custom-weight-font{
   font-weight: 600;
@@ -1478,6 +1479,7 @@ owl-date-time-container{
 
 .table thead th{
   padding: 5px 10px 5px 10px;
+  border-bottom: 0 !important;
 }
 // .custom-row-width{
 //   width: 169px;
@@ -1492,6 +1494,7 @@ owl-date-time-container{
   background: lightgray;
   border: 1px solid lightgray;
   color: #000;
+  border-radius: 5px;
 }
 
 .placed-order-wrapper{
