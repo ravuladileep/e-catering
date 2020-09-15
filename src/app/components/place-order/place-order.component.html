@@ -97,7 +97,7 @@
         <div class="dropdown">
           <select class="placed-order-wrapper" >
             <option class="custom-select-color-wrapper" value="creditcard">Credit Card</option>
-            <option class="custom-select-color-wrapper" value="paylater">Pay Later</option>
+            <option *ngIf="this.loginres.AuthenticateUser.userId !== 0" class="custom-select-color-wrapper" value="paylater">Pay Later</option>
           </select>
           <!-- <button class="btn btn-primary dropdown-toggle place-order-color" type="button" data-toggle="dropdown">Payment
             Option
@@ -130,7 +130,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="confirmOrder()" data-dismiss="modal">Confirm</button>
+        <button type="button" class="btn blue-button" (click)="confirmOrder()" data-dismiss="modal">Confirm</button>
       </div>
     </div>
   </div>
