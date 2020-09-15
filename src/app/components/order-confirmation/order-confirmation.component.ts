@@ -19,8 +19,10 @@ export class OrderConfirmationComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       if (this.loginres.AuthenticateUser.userId !== 0){
+        this.cartService.clearCartItems();
         this.router.navigate(['orders-list']);
       }else {
+        this.cartService.clearCartItems();
         this.router.navigate(['home']);
       }
     }, 5000);

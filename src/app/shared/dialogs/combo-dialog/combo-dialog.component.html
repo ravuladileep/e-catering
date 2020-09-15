@@ -1,6 +1,6 @@
 <div class="">
   <div class="custom-dialog-header sticky-top">
-    <h4 class="label-header-dialog">E-Catering - Combo Contents</h4>
+    <h4 class="label-header-dialog">E-CateringXpert - Combo Contents</h4>
   </div>
   <div class="description-dialog">
     <div class="custom-package-items">
@@ -18,7 +18,7 @@
     </div>
     <div>
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper">
-        <p class="custom-weight-font" > {{item.packName}}</p>
+        <p class="custom-weight-font "> {{item.packName}}</p>
         <div class="alert alert-info mt-2" role="alert">
           Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be less than or equal to  {{comboQuantityTotal}}.
         </div>

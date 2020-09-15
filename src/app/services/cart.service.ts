@@ -58,4 +58,9 @@ export class CartService {
     return cartAmount;
   }
 
+  clearCartItems(){
+    this.cart.menuItems = [];
+    this.cart.package = []
+    this.cart.combo = [];
+  }
 }
