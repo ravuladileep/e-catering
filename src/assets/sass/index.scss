@@ -5,6 +5,11 @@ body {
 
 .border-subtotal-wrapper{
   border-bottom: 1px solid lightgrey;
+  padding: 8px 15px;
+}
+
+.custom-total-cart{
+  padding: 8px 15px;
 }
 
   .main{
@@ -559,7 +564,7 @@ body {
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
   margin-top: 3px;
   height: 32px;
   }
@@ -856,7 +861,7 @@ body {
   }
 
   .cart-items-footer-wrapper{
-    padding: 8px 15px;
+    padding: 0;
   }
 // login styles
 .forget-pass{
@@ -874,7 +879,7 @@ opacity: 0.5;
 }
 .custom-signIN{
   margin: 0px 1px 0px 0px !important;
-  width: 100% !important;
+  width: 25% !important;
   // border-radius: 5px;
 }
 
@@ -934,7 +939,7 @@ opacity: 0.5;
 }
 .contact-submit {
   margin: 5px 0px 0px 0px !important;
-  width: 100% !important;
+  width: 28% !important;
 }
 
 .custom-details-select-box{
@@ -1040,7 +1045,7 @@ z-index: 99999!important;
 }
 
 .custom-dialog-header{
-  padding: 10px 0 0 10px;
+  padding: 10px 0px 1px 10px;
     background: #262262;
 
 }
@@ -1484,8 +1489,9 @@ owl-date-time-container{
 }
 
 .custom-color-save{
-  background: orangered !important;
-  border: 1px solid orangered !important;
+  background: lightgray;
+  border: 1px solid lightgray;
+  color: #000;
 }
 
 .placed-order-wrapper{

@@ -1,6 +1,6 @@
 <div class="" style="height: 86vh; overflow: auto; margin-top: 89px;">
 <div class="custom-orders-header">
-<h2 class="mb-0 order-content-text">Orders</h2>
+<h2 class="mb-0 order-content-text">Review Order</h2>
 </div>
   <div class="custom-inquiry-box custom-add-more">
     <div class="custom-order-items-wrapper" *ngFor="let item of cartItems; let i = index;">
@@ -45,8 +45,10 @@
       </div>
     </div>
     <!-- // combo -->
+    <div class="text-center">
     <button type="button" [routerLink]="['/home']" routerLinkActive="router-link-active" class="custom-items-add">Add
       More Items</button>
+    </div>
 
   </div>
 
@@ -68,8 +70,10 @@
       <p class="custom-subtotal-wrapper">${{subTotal.toFixed(2)}}</p>
     </div>
     <button type="button"   *ngIf="repeatOrderData" [routerLink]="['/order-details']" routerLinkActive="router-link-active"   class="custom-items-add">Continue</button>
+    <div class="d-flex justify-content-end">
     <button type="button"  *ngIf="!repeatOrderData"  (click)="checkOutGuest()"  class="custom-items-add">Checkout As Guest</button>
     <button type="button"  *ngIf="!repeatOrderData" [routerLink]="['/login']" routerLinkActive="router-link-active"   class="custom-items-add">Checkout As User</button>
+  </div>
 
 
   </div>
