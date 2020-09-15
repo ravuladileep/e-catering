@@ -34,6 +34,7 @@ import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { OrderService } from './services/order.service';
 import { DomsanitizePipe } from './shared/pipes/domsanitize.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   entryComponents: [
@@ -74,7 +75,8 @@ import { DomsanitizePipe } from './shared/pipes/domsanitize.pipe';
     NgxCaptchaModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    NgxPaginationModule
   ],
   providers: [
     CartService,

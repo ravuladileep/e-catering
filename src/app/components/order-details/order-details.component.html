@@ -8,8 +8,8 @@
 
           </div>
       <span>Order #</span>
-      <input type="text" formControlName="orderNumber">
-      <div class="text-danger" *ngIf="orderDetailsData.orderNumber.touched && orderDetailsData.orderNumber.errors?.required">Order Number is required</div>
+      <input type="text" readonly formControlName="orderNumber">
+      <div class="text-danger"  *ngIf="orderDetailsData.orderNumber.touched && orderDetailsData.orderNumber.errors?.required">Order Number is required</div>
       <span>Order Name</span>
       <input type="text" formControlName="orderName">
       <div class="text-danger" *ngIf="orderDetailsData.orderName.touched && orderDetailsData.orderName.errors?.required">OrderName is required</div>

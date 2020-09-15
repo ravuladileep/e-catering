@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MyOrdersListComponent implements OnInit {
   public ordersList;
+  public p = 1;
   public loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
 
   constructor(private orderService: OrderService,
@@ -28,6 +29,10 @@ export class MyOrdersListComponent implements OnInit {
     .subscribe((data) => {
       this.ordersList = data;
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
+  }
+
+  public changeCount(event): void {
+    this.p = 1;
   }
 
   public repeatOrder(orderNumber): void{

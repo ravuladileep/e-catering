@@ -29,6 +29,10 @@ export class PackageDialogComponent implements OnInit {
     });
   }
 
+  closeModal(){
+    this.modalRef.hide();
+  }
+
 /**
  * function : assignQuantity
  * purpose : if the selected item already in the cart we are assigning the quantity on load

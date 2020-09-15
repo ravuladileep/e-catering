@@ -6,7 +6,7 @@
       <th class="custom-row-width" scope="col">Order Name</th>
       <th scope="col">Order Type</th>
       <th scope="col">Delivery Date Time</th>
-      <th scope="col">Location</th>
+      <th scope="col" class="text-center">Location</th>
       <th scope="col">Repeat Order</th>
     </tr>
   </thead>
@@ -16,9 +16,10 @@
       <td>{{item.orderName}}</td>
       <td>{{item.orderType}}</td>
       <td>{{item.deliveryDate}}</td>
-      <td>{{item.street}},{{item.suite}},{{item.state}},{{item.city}},{{item.zip}}</td>
-      <td><i class="fa fa-repeat" aria-hidden="true" (click)="repeatOrder(item.orderNumber)"></i></td>
+      <td class="text-center">{{item.street}},{{item.suite}},{{item.state}},{{item.city}},{{item.zip}}</td>
+      <td  class="text-center"><i class="fa fa-repeat" aria-hidden="true" (click)="repeatOrder(item.orderNumber)"></i></td>
     </tr>
+
     <!-- <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
@@ -36,4 +37,8 @@
       <td><i class="fa fa-repeat" aria-hidden="true"></i></td>
     </tr> -->
   </tbody>
+
 </table>
+<!-- <div class="pb-1 text-right">
+  <pagination-controls maxSize="4" (pageChange)="p = $event"></pagination-controls>
+</div> -->

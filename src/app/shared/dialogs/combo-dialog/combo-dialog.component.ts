@@ -36,6 +36,9 @@ export class ComboDialogComponent implements OnInit {
     });
   }
 
+  closeModal(){
+    this.modalRef.hide();
+  }
   /**
    * function : removeDuplicate
    * purpose  : this function used for ngFor to display the packageitems and menu items
@@ -129,6 +132,8 @@ export class ComboDialogComponent implements OnInit {
           ){
             result.push(true);
           }else{
+            console.log(item,'jjj')
+            alert(`${item[0].packName} The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
             result.push(false);
           }
         }
@@ -137,6 +142,7 @@ export class ComboDialogComponent implements OnInit {
           if(item.reduce((a, b) => +a + +b.itemQty, 0) <= +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{
+            alert(`${item[0].packName} The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
             result.push(false);
           }
         }
@@ -145,8 +151,8 @@ export class ComboDialogComponent implements OnInit {
     });
 
     if(result.includes(false)){
-      // console.log('err')
-      alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
+      console.log('err')
+      // alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
     }else {
       console.log('take order');
       this.takeOrder();

@@ -49,8 +49,12 @@ export class OrderDetailsComponent implements OnInit {
       notes : [''],
     });
     const loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
+    const repeatOrderres = JSON.parse(sessionStorage.getItem('repeatOrderData'));
     if(loginres){
     this.orderDetails.get('orderNumber').setValue(loginres.AuthenticateUser.newOrderId);
+    }
+    if(repeatOrderres){
+      this.orderDetails.get('orderNumber').setValue(repeatOrderres.OrderDetails.OrderId);
     }
   }
 

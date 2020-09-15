@@ -15,6 +15,16 @@
           <div>{{customerAddress.billAddress_state}} - {{customerAddress.billAddress_zip}}</div>
         </div>
 
+        <div class="col-sm-9"  *ngIf="!customerAddress">
+          <div class="custom-pickupInfo">
+            <strong>Billing Address</strong>
+          </div>
+          <div>{{orderDetails.street}}</div>
+          <div>{{orderDetails.suite}}</div>
+          <div>{{orderDetails.city}}</div>
+          <div>{{orderDetails.state}}- {{orderDetails.state}}</div>
+        </div>
+
         <div class="col-sm-3">
           <div class="custom-pickupInfo">
             <strong>Delivery / PickUp Info</strong>
@@ -85,13 +95,17 @@
 
       <div class="place-order-button">
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle place-order-color" type="button" data-toggle="dropdown">Payment
+          <select >
+            <option value="creditcard">Credit Card</option>
+            <option value="paylater">Pay Later</option>
+          </select>
+          <!-- <button class="btn btn-primary dropdown-toggle place-order-color" type="button" data-toggle="dropdown">Payment
             Option
             <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li class="bg-hover"><a class="text-place-order" href="javascript:void(0)">Credit Card</a></li>
             <li class="bg-hover"><a class="text-place-order" href="javascript:void(0)">Pay Later</a></li>
-          </ul>
+          </ul> -->
         </div>
         <input type="submit" (click)="confirmOrder()" name="submit" value="Confirm Order" class="btn-primary place-order-color">
       </div>

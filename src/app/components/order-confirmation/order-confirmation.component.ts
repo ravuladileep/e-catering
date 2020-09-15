@@ -20,6 +20,8 @@ export class OrderConfirmationComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       if (this.loginres.AuthenticateUser.userId !== 0){
         this.router.navigate(['orders-list']);
+      }else {
+        this.router.navigate(['home']);
       }
     }, 5000);
   }
