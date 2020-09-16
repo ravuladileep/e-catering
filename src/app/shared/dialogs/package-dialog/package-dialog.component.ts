@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ValidationAlertDialogComponent } from '../validation-alert-dialog/validation-alert-dialog.component';
+declare var $:any;
 
 @Component({
   selector: 'app-package-dialog',
@@ -13,7 +15,7 @@ export class PackageDialogComponent implements OnInit {
   public packItemQuantity = [];
   public itemsTotalQuantity;
   public product; // coming from component reciepe component as intial value
-  constructor(private cartService: CartService, private modalRef: BsModalRef) { }
+  constructor(private cartService: CartService, private modalRef: BsModalRef, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.getComboItems(this.product.itemId);
@@ -24,9 +26,13 @@ export class PackageDialogComponent implements OnInit {
     .subscribe((data) => {
       this.packageData = data;
       this.packageData.PackageDetails.PkgQty = 1;
-      this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+      this.packQuantity =  +this.packageData.PackageDetails.PkgQty;
       this.assignQuantity();
     });
+  }
+
+  changeTotalQty(e){
+    this.packQuantity = +e.target.value;
   }
 
   closeModal(){
@@ -44,9 +50,12 @@ export class PackageDialogComponent implements OnInit {
           if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
             this.packageData.PackageDetails = PackageDetails;
             this.packageData.PackageItems = PackageItems;
-            this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+            // this.packQuantity =  this.packageData.PackageDetails.PkgQty;
+            $(`#pkgqty`).val(+this.packageData.PackageDetails.PkgQty);
+            this.packQuantity =  +$(`#pkgqty`).val()
+            // pkgqty
             this.packageData.PackageItems.forEach((x,i)=>{
-              this.packItemQuantity[i] = x.pkgItemQty;
+              $(`#${x.pkgItemId}`).val(+x.pkgItemQty);
             });
           }
         }
@@ -56,9 +65,9 @@ export class PackageDialogComponent implements OnInit {
 
   onSave(): void {
     // assing the quantities onSubmit
-    this.packageData.PackageDetails.PkgQty = +this.packQuantity;
+    this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
     this.packageData.PackageItems.forEach((x,i) => {
-      x['pkgItemQty'] = this.packItemQuantity[i];
+      x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
     });
 
     // validating whether total quantity lessthan the packageqty
@@ -76,11 +85,25 @@ export class PackageDialogComponent implements OnInit {
      this.packageData.PackageDetails.pkgMinItems !== '0') {
       if(this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length >=  this.packageData.PackageDetails.pkgMinItems
       && this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length <=  this.packageData.PackageDetails.pkgMaxItems
-      && this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
+      && this.itemsTotalQuantity == this.packageData.PackageDetails.PkgQty){
         this.takeOrder();
         this.modalRef.hide();
       }else {
-        alert(`Total items quantity should lessthan or equal to ${this.packageData.PackageDetails.PkgQty} and should select min ${this.packageData.PackageDetails.pkgMinItems} & max ${this.packageData.PackageDetails.pkgMaxItems} different items`);
+        if(this.packageData?.PackageDetails?.pkgMinItems !== this.packageData?.PackageDetails?.pkgMaxItems){
+          this.modalService.show(ValidationAlertDialogComponent, {
+            class: 'modal-dialog-custom ',
+            initialState: { message : `Please select between ${this.packageData?.PackageDetails?.pkgMinItems} and ${this.packageData?.PackageDetails?.pkgMaxItems} items from this list. The total item quantity should be equal to  ${this.packQuantity}.` },
+            keyboard: false,
+          });
+          // alert(`Please select between ${this.packageData?.PackageDetails?.pkgMinItems} and ${this.packageData?.PackageDetails?.pkgMaxItems} items from this list. The total item quantity should be equal to  ${this.packQuantity}.`);
+        }else{
+          this.modalService.show(ValidationAlertDialogComponent, {
+            class: 'modal-dialog-custom ',
+            initialState: { message : `Please select ${this.packageData?.PackageDetails?.pkgMinItems} item(s) from this list. The total item quantity should be  equal to  ${this.packQuantity}.` },
+            keyboard: false,
+          });
+          // alert(`Please select ${this.packageData?.PackageDetails?.pkgMinItems} item(s) from this list. The total item quantity should be  equal to  ${this.packQuantity}.`);
+        }
       }
     }
 
@@ -88,11 +111,16 @@ export class PackageDialogComponent implements OnInit {
     if(this.packageData.PackageDetails.packageType === '1' &&
     this.packageData.PackageDetails.pkgMaxItems === '0' &&
     this.packageData.PackageDetails.pkgMinItems === '0') {
-     if(this.itemsTotalQuantity <= this.packageData.PackageDetails.PkgQty){
+     if(this.itemsTotalQuantity == this.packageData.PackageDetails.PkgQty){
        this.takeOrder();
        this.modalRef.hide();
      }else {
-       alert(`Total items quantity should lessthan or equal to ${this.packageData.PackageDetails.PkgQty}`);
+      this.modalService.show(ValidationAlertDialogComponent, {
+        class: 'modal-dialog-custom ',
+        initialState: { message : `Total items quantity should  equal to ${this.packageData.PackageDetails.PkgQty}` },
+        keyboard: false,
+      });
+      //  alert(`Total items quantity should  equal to ${this.packageData.PackageDetails.PkgQty}`);
      }
     }
 

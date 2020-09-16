@@ -1058,10 +1058,10 @@ z-index: 99999!important;
 .description-dialog{
   padding: 12px;
 }
-.custom-currency-dialog{
-  margin-top: 15px;
-  border-bottom: 1px solid lightgrey;
-}
+// .custom-currency-dialog{
+//   margin-top: 15px;
+//   border-bottom: 1px solid lightgrey;
+// }
 .custom-border-wrapper{
   border-bottom: 0;
   margin-top: 5px;
@@ -1498,11 +1498,11 @@ owl-date-time-container{
 }
 
 .placed-order-wrapper{
-  background-color: #262262 !important; 
-    border-color: #262262 !important; 
-     border-radius: 5px; 
-    outline: 0; 
-    font-weight: 600; 
+  background-color: #262262 !important;
+    border-color: #262262 !important;
+     border-radius: 5px;
+    outline: 0;
+    font-weight: 600;
      border: 0;
      color: #fff;
      padding: 5px 0px 5px 2px;
@@ -1513,8 +1513,28 @@ owl-date-time-container{
   color: black !important;
 }
 
+.blue-button{
+  background-color: #262262;
+  color: #fff;
+}
+
+.readonly-number-input::-webkit-inner-spin-button,
+.readonly-number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 @media(max-width:320px) {
   .custom-items-add {
     font-size: 13px;
 }
+}
+
+.custom-increase-quantity{
+  position: absolute;
+  right: 20px;
+}
+.custom-bottom-line{
+  border-bottom: 1px solid lightgrey;
 }

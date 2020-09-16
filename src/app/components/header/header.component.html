@@ -7,12 +7,12 @@
       <!-- <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="Hooray!"></i> -->
     </div>
     <div class="custom-logout">
-      <i class="fa fa-sign-out" aria-hidden="true" (click)="logOut()"></i>
+      <i class="fa fa-sign-out" aria-hidden="true" *ngIf="loginres && loginresponseData.AuthenticateUser.userId !== 0"  (click)="logOut()"></i>
     </div>
   </div>
-    <div class="custom-user-wrapper">
-      <p class="custom-text-colour" *ngIf="loginres && loginresponseData.AuthenticateUser.userId !== 0">{{loginresponseData.AuthenticateUser.userName}}</p>
-      <p class="custom-text-colour" *ngIf="!loginres || loginresponseData.AuthenticateUser.userId === 0 ">User Name</p>
+    <div class="custom-user-wrapper" *ngIf="loginres && loginresponseData.AuthenticateUser.userId !== 0">
+      <p class="custom-text-colour" >{{loginresponseData.AuthenticateUser.userName}}</p>
+      <!-- <p class="custom-text-colour" *ngIf="!loginres || loginresponseData.AuthenticateUser.userId === 0">User Name</p> -->
       <i class="fa fa-user custom-fa-user" aria-hidden="true"></i>
     </div>
   </div>

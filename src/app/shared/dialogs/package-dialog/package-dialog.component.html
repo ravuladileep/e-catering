@@ -1,17 +1,17 @@
 <div class="modal-content">
   <div class="custom-dialog-header">
-    <h4 class="label-header-dialog">E-Catering - Package Contents</h4>
+    <h4 class="label-header-dialog">Package Contents</h4>
   </div>
   <div class="description-dialog">
     <div class="custom-package-items">
       <p class="custom-weight-font">{{ packageData?.PackageDetails?.packageName}}</p>
-      <p class="custom-font-dialog">BAKER'S BEST BASKET - ASSORTMENT OF OUR FINEST BRE</p>
+      <p class="custom-font-dialog">{{ packageData?.PackageDetails?.PkgDescription}}</p>
     </div>
     <div class="custom-currency-dialog d-flex justify-content-between">
       <p class="custom-weight-font">${{packageData?.PackageDetails?.packageCost}}</p>
       <div class="custom-addCart-Btn">
         <div class="" >
-          <input type="number" [(ngModel)]="packQuantity" class="quantity-input" [ngModel]="packageData?.PackageDetails?.PkgQty" min="1" >
+          <input type="number" (change)="changeTotalQty($event)"  id="pkgqty" class="quantity-input" [value]="packageData?.PackageDetails?.PkgQty" min="1" >
         </div>
       </div>
     </div>
@@ -20,19 +20,20 @@
                                                               packageData?.PackageDetails?.PkgQty> 0 &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0' &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0'">
-        Please select between {{packageData?.PackageDetails?.pkgMinItems}} and {{packageData?.PackageDetails?.pkgMaxItems}} items from this list. The total item quantity should be less than or equal to  {{packQuantity}}.
+      <span  *ngIf="packageData?.PackageDetails?.pkgMinItems !== packageData?.PackageDetails?.pkgMaxItems">Please select between {{packageData?.PackageDetails?.pkgMinItems}} and {{packageData?.PackageDetails?.pkgMaxItems}} items from this list. The total item quantity should be  equal to  {{packQuantity}}.</span>
+      <span *ngIf="packageData?.PackageDetails?.pkgMinItems === packageData?.PackageDetails?.pkgMaxItems">Please select {{packageData?.PackageDetails?.pkgMinItems}} item(s) from this list. The total item quantity should be  equal to  {{packQuantity}}.</span>
       </div>
       <div class="alert alert-info mt-2" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
           packageData?.PackageDetails?.PkgQty>0 &&
          packageData?.PackageDetails?.pkgMinItems ==='0' &&
         packageData?.PackageDetails?.pkgMinItems ==='0'">
-        Note : Please select your items from this list. The total item quantity should be less than or equal to {{packQuantity}}
+        Note : Please select your items from this list. The total item quantity should be  equal to {{packQuantity}}
       </div>
       <div *ngFor="let item of packageData?.PackageItems;let i=index;" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper">
         <p class="custom-weight-font">{{item.pkgItemname}}</p>
         <div class="custom-addCart-Btn">
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1'">
-            <input type="number"  [(ngModel)]="packItemQuantity[i]" class="quantity-input" [ngModel]="item['pkgItemQty']"   min="0">
+            <input type="number" [id]="item.pkgItemId"  class="quantity-input" [value]="item['pkgItemQty']"   min="0">
           </div>
         </div>
       </div>

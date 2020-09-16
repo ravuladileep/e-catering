@@ -54,8 +54,24 @@ export class OrderDetailsComponent implements OnInit {
     this.orderDetails.get('orderNumber').setValue(loginres.AuthenticateUser.newOrderId);
     }
     if(repeatOrderres){
-      this.orderDetails.get('orderNumber').setValue(repeatOrderres.OrderDetails.OrderId);
+      this.setRepeatOrderDetails();
     }
+  }
+
+  public setRepeatOrderDetails(){
+    const data = JSON.parse(sessionStorage.getItem('repeatOrderData')).OrderDetails;
+    this.orderDetails.get('orderNumber').setValue(data.OrderId);
+    this.orderDetails.get('orderName').setValue(data.OrderName);
+    this.orderDetails.get('orderType').setValue(data.OrderType);
+    this.orderDetails.get('date').setValue(new Date(data.DeliveryOrPickupDatetime));
+    this.orderDetails.get('name').setValue(data.GuestUserName);
+    this.orderDetails.get('phone').setValue(data.HomePhone);
+    this.orderDetails.get('email').setValue(data.email);
+    this.orderDetails.get('street').setValue(data.street);
+    // this.orderDetails.get('suite').setValue(e.suite);
+    this.orderDetails.get('city').setValue(data.city);
+    this.orderDetails.get('state').setValue(data.state);
+    this.orderDetails.get('zipCode').setValue(data.zip);
   }
 
   public selectChange(e){

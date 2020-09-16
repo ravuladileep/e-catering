@@ -46,12 +46,10 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
    */
 
   public confirmOrder(){
-    if(confirm('Are you sure want to confirm order')){
     this.spinner.show();
     this.orderService.confirmOrder(this.loginres.AuthenticateUser.userId).subscribe((res)=>{
       this.router.navigate(['order-confirmation']);
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
-    }
   }
 
   ngOnDestroy(): void {

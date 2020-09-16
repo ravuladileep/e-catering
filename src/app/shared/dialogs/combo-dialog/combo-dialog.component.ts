@@ -128,21 +128,20 @@ export class ComboDialogComponent implements OnInit {
         if(item.packType === "1"){
           if(item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
           item.filter(y => +y.itemQty > 0).length <= +item[0].maxItems &&
-          item.reduce((a, b) => +a + +b.itemQty, 0) <= +this.comboData.ComboDetails.comboQty
+          item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty
           ){
             result.push(true);
           }else{
-            console.log(item,'jjj')
-            alert(`${item[0].packName} The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
+            alert(`For this Package-${item[0].packName} The Total item quantity should be  equal to  ${this.comboQuantityTotal}.`)
             result.push(false);
           }
         }
         // if packtype not equal to one
         if(item.packType !== "1"){
-          if(item.reduce((a, b) => +a + +b.itemQty, 0) <= +this.comboData.ComboDetails.comboQty){
+          if(item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{
-            alert(`${item[0].packName} The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
+            alert(`For this Package-${item[0].packName} The Total item quantity should be equal to  ${this.comboQuantityTotal}.`)
             result.push(false);
           }
         }

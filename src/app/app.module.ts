@@ -35,11 +35,13 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { OrderService } from './services/order.service';
 import { DomsanitizePipe } from './shared/pipes/domsanitize.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ValidationAlertDialogComponent } from './shared/dialogs/validation-alert-dialog/validation-alert-dialog.component';
 
 @NgModule({
   entryComponents: [
     PackageDialogComponent,
-    ComboDialogComponent
+    ComboDialogComponent,
+    ValidationAlertDialogComponent
   ],
   declarations: [
     AppComponent,
@@ -59,7 +61,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     PackageDialogComponent,
     ComboDialogComponent,
     CaterThemeOneComponent,
-    DomsanitizePipe
+    DomsanitizePipe,
+    ValidationAlertDialogComponent
   ],
   imports: [
     BrowserModule,
