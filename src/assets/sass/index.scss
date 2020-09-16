@@ -1508,3 +1508,11 @@ owl-date-time-container{
   background-color: #262262;
   color: #fff;
 }
+
+.readonly-number-input::-webkit-inner-spin-button,
+.readonly-number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}

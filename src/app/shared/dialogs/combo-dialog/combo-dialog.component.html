@@ -34,7 +34,7 @@
       <p class="custom-weight-font">Items</p>
       <div  *ngFor="let item of itemsList" class="d-flex justify-content-between m-1" >
         <p >{{item.itemName}}</p>
-        <input readonly type="number" class="quantity-input" [id]="item.itemId" [value]="item.itemQty">
+        <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId" [value]="item.itemQty">
       </div>
     </div>
     <div class="d-flex justify-content-center">
