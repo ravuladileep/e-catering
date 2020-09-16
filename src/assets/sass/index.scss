@@ -38,7 +38,7 @@ body {
   .icons-wrapper{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-size: 20px;
   }
 //   @media(min-width:320px){}
@@ -510,10 +510,10 @@ body {
 
   .custom-add-more{
   // min-height: 195px;
-  margin-top: 20px;
+  // margin-top: 20px;
   }
 
-  .lodaer-width{
+  .loader-width{
     min-width: 67%;
   }
 
@@ -989,7 +989,7 @@ opacity: 0.5;
     font-size: 22px;
     background: #262262;
     color: #fff;
-    min-width: 538px;
+    // min-width: 538px;
   }
 
   .custom-hidden-text{
@@ -1511,4 +1511,10 @@ owl-date-time-container{
 .custom-select-color-wrapper{
   background: #fff !important;
   color: black !important;
+}
+
+@media(max-width:320px) {
+  .custom-items-add {
+    font-size: 13px;
+}
 }
