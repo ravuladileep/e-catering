@@ -33,6 +33,7 @@ export class RecipeComponent
   public subCategory = [];
   public loading = false;
 
+
   constructor(
     private cartService: CartService,
     private spinner: NgxSpinnerService,
@@ -152,6 +153,38 @@ export class RecipeComponent
 
   ngDoCheck() {
     this.calcReviewCount();
+    this.assignPackageQty();
+    this.assignComboQty();
+  }
+
+  /**
+   * function : assignPackageQty
+   * purpose  : when package modal open and close updating the quantity in menuitems
+   */
+
+  public assignPackageQty(){
+    this.cartService.cart.package.forEach((cartItem) => {
+      this.newMenu.forEach((menuItem) => {
+        if (cartItem.PackageDetails.EcateringItemId === menuItem.itemId) {
+          menuItem.quantity = +cartItem.PackageDetails.PkgQty;
+        }
+      });
+    });
+  }
+
+  /**
+   * function : assignComboQty
+   * purpose  : when combo modal open and close updating the quantity in menuitems
+   */
+
+  public assignComboQty(){
+    this.cartService.cart.combo.forEach((cartItem) => {
+      this.newMenu.forEach((menuItem) => {
+        if (cartItem.ComboDetails.EcateringItemId === menuItem.itemId) {
+          menuItem.quantity = +cartItem.ComboDetails.comboQty;
+        }
+      });
+    });
   }
 
   /**
@@ -161,6 +194,7 @@ export class RecipeComponent
    */
 
   public addToCart(product) {
+    // combo
     if (product.packageComboFlag === 2) {
       this.modalService.show(ComboDialogComponent, {
        class: 'modal-dialog-custom modal-lg modal-dialog-centered',
@@ -169,13 +203,17 @@ export class RecipeComponent
      });
    }
 
+  //  package
+
     if (product.packageComboFlag === 1) {
-       this.modalService.show(PackageDialogComponent, {
+     this.modalService.show(PackageDialogComponent, {
         class: 'modal-dialog-custom modal-lg modal-dialog-centered',
         initialState: { product },
         keyboard: false,
       });
     }
+
+    // menuitem
     if (product.packageComboFlag === 0){
       product.quantity++;
       const productExistInCart = this.cartService.cart.menuItems.find(
@@ -197,6 +235,41 @@ export class RecipeComponent
    */
 
   public decreaseQuantity(product) {
+
+    // decreasing if product is combo
+    if (product.packageComboFlag === 2) {
+      if(product.quantity === 1){
+        this.cartService.cart.combo.forEach((cartItem,i) => {
+          if (cartItem.ComboDetails.EcateringItemId === product.itemId) {
+            this.cartService.cart.combo.splice(i,1);
+          }
+        });
+        }else {
+          this.modalService.show(ComboDialogComponent, {
+            class: 'modal-dialog-custom modal-lg modal-dialog-centered',
+            initialState: { product },
+            keyboard: false,
+          });
+        }
+      }
+
+    // decreasing if product is package
+    if (product.packageComboFlag === 1) {
+      if(product.quantity === 1){
+        this.cartService.cart.package.forEach((cartItem,i) => {
+          if (cartItem.PackageDetails.EcateringItemId === product.itemId) {
+            this.cartService.cart.package.splice(i,1);
+          }
+        });
+        }else {
+          this.modalService.show(PackageDialogComponent, {
+            class: 'modal-dialog-custom modal-lg modal-dialog-centered',
+            initialState: { product },
+            keyboard: false,
+          });
+        }
+      }
+
     product.quantity--;
     if (product.quantity === 0) {
       this.cartService.cart.menuItems.forEach((x, i) => {
@@ -234,7 +307,7 @@ export class RecipeComponent
   }
 
   ngOnDestroy(): void {}
-  
+
 // toggle
   icontoggle() {
     $('#sidebar-wrapper').toggleClass('hide');
