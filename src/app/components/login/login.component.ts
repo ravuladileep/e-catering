@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private router: Router,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
     this.loginForm();
@@ -34,19 +36,38 @@ export class LoginComponent implements OnInit {
   }
 
   submit(): void {
-    this.spinner.show();
-    this.authService.login(this.loginData.userName.value, this.loginData.password.value)
-    .subscribe((res) => {
-      if(res.AuthenticateUser.userId === 0){
-        this.loginError = true;
-        this.spinner.hide();
-        return;
-      }else {
-        sessionStorage.setItem('loginResponse', JSON.stringify(res))
-        console.log('login success',res)
-        this.router.navigate(['order-details']);
-        this.spinner.hide();
-      }
-    }, (err)=> {this.spinner.hide()}, ()=> {this.spinner.hide()});
-  }
+    if(this.cartService.loginFromHome.getValue() === true){
+      this.spinner.show();
+      this.authService.login(this.loginData.userName.value, this.loginData.password.value)
+      .subscribe((res) => {
+        if(res.AuthenticateUser.userId === 0){
+          this.loginError = true;
+          this.spinner.hide();
+          return;
+        }else {
+          sessionStorage.setItem('loginResponse', JSON.stringify(res))
+          this.router.navigate(['orders-list']);
+          this.spinner.hide();
+        }
+      }, (err)=> {this.spinner.hide();}, ()=> {this.spinner.hide()});
+    }else {
+      this.spinner.show();
+      this.authService.login(this.loginData.userName.value, this.loginData.password.value)
+      .subscribe((res) => {
+        if(res.AuthenticateUser.userId === 0){
+          this.loginError = true;
+          this.spinner.hide();
+          return;
+        }else {
+          sessionStorage.setItem('loginResponse', JSON.stringify(res))
+          console.log('login success',res)
+          this.router.navigate(['order-details']);
+          this.spinner.hide();
+        }
+      }, (err)=> {this.spinner.hide()}, ()=> {this.spinner.hide()});
+    }
+    }
+
+
+
 }

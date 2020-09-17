@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,8 @@ export class CartService {
     package   : [],
     combo     : []
   };
+
+  public loginFromHome = new BehaviorSubject(null);
 
 
   constructor(private http: HttpClient){

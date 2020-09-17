@@ -33,4 +33,9 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.cartService.cart.package  = [];
   }
 
+  loginFromHome(){
+    this.cartService.loginFromHome.next(true);
+    this.router.navigate(['login']);
+  }
+
 }

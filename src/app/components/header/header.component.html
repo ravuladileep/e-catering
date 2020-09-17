@@ -8,6 +8,7 @@
     </div>
     <div class="custom-logout">
       <i class="fa fa-sign-out" aria-hidden="true" *ngIf="loginres && loginresponseData.AuthenticateUser.userId !== 0"  (click)="logOut()"></i>
+      <span *ngIf="!loginres" (click)="loginFromHome();" >login</span>
     </div>
   </div>
     <div class="custom-user-wrapper" *ngIf="loginres && loginresponseData.AuthenticateUser.userId !== 0">

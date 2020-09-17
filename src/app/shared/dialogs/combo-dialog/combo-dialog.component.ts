@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 declare var $:any;
@@ -8,7 +8,7 @@ declare var $:any;
   templateUrl: './combo-dialog.component.html',
   styleUrls: ['./combo-dialog.component.scss']
 })
-export class ComboDialogComponent implements OnInit {
+export class ComboDialogComponent implements OnInit, OnDestroy {
   public comboData;
   public comboQuantityTotal;
   public packNames = [];
@@ -92,6 +92,12 @@ export class ComboDialogComponent implements OnInit {
   }
 
   public onSave(){
+    this.cartService.cart.combo.forEach((x,i)=>{
+      if(this.comboData.ComboDetails.comboId === x.ComboDetails.comboId){
+        sessionStorage.setItem('tempComboData', JSON.stringify(this.cartService.cart.combo[i]));
+      }
+    });
+
     this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
     this.comboData.ComboItems.forEach((x)=>{
       if(x.packageId !== '0'){
@@ -125,7 +131,7 @@ export class ComboDialogComponent implements OnInit {
     itemsForValidation.forEach((x,i) => {
       x.forEach(item => {
         // if packtype one
-        if(item.packType === "1"){
+        if(item[0].packType === "1"){
           if(item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
           item.filter(y => +y.itemQty > 0).length <= +item[0].maxItems &&
           item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty
@@ -137,7 +143,7 @@ export class ComboDialogComponent implements OnInit {
           }
         }
         // if packtype not equal to one
-        if(item.packType !== "1"){
+        if(item[0].packType !== "1"){
           if(item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{
@@ -151,6 +157,7 @@ export class ComboDialogComponent implements OnInit {
 
     if(result.includes(false)){
       console.log('err')
+      this.onValidationError();
       // alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
     }else {
       console.log('take order');
@@ -159,6 +166,14 @@ export class ComboDialogComponent implements OnInit {
 
   }
 
+  onValidationError(){
+    let data = JSON.parse(sessionStorage.getItem('tempComboData'));
+    this.cartService.cart.combo.forEach((x,i)=>{
+      if(x.ComboDetails.comboId === data.ComboDetails.comboId){
+        this.cartService.cart.combo[i] = JSON.parse(sessionStorage.getItem('tempComboData'));
+      }
+    });
+  }
 
 
   public takeOrder(){
@@ -177,6 +192,10 @@ export class ComboDialogComponent implements OnInit {
       this.cartService.cart.combo.push(this.comboData);
     }
     this.modalRef.hide();
+  }
+
+  ngOnDestroy(){
+    sessionStorage.removeItem('tempComboData');
   }
 
 }
