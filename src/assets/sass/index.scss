@@ -564,7 +564,7 @@ body {
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
-  width: 50%;
+  width: 30%;
   margin-top: 3px;
   height: 32px;
   }
@@ -879,7 +879,8 @@ opacity: 0.5;
 }
 .custom-signIN{
   margin: 0px 1px 0px 0px !important;
-  width: 25% !important;
+  width: 20% !important;
+  float: none !important;
   // border-radius: 5px;
 }
 
@@ -887,6 +888,12 @@ opacity: 0.5;
 // order details styles
 .order-details-submit:disabled{
   opacity: 0.5;
+}
+
+.custom-align-order-screen{
+  display: flex;
+  justify-content: center;
+  margin-top: 135px;
 }
 
 .input-group {
@@ -938,8 +945,9 @@ opacity: 0.5;
   color: darkslategrey;
 }
 .contact-submit {
-  margin: 5px 0px 0px 0px !important;
-  width: 28% !important;
+  margin: 5px -34px 0px 40px !important;
+  width: 26% !important;
+  float: none !important;
 }
 
 .custom-details-select-box{
@@ -1326,7 +1334,6 @@ owl-date-time-container{
 }
 .card-product .info-wrap {
   overflow: hidden;
-  // padding: 0px 0px 0px 20px;
   border-top: 1px solid #eee;
 }
 .card-product .bottom-wrap {
@@ -1396,12 +1403,9 @@ owl-date-time-container{
   font-weight: 600;
   margin: 0 5px 0px 0px;
   font-size: 15px;
-  // margin: 0 -8px 0px 0px;
+  
 }
-// .foodie{
-//     min-width: 130px;
-//     height: 160px;
-// }
+
 
 .width-alignments-description{
   padding: 0px 0px 0px 20px;

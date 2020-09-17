@@ -72,7 +72,7 @@
     <div class="d-flex justify-content-center">
     <button type="button"   *ngIf="repeatOrderData" [routerLink]="['/order-details']" routerLinkActive="router-link-active"   class="custom-items-add">Continue</button>
   </div>
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-center">
     <button type="button"  *ngIf="!repeatOrderData"  (click)="checkOutGuest()"  class="custom-items-add">Checkout As Guest</button>
     <button type="button"  *ngIf="!repeatOrderData" (click)="checkOutUser()"   class="custom-items-add">Checkout As User</button>
   </div>
