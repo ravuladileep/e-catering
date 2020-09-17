@@ -1553,6 +1553,15 @@ owl-date-time-container{
   padding: 10px;
 }
 
+.custom-bg-package{
+  background: #f1f3f5;
+}
+
 // .alert {
 //   padding: 0.75rem 0.25rem !important;
 // }
+
+.package-right-quantity{
+  display: flex;
+  justify-content: flex-end;
+}
