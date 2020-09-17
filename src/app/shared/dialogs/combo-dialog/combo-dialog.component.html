@@ -5,15 +5,14 @@
   <div class="description-dialog">
     <div class="d-flex custom-bottom-line">
     <div class="custom-package-items">
-      <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}}</p>
+      <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}} </p>
       <p class="custom-font-dialog"> {{ comboData?.ComboDetails?.comboDescription }}</p>
     </div>
     <div class="custom-currency-dialog d-flex justify-content-between">
       <p class="custom-weight-font ml-1">- ${{comboData?.ComboDetails?.comboCost}}</p>
       <div class="custom-addCart-Btn">
         <div class="custom-increase-quantity" >
-            <span class="mr-2">${{comboData?.ComboDetails?.comboCost}}</span> <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
-
+            <span class="mr-2" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</span> <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
         </div>
       </div>
     </div>

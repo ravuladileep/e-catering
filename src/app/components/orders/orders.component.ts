@@ -56,4 +56,9 @@ export class OrdersComponent implements OnInit {
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide();});
   }
 
+  checkOutUser(){
+    this.cartService.loginFromHome.next(null);
+    this.router.navigate(['login']);
+  }
+
 }
