@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-validation-alert-dialog',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidationAlertDialogComponent implements OnInit {
   public message;
-  constructor() { }
+  constructor(private modalRef: BsModalRef) { }
 
   ngOnInit(): void {
+  }
+
+  closeModal(){
+    this.modalRef.hide();
   }
 
 }

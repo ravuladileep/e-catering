@@ -7,12 +7,11 @@
     <div class="d-flex">
     <div class="custom-package-items">
       <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}} </p>
-     
     </div>
     <div class="custom-currency-dialog">
       <p class="custom-weight-font ml-1">- ${{comboData?.ComboDetails?.comboCost}}</p>
       <div class="custom-addCart-Btn">
-       
+
       </div>
     </div>
   </div>
@@ -20,7 +19,8 @@
   <p class="ml-1">{{ comboData?.ComboDetails?.comboDescription}}</p>
 </div>
  <div class="custom-increase-quantity mr-3" >
-    <span class="mr-2 mt-1" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</span> <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
+    <span class="mr-2 mt-1" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</span>
+      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
 
         </div>
     </div>
@@ -28,8 +28,8 @@
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper custom-dialog-specific">
         <p class="custom-weight-font  text-primary custom-title-margin"> {{item.packName}}</p>
         <div class="alert alert-info mt-2" role="alert">
-          <span *ngIf="item.minItems !== item.minItems"> Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
-          <span *ngIf="item.minItems === item.minItems"> Please select {{item.minItems}} item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
+          <span *ngIf="item.minItems !== item.maxItems"> Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
+          <span *ngIf="item.minItems === item.maxItems"> Please select {{item.minItems}} item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
         </div>
         <ng-container *ngFor="let data of comboData?.ComboItems;let i=index;">
             <div class="d-flex justify-content-between m-1" *ngIf="item.packName === data.packName">
@@ -40,7 +40,7 @@
 
       </div>
       <div class="mt-3 custom-dialog-specific">
-      <p class="custom-weight-font">Items</p>
+      <!-- <p class="custom-weight-font">Items</p> -->
       <div  *ngFor="let item of itemsList" class="d-flex justify-content-between m-1" >
         <p >{{item.itemName}}</p>
         <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId" [value]="item.itemQty">
