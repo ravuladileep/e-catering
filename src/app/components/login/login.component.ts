@@ -37,7 +37,19 @@ export class LoginComponent implements OnInit {
 
   submit(): void {
     if(this.cartService.loginFromHome.getValue() === true){
-      this.router.navigate(['orders-list']);
+      this.spinner.show();
+      this.authService.login(this.loginData.userName.value, this.loginData.password.value)
+      .subscribe((res) => {
+        if(res.AuthenticateUser.userId === 0){
+          this.loginError = true;
+          this.spinner.hide();
+          return;
+        }else {
+          sessionStorage.setItem('loginResponse', JSON.stringify(res))
+          this.router.navigate(['orders-list']);
+          this.spinner.hide();
+        }
+      }, (err)=> {this.spinner.hide();}, ()=> {this.spinner.hide()});
     }else {
       this.spinner.show();
       this.authService.login(this.loginData.userName.value, this.loginData.password.value)
