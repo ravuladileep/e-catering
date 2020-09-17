@@ -7,9 +7,9 @@
     <div class="d-flex">
     <div class="custom-package-items">
       <p class="custom-weight-font">{{ packageData?.PackageDetails?.packageName}}</p>
-      <p class="custom-font-dialog">{{ packageData?.PackageDetails?.PkgDescription}}</p>
+      <!-- <p class="custom-font-dialog">{{ packageData?.PackageDetails?.PkgDescription}}</p> -->
     </div>
-  
+
     <div class="custom-currency-dialog d-flex justify-content-between">
       <p class="custom-weight-font">-  ${{packageData?.PackageDetails?.packageCost}}</p>
       <!-- <div class="custom-addCart-Btn">
@@ -20,11 +20,11 @@
     </div>
     </div>
     <div>
-        <p class="ml-1">Description</p>
+        <p class="ml-1">{{packageData?.PackageDetails?.PkgDescription}}</p>
       </div>
       <div class="custom-addCart-Btn">
         <div class="package-right-quantity" >
-            <span class="mr-2 mt-1">$299</span><input type="number" (change)="changeTotalQty($event)"  id="pkgqty" class="quantity-input" [value]="packageData?.PackageDetails?.PkgQty" min="1" >
+            <span class="mr-2 mt-1" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</span><input type="number" (change)="changeTotalQty($event)"  id="pkgqty" class="quantity-input" [value]="packageData?.PackageDetails?.PkgQty" min="1" >
         </div>
       </div>
 

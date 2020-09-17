@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ValidationAlertDialogComponent } from '../validation-alert-dialog/validation-alert-dialog.component';
 declare var $:any;
 
 @Component({
@@ -14,7 +15,7 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
   public packNames = [];
   public itemsList = [];
   public product; // coming from component reciepe component as intial value
-  constructor(private cartService: CartService, private modalRef: BsModalRef) { }
+  constructor(private cartService: CartService, private modalRef: BsModalRef, private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.getComboItems(this.product.itemId);
@@ -71,6 +72,7 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
             this.comboData.ComboDetails = ComboDetails;
             this.comboData.ComboItems = ComboItems;
             $(`#comboqtyid`).val(+this.comboData.ComboDetails.comboQty);
+            this.comboQuantityTotal = this.comboData.ComboDetails.comboQty;
             this.comboData.ComboItems.forEach((x) => {
               if(x.packageId !== '0'){
                  $(`#${x.itemId}`).val(x.itemQty);
@@ -138,8 +140,13 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
           ){
             result.push(true);
           }else{
-            alert(`For this Package-${item[0].packName} The Total item quantity should be  equal to  ${this.comboQuantityTotal}.`)
+            this.modalService.show(ValidationAlertDialogComponent, {
+              class: 'modal-dialog-custom ',
+              initialState: { message : `For  Package- ${item[0].packName.bold()} <br> The Total item quantity should be  equal to  ${this.comboQuantityTotal}.` },
+              keyboard: false,
+            });
             result.push(false);
+            // alert(`For  Package-${item[0].packName} \n The Total item quantity should be  equal to  ${this.comboQuantityTotal}.`)
           }
         }
         // if packtype not equal to one
@@ -147,8 +154,13 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
           if(item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{
-            alert(`For this Package-${item[0].packName} The Total item quantity should be equal to  ${this.comboQuantityTotal}.`)
+            this.modalService.show(ValidationAlertDialogComponent, {
+              class: 'modal-dialog-custom ',
+              initialState: { message : `For  Package- ${item[0].packName.bold()} <br> The Total item quantity should be equal to  ${this.comboQuantityTotal}.` },
+              keyboard: false,
+            });
             result.push(false);
+            // alert(`For  Package-${item[0].packName} \n The Total item quantity should be equal to  ${this.comboQuantityTotal}.`)
           }
         }
 
