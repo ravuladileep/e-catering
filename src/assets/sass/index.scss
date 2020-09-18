@@ -997,6 +997,7 @@ opacity: 0.5;
     font-size: 22px;
     background: #262262;
     color: #fff;
+    width: 100%;
     // min-width: 538px;
   }
 
@@ -1534,6 +1535,7 @@ owl-date-time-container{
 @media(max-width:320px) {
   .custom-items-add {
     font-size: 13px;
+    width: 50%;
 }
 }
 
