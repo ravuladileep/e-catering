@@ -1,9 +1,16 @@
 <div class="">
   <div class="custom-dialog-header sticky-top">
-    <h4 class="label-header-dialog">Combo Contents</h4>
+    <h4 class="label-header-dialog">Combo Name</h4>
   </div>
   <div class="description-dialog">
-    <div class="custom-bottom-line">
+    <div class="d-flex justify-content-between">
+        <img src="assets/images/cater/01.png" alt="" class="foodie">
+      <p>Description with static data</p>
+      <p>$12.25</p>
+      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
+      <p class="mr-3">$100.00</p>
+    </div>
+    <!-- <div class="custom-bottom-line">
     <div class="d-flex">
     <div class="custom-package-items">
       <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}} </p>
@@ -23,8 +30,8 @@
       <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
 
         </div>
-    </div>
-    <div>
+    </div> -->
+    <div class="custom-dialog-scroll-box">
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper custom-dialog-specific">
         <p class="custom-weight-font  text-primary custom-title-margin"> {{item.packName}}</p>
         <div class="alert alert-info mt-2" role="alert">
@@ -33,7 +40,7 @@
         </div>
         <ng-container *ngFor="let data of comboData?.ComboItems;let i=index;">
             <div class="d-flex justify-content-between m-1" *ngIf="item.packName === data.packName">
-              <p >{{data.itemName}}</p>
+              <p class="custom-sub-item-font">{{data.itemName}}</p>
               <input type="number"  class="quantity-input"   [id]="data.itemId" [value]="data.itemQty" min="0" >
             </div>
         </ng-container>
@@ -42,7 +49,7 @@
       <div class="mt-3 custom-dialog-specific">
       <!-- <p class="custom-weight-font">Items</p> -->
       <div  *ngFor="let item of itemsList" class="d-flex justify-content-between m-1" >
-        <p >{{item.itemName}}</p>
+        <p class="custom-item-modal-dialog" >{{item.itemName}}</p>
         <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId" [value]="item.itemQty">
       </div>
     </div>

@@ -950,6 +950,26 @@ opacity: 0.5;
   float: none !important;
 }
 
+.custom-dialog-scroll-box{
+  overflow-y: scroll;
+    height: 405px;
+    margin-top: 10px;
+}
+
+.alert-info {
+  font-family: monospace;
+ 
+}
+
+.custom-item-modal-dialog{
+  color: orangered;
+  font-weight: 600;
+}
+
+.custom-sub-item-font{
+  font-size: 14px;
+}
+
 .custom-details-select-box{
   width: 273px;
   margin-bottom: 10px;
@@ -1049,14 +1069,24 @@ z-index: 99999!important;
 
 .modal-content{
   // min-height: 350px;
-  max-height: 500px;
+  max-height: fit-content;
     overflow: auto;
+}
+
+.modal-open .modal {
+  overflow-y: hidden;
 }
 
 .custom-dialog-header{
   padding: 10px 0px 1px 10px;
     background: #262262;
+    display: flex;
+    justify-content: center;
 
+}
+
+.custom-combo-scroll{
+  max-height: fit-content !important;
 }
 
 .label-header-dialog{
@@ -1074,7 +1104,7 @@ z-index: 99999!important;
 // }
 .custom-border-wrapper{
     border-bottom: 0;
-    margin-top: 10px;
+    // margin-top: 10px;
 }
 .pull-right{
   margin-top: 10px;
@@ -1086,7 +1116,9 @@ z-index: 99999!important;
 }
 .custom-weight-font{
   font-weight: 600;
-  margin: 0 5px;
+    margin: 0 5px;
+    color: blue !important;
+    opacity: .8;
 }
 .custom-font-dialog{
   font-size: 15px;
