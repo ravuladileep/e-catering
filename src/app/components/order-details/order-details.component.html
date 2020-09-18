@@ -102,9 +102,9 @@
 
       <span>Notes:</span>
       <textarea formControlName="notes" class="form-control" rows="3"></textarea>
-<div class="custom-align-order-screen">
-      <input type="submit" name="submit"  [disabled]="!orderDetails.valid" value="Place Order" class="submit order-details-submit contact-submit">
+    <div class="custom-align-order-screen">
       <input type="button" name="back" value="Back" [routerLink]="['/orders']" routerLinkActive="router-link-active"  class="submit contact-submit">
+      <input type="submit" name="submit"   [disabled]="!orderDetails.valid" value="Place Order" class="submit order-details-submit contact-submit">
     </div>
     </form>
     </div>
