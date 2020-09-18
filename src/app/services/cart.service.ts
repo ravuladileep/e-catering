@@ -12,6 +12,7 @@ export class CartService {
     package   : [],
     combo     : []
   };
+  public subSectionId$ = new BehaviorSubject(null);
 
   public loginFromHome = new BehaviorSubject(null);
 

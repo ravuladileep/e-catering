@@ -36,6 +36,8 @@ import { OrderService } from './services/order.service';
 import { DomsanitizePipe } from './shared/pipes/domsanitize.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ValidationAlertDialogComponent } from './shared/dialogs/validation-alert-dialog/validation-alert-dialog.component';
+import { CaterThemeOneHeaderComponent } from './components/cater-theme-one-header/cater-theme-one-header.component';
+import { CaterThemeOneItemsComponent } from './components/cater-theme-one-items/cater-theme-one-items.component';
 
 @NgModule({
   entryComponents: [
@@ -62,7 +64,9 @@ import { ValidationAlertDialogComponent } from './shared/dialogs/validation-aler
     ComboDialogComponent,
     CaterThemeOneComponent,
     DomsanitizePipe,
-    ValidationAlertDialogComponent
+    ValidationAlertDialogComponent,
+    CaterThemeOneHeaderComponent,
+    CaterThemeOneItemsComponent
   ],
   imports: [
     BrowserModule,
