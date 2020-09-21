@@ -1,0 +1,39 @@
+<div class="custom-theme-description">
+  <h3 class="custom-main-course">MAINS</h3>
+  <p class="sub-description-text-cater">6 oz servings unless otherwise specified</p>
+</div>
+
+
+
+<div class="container card-container">
+<div class="row">
+<div class="col-md-4" *ngFor="let item of subSectionMenu">
+    <figure class="card card-product">
+        <div class="img-wrap"></div>
+        <figcaption class="info-wrap">
+            <div class="custom-image-wrap-container">
+            <div class="width-alignments-description">
+                <h4 class="title">{{item.itemName}}</h4>
+                <p class="desc">${{item.price}}</p>
+                <p class="label-rating">2 per order| GF |DF</p>
+                <div class="cart-buttons d-flex">
+                    <button type="button" class="button-customize">Customize</button>
+
+                    <button type="button" class="theme-button-width-alignment">ADD</button>
+
+                </div>
+            </div>
+            <div>
+                    <img src="assets/images/cater/01.png" alt="" class="foodie foodie-theme">
+            </div>
+        </div>
+
+        </figcaption>
+
+
+    </figure>
+</div>
+
+
+</div>
+</div>

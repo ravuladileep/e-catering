@@ -9,7 +9,7 @@ declare var $:any;
   templateUrl: './package-dialog.component.html',
   styleUrls: ['./package-dialog.component.scss']
 })
-export class PackageDialogComponent implements OnInit, OnDestroy {
+export class PackageDialogComponent implements OnInit {
   public packageData;
   public packQuantity;
   public packItemQuantity = [];
@@ -48,8 +48,8 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
       this.cartService.cart.package.find(
         ({ PackageDetails, PackageItems }) => {
           if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
-            this.packageData.PackageDetails = PackageDetails;
-            this.packageData.PackageItems = PackageItems;
+            this.packageData['PackageDetails'] = JSON.parse(JSON.stringify(PackageDetails));
+            this.packageData['PackageItems'] = JSON.parse(JSON.stringify(PackageItems));
             // this.packQuantity =  this.packageData.PackageDetails.PkgQty;
             $(`#pkgqty`).val(+this.packageData.PackageDetails.PkgQty);
             this.packQuantity =  +$(`#pkgqty`).val()
@@ -64,12 +64,6 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
-    this.cartService.cart.package.forEach((x,i)=>{
-      if(this.packageData.PackageDetails.packageId === x.PackageDetails.packageId){
-        sessionStorage.setItem('tempPackageData', JSON.stringify(this.cartService.cart.package[i]));
-      }
-    });
-
     // assing the quantities onSubmit
     this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
     this.packageData.PackageItems.forEach((x,i) => {
@@ -100,7 +94,6 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
             initialState: { message : `Please select between ${this.packageData?.PackageDetails?.pkgMinItems} and ${this.packageData?.PackageDetails?.pkgMaxItems} items from this list. The total item quantity should be equal to  ${this.packQuantity}.` },
             keyboard: false,
           });
-          this.onValidationError();
           // alert(`Please select between ${this.packageData?.PackageDetails?.pkgMinItems} and ${this.packageData?.PackageDetails?.pkgMaxItems} items from this list. The total item quantity should be equal to  ${this.packQuantity}.`);
         }else{
           this.modalService.show(ValidationAlertDialogComponent, {
@@ -108,7 +101,6 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
             initialState: { message : `Please select ${this.packageData?.PackageDetails?.pkgMinItems} item(s) from this list. The total item quantity should be  equal to  ${this.packQuantity}.` },
             keyboard: false,
           });
-          this.onValidationError();
           // alert(`Please select ${this.packageData?.PackageDetails?.pkgMinItems} item(s) from this list. The total item quantity should be  equal to  ${this.packQuantity}.`);
         }
       }
@@ -126,7 +118,6 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
         initialState: { message : `Total items quantity should  equal to ${this.packageData.PackageDetails.PkgQty}` },
         keyboard: false,
       });
-      this.onValidationError();
       //  alert(`Total items quantity should  equal to ${this.packageData.PackageDetails.PkgQty}`);
      }
     }
@@ -138,25 +129,14 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
 
   }
 
-  onValidationError(){
-    let data = JSON.parse(sessionStorage.getItem('tempPackageData'));
-    this.cartService.cart.package.forEach((x,i)=>{
-      if(x.PackageDetails.packageId === data.PackageDetails.packageId){
-        this.cartService.cart.package[i] = JSON.parse(sessionStorage.getItem('tempPackageData'));
-      }
-    });
-  }
 
 
   takeOrder(){
-    this.cartService.cart.package.find(
-      ({ PackageDetails, PackageItems }) => {
-        if(PackageDetails.packageId === this.packageData.PackageDetails.packageId) {
-            PackageDetails =  this.packageData.PackageDetails;
-            PackageItems = this.packageData.PackageItems;
-        }
+    this.cartService.cart.package.forEach((x,i)=>{
+      if(this.packageData.PackageDetails.packageId === x.PackageDetails.packageId){
+       this.cartService.cart.package[i] = this.packageData;
       }
-    );
+    });
     const productExistInCart = this.cartService.cart.package.find(
       ({ PackageDetails }) => PackageDetails.packageId === this.packageData.PackageDetails.packageId);
 
@@ -166,8 +146,5 @@ export class PackageDialogComponent implements OnInit, OnDestroy {
     this.modalRef.hide();
   }
 
-  ngOnDestroy(){
-    sessionStorage.removeItem('tempPackageData')
-  }
 
 }
