@@ -14,6 +14,7 @@ export class PackageDialogComponent implements OnInit {
   public packQuantity;
   public packItemQuantity = [];
   public itemsTotalQuantity;
+  public showSummary = false;
   public product; // coming from component reciepe component as intial value
   constructor(private cartService: CartService, private modalRef: BsModalRef, private modalService: BsModalService) { }
 
@@ -63,12 +64,22 @@ export class PackageDialogComponent implements OnInit {
     }
   }
 
-  onSave(): void {
-    // assing the quantities onSubmit
+
+  summary(){
+    this.showSummary = true;
     this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
     this.packageData.PackageItems.forEach((x,i) => {
       x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
     });
+  }
+
+  onSave(): void {
+    this.showSummary = false;
+    // assing the quantities onSubmit
+    // this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
+    // this.packageData.PackageItems.forEach((x,i) => {
+    //   x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
+    // });
 
     // validating whether total quantity lessthan the packageqty
     let Total = []

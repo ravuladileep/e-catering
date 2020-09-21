@@ -2,7 +2,7 @@ import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ValidationAlertDialogComponent } from '../validation-alert-dialog/validation-alert-dialog.component';
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'app-combo-dialog',
@@ -14,6 +14,8 @@ export class ComboDialogComponent implements OnInit {
   public comboQuantityTotal;
   public packNames = [];
   public itemsList = [];
+  public showSummary = false;
+  summaryData;
   public product; // coming from component reciepe component as intial value
   constructor(private cartService: CartService, private modalRef: BsModalRef, private modalService: BsModalService) { }
 
@@ -49,10 +51,10 @@ export class ComboDialogComponent implements OnInit {
     let temp = new Map();
     let temp2 = [];
     for (let obj of this.comboData.ComboItems) {
-      if(obj.packageId !== '0') {
+      if (obj.packageId !== '0') {
       temp.set(obj.packName, obj);
       }
-      if(obj.packageId === '0') {
+      if (obj.packageId === '0') {
       temp2.push(obj);
       }
     }
@@ -65,16 +67,16 @@ export class ComboDialogComponent implements OnInit {
    * purpose : if the selected item already in the cart we are assigning the quantity on load
    */
   public assignQuantity(){
-    if(this.cartService.cart.combo.length){
+    if (this.cartService.cart.combo.length){
       this.cartService.cart.combo.find(
         ({ ComboDetails, ComboItems }) => {
-          if(ComboDetails.comboId === this.comboData.ComboDetails.comboId) {
+          if (ComboDetails.comboId === this.comboData.ComboDetails.comboId) {
             this.comboData.ComboDetails = JSON.parse(JSON.stringify(ComboDetails)) ;
             this.comboData.ComboItems = JSON.parse(JSON.stringify(ComboItems));
             $(`#comboqtyid`).val(+this.comboData.ComboDetails.comboQty);
-            this.comboQuantityTotal = this.comboData.ComboDetails.comboQty;
+            this.comboQuantityTotal =  $(`#comboqtyid`).val();
             this.comboData.ComboItems.forEach((x) => {
-              if(x.packageId !== '0'){
+              if (x.packageId !== '0'){
                  $(`#${x.itemId}`).val(x.itemQty);
               }
             });
@@ -86,23 +88,45 @@ export class ComboDialogComponent implements OnInit {
 
   public changeItemsQuantity(e){
     this.comboQuantityTotal = +e.target.value;
-    this.itemsList.forEach((x)=>{
-      if(e.target.value > 0){
+    this.itemsList.forEach((x) => {
+      if (e.target.value > 0){
       $(`#${x.itemId}`).val(+x.itemQty * e.target.value);
       }
     });
   }
 
-  public onSave(){
+  public summary(){
+    this.showSummary = true;
     this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
-    this.comboData.ComboItems.forEach((x)=>{
-      if(x.packageId !== '0'){
+    this.comboData.ComboItems.forEach((x) => {
+      if (x.packageId !== '0'){
         x['itemQty'] = $(`#${x.itemId}`).val();
       }
-      if(x.packageId === '0'){
+      if (x.packageId === '0'){
         x['itemQty'] = $(`#${x.itemId}`).val();
       }
     });
+
+    let temp = new Map();
+    for (let obj of this.comboData.ComboItems.filter(x => x.itemQty > 0)) {
+      if (obj.packageId !== '0') {
+      temp.set(obj.packName, obj);
+      }
+    }
+    this.summaryData = [...temp.values()];
+  }
+
+  public onSave(){
+    this.showSummary = false;
+    // this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
+    // this.comboData.ComboItems.forEach((x)=>{
+    //   if(x.packageId !== '0'){
+    //     x['itemQty'] = $(`#${x.itemId}`).val();
+    //   }
+    //   if(x.packageId === '0'){
+    //     x['itemQty'] = $(`#${x.itemId}`).val();
+    //   }
+    // });
 
     // classifying the selected items data into different arrays according to the packageName
 
@@ -119,16 +143,16 @@ export class ComboDialogComponent implements OnInit {
     }, {});
 
     let itemsForValidation = [];
-    itemsForValidation.push(Object.values(group))
+    itemsForValidation.push(Object.values(group));
     console.log(itemsForValidation);
 
     // validating the data onsubmit
     let result = [];
-    itemsForValidation.forEach((x,i) => {
+    itemsForValidation.forEach((x, i) => {
       x.forEach(item => {
         // if packtype one
-        if(item[0].packType === "1"){
-          if(item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
+        if (item[0].packType === "1"){
+          if (item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
           item.filter(y => +y.itemQty > 0).length <= +item[0].maxItems &&
           item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty
           ){
@@ -144,8 +168,8 @@ export class ComboDialogComponent implements OnInit {
           }
         }
         // if packtype not equal to one
-        if(item[0].packType !== "1"){
-          if(item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
+        if (item[0].packType !== "1"){
+          if (item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{
             this.modalService.show(ValidationAlertDialogComponent, {
@@ -161,14 +185,15 @@ export class ComboDialogComponent implements OnInit {
       });
     });
 
-    if(result.includes(false)){
-      console.log('err')
+    if (result.includes(false)){
+      console.log('err');
       // this.onValidationError();
       // alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
     }else {
       console.log('take order');
       this.takeOrder();
     }
+
 
   }
 
@@ -177,19 +202,18 @@ export class ComboDialogComponent implements OnInit {
 
   public takeOrder(){
 
-    this.cartService.cart.combo.forEach((x,i)=>{
-      if(this.comboData.ComboDetails.comboId === x.ComboDetails.comboId){
+    this.cartService.cart.combo.forEach((x, i) => {
+      if (this.comboData.ComboDetails.comboId === x.ComboDetails.comboId){
         this.cartService.cart.combo[i] = this.comboData;
       }
     });
     const productExistInCart = this.cartService.cart.combo.find(
       ({ ComboDetails }) => ComboDetails.comboId ===  this.comboData.ComboDetails.comboId);
 
-    if(!productExistInCart){
+    if (!productExistInCart){
       this.cartService.cart.combo.push(this.comboData);
     }
     this.modalRef.hide();
   }
-
 
 }
