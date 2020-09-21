@@ -4,33 +4,36 @@
   </div>
   <div class="custom-bg-package">
   <div class="description-dialog">
-    <div class="d-flex">
+      <div class="d-flex justify-content-between">
+          <img src="assets/images/cater/01.png" alt="" class="foodie">
+        <p>Description with static data</p>
+        <p>$12.25</p>
+        <input type="number"  id="comboqtyid"  class="quantity-input custom-quantity-number" min="1" >
+        <p class="mr-3">$100.00</p>
+      </div>
+    <!-- <div class="d-flex">
     <div class="custom-package-items">
       <p class="custom-weight-font">{{ packageData?.PackageDetails?.packageName}}</p>
-      <!-- <p class="custom-font-dialog">{{ packageData?.PackageDetails?.PkgDescription}}</p> -->
+     
     </div>
 
     <div class="custom-currency-dialog d-flex justify-content-between">
       <p class="custom-weight-font">-  ${{packageData?.PackageDetails?.packageCost}}</p>
-      <!-- <div class="custom-addCart-Btn">
-        <div class="" >
-          <input type="number" (change)="changeTotalQty($event)"  id="pkgqty" class="quantity-input" [value]="packageData?.PackageDetails?.PkgQty" min="1" >
-        </div>
-      </div> -->
+     
     </div>
-    </div>
-    <div>
+    </div> -->
+    <!-- <div>
         <p class="ml-1">{{packageData?.PackageDetails?.PkgDescription}}</p>
-      </div>
-      <div class="custom-addCart-Btn">
+      </div> -->
+      <!-- <div class="custom-addCart-Btn">
         <div class="package-right-quantity" >
             <span class="mr-2 mt-1" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</span><input type="number" (change)="changeTotalQty($event)"  id="pkgqty" class="quantity-input" [value]="packageData?.PackageDetails?.PkgQty" min="1" >
         </div>
-      </div>
+      </div> -->
 
   </div>
-    <div>
-      <div class="alert alert-info mt-2" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
+    <div class="custom-scroll-packages">
+      <div class="alert alert-info" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
                                                               packageData?.PackageDetails?.PkgQty> 0 &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0' &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0'">
@@ -44,7 +47,7 @@
         Note : Please select your items from this list. The total item quantity should be  equal to {{packQuantity}}
       </div>
       <div class="custom-dialog-specific ml-2 mr-2">
-      <div *ngFor="let item of packageData?.PackageItems;let i=index;" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper">
+      <div *ngFor="let item of packageData?.PackageItems;let i=index;" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper mt-2">
         <p class="custom-weight-font">{{item.pkgItemname}}</p>
         <div class="custom-addCart-Btn">
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1'">

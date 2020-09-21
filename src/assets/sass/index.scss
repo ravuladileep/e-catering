@@ -962,12 +962,17 @@ opacity: 0.5;
 }
 
 .custom-item-modal-dialog{
-  color: orangered;
+  color: darkorange;
   font-weight: 600;
 }
 
 .custom-sub-item-font{
   font-size: 14px;
+}
+
+.custom-scroll-packages{
+  overflow-y: scroll;
+    height: 405px;
 }
 
 .custom-details-select-box{
