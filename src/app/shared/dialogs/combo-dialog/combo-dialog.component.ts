@@ -9,7 +9,7 @@ declare var $:any;
   templateUrl: './combo-dialog.component.html',
   styleUrls: ['./combo-dialog.component.scss']
 })
-export class ComboDialogComponent implements OnInit, OnDestroy {
+export class ComboDialogComponent implements OnInit {
   public comboData;
   public comboQuantityTotal;
   public packNames = [];
@@ -69,8 +69,8 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
       this.cartService.cart.combo.find(
         ({ ComboDetails, ComboItems }) => {
           if(ComboDetails.comboId === this.comboData.ComboDetails.comboId) {
-            this.comboData.ComboDetails = ComboDetails;
-            this.comboData.ComboItems = ComboItems;
+            this.comboData.ComboDetails = JSON.parse(JSON.stringify(ComboDetails)) ;
+            this.comboData.ComboItems = JSON.parse(JSON.stringify(ComboItems));
             $(`#comboqtyid`).val(+this.comboData.ComboDetails.comboQty);
             this.comboQuantityTotal = this.comboData.ComboDetails.comboQty;
             this.comboData.ComboItems.forEach((x) => {
@@ -94,12 +94,6 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
   }
 
   public onSave(){
-    this.cartService.cart.combo.forEach((x,i)=>{
-      if(this.comboData.ComboDetails.comboId === x.ComboDetails.comboId){
-        sessionStorage.setItem('tempComboData', JSON.stringify(this.cartService.cart.combo[i]));
-      }
-    });
-
     this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
     this.comboData.ComboItems.forEach((x)=>{
       if(x.packageId !== '0'){
@@ -169,7 +163,7 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
 
     if(result.includes(false)){
       console.log('err')
-      this.onValidationError();
+      // this.onValidationError();
       // alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
     }else {
       console.log('take order');
@@ -178,25 +172,16 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
 
   }
 
-  onValidationError(){
-    let data = JSON.parse(sessionStorage.getItem('tempComboData'));
-    this.cartService.cart.combo.forEach((x,i)=>{
-      if(x.ComboDetails.comboId === data.ComboDetails.comboId){
-        this.cartService.cart.combo[i] = JSON.parse(sessionStorage.getItem('tempComboData'));
-      }
-    });
-  }
+
 
 
   public takeOrder(){
-    this.cartService.cart.combo.find(
-      ({ ComboDetails, ComboItems }) => {
-        if(ComboDetails.comboId === this.comboData.ComboDetails.comboId) {
-          ComboDetails =  this.comboData.ComboDetails;
-          ComboItems = this.comboData.ComboItems;
-        }
+
+    this.cartService.cart.combo.forEach((x,i)=>{
+      if(this.comboData.ComboDetails.comboId === x.ComboDetails.comboId){
+        this.cartService.cart.combo[i] = this.comboData;
       }
-    );
+    });
     const productExistInCart = this.cartService.cart.combo.find(
       ({ ComboDetails }) => ComboDetails.comboId ===  this.comboData.ComboDetails.comboId);
 
@@ -206,8 +191,5 @@ export class ComboDialogComponent implements OnInit, OnDestroy {
     this.modalRef.hide();
   }
 
-  ngOnDestroy(){
-    sessionStorage.removeItem('tempComboData');
-  }
 
 }
