@@ -1,0 +1,36 @@
+::ng-deep{
+  .hide-page-numbers{
+    .ngx-pagination{
+      li:not(.pagination-previous):not(.pagination-next) {
+        display: none;
+      }
+      li.disabled{
+        display: none;
+      }
+      li a{
+        &::after{
+          margin-bottom: 4px;
+        }
+        &::before{
+          margin-bottom: 4px;
+        }
+        &:hover{
+          background: none;
+        }
+        color: white;
+        background: none;
+      }
+    }
+  }
+  .showmore{
+    display: flex;
+    list-style: none;
+    font-size: 25px;
+    ul{
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+

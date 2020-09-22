@@ -3,17 +3,23 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="main_nav">
-<ul class="navbar-nav" *ngFor="let item of category; let j=index">
-    <li class="nav-item dropdown">
-       <a class="nav-link  dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">{{item.sectionName}}</a>
-        <ul class="dropdown-menu" >
-          <li *ngFor="let sub of subCategory;  let k = index"><a class="dropdown-item" *ngIf="sub.sectionName === category[j].sectionName" href="javascript:void(0)" (click)="loadSubsection(sub)"> {{sub.subSectionName}}</a></li>
-          <!-- <li><a class="dropdown-item" href="javascript:void(0)"> item 2 </a></li>
-          <li><a class="dropdown-item" href="javascript:void(0)"> item 3 </a></li>
-          <li><a class="dropdown-item" href="javascript:void(0)"> item 4 </a></li> -->
-        </ul>
+<!-- items -->
+  <ul class="navbar-nav" *ngFor="let item of category | paginate: { itemsPerPage: 8,currentPage: p,totalItems:category?.length}; let j=index">
+      <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">{{item.sectionName}}</a>
+          <ul class="dropdown-menu" >
+            <li *ngFor="let sub of subCategory;  let k = index"><a class="dropdown-item" *ngIf="sub.sectionName === category[j].sectionName" href="javascript:void(0)" (click)="loadSubsection(sub)"> {{sub.subSectionName}}</a></li>
+          </ul>
+      </li>
+  </ul>
+<!-- //items -->
+  <ul  class="m-0 p-0">
+    <li class="showmore">
+      <pagination-controls class="hide-page-numbers" autoHide="true" responsive="true" previousLabel=""
+        nextLabel="" (pageChange)="p = $event">
+      </pagination-controls>
     </li>
-</ul>
+  </ul>
 <ul class="navbar-nav">
   <li class="nav-item dropdown">
       <i class="fa fa-search cater-theme-search" aria-hidden="true"></i>
@@ -33,3 +39,16 @@
      <h6 class="sub-sec-align" *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
      <div class="custom-items-wrapper" >
         <div class="boxes-wrapper nav"> -->
+
+
+
+  <!-- <ul class="navbar-nav" >
+      <li class="nav-item dropdown">
+        <a class="nav-link  dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
+          <i class="fa fa-shopping-cart cater-theme-search" aria-hidden="true"></i>
+        </a>
+          <ul class="dropdown-menu" >
+            <app-cart-items></app-cart-items>
+          </ul>
+      </li>
+  </ul> -->

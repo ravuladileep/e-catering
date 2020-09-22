@@ -38,6 +38,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ValidationAlertDialogComponent } from './shared/dialogs/validation-alert-dialog/validation-alert-dialog.component';
 import { CaterThemeOneHeaderComponent } from './components/cater-theme-one-header/cater-theme-one-header.component';
 import { CaterThemeOneItemsComponent } from './components/cater-theme-one-items/cater-theme-one-items.component';
+import { CaterThemeOneCartComponent } from './components/cater-theme-one-cart/cater-theme-one-cart.component';
 
 @NgModule({
   entryComponents: [
@@ -66,7 +67,8 @@ import { CaterThemeOneItemsComponent } from './components/cater-theme-one-items/
     DomsanitizePipe,
     ValidationAlertDialogComponent,
     CaterThemeOneHeaderComponent,
-    CaterThemeOneItemsComponent
+    CaterThemeOneItemsComponent,
+    CaterThemeOneCartComponent
   ],
   imports: [
     BrowserModule,
