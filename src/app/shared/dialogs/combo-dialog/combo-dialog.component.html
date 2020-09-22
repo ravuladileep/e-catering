@@ -5,7 +5,9 @@
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
         <img src="assets/images/cater/01.png" alt="" class="foodie">
-      <p>{{comboData?.ComboDetails?.comboDescription}}</p>
+        <div class="division-width">
+      <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}fhjfhjf  hgyhjfh vnhgfhjg</p>
+    </div>
       <p>${{comboData?.ComboDetails?.comboCost}}</p>
       <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
       <p class="mr-3" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>

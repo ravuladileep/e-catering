@@ -6,7 +6,9 @@
   <div class="description-dialog">
       <div class="d-flex justify-content-between">
           <img src="assets/images/cater/01.png" alt="" class="foodie">
-        <p>{{packageData?.PackageDetails?.PkgDescription}}</p>
+          <div class="division-width">
+        <p>{{packageData?.PackageDetails?.PkgDescription}}fhfhfhfhjf hjgfhfhfhjy hjtgujytujyt</p>
+      </div>
         <p>${{packageData?.PackageDetails?.packageCost}}</p>
         <input type="number"  id="comboqtyid"  class="quantity-input custom-quantity-number"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
         <p class="mr-3" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
@@ -33,7 +35,7 @@
 
   </div>
     <div class="custom-scroll-packages">
-      <div class="alert alert-info" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
+      <div class="alert alert-info custom-instruction" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
                                                               packageData?.PackageDetails?.PkgQty> 0 &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0' &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0'">
@@ -48,7 +50,7 @@
       </div>
       <div class="custom-dialog-specific ml-2 mr-2">
       <div *ngFor="let item of packageData?.PackageItems;let i=index;" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper mt-2">
-        <p class="custom-weight-font">{{item.pkgItemname}}</p>
+        <p class="custom-weight-font custom-packg-items">{{item.pkgItemname}}</p>
         <div class="custom-addCart-Btn">
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1'">
             <input type="number" [id]="item.pkgItemId"  class="quantity-input" [value]="item['pkgItemQty']"   min="0">

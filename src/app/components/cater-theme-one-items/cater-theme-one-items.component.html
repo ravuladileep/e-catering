@@ -14,15 +14,17 @@
             <div class="custom-image-wrap-container">
             <div class="width-alignments-description">
                 <h4 class="title">{{item.itemName}}</h4>
-                <p class="desc">${{item.price}}</p>
-                <p class="label-rating">2 per order| GF |DF</p>
-                <div class="cart-buttons d-flex">
+                <p class="desc order-desc">2 per order| GF |DF</p>
+                <div class="d-flex justify-content-between">
+                <p class="label-rating">${{item.price}}</p>
+                <div class="cart-buttons d-flex select-cart-btns">
                   <i class="fa fa-minus-circle px-1 orange " *ngIf="item.quantity > 0"  aria-hidden="true"  (click)="decreaseQuantity(item)"></i>
                   <span class="px-1 my-0 py-0" *ngIf="item.quantity > 0">{{item.quantity}}</span>
                   <i class="fa fa-plus-circle px-1 orange" aria-hidden="true" (click)="addToCart(item)"></i>
                     <!-- <button type="button" class="button-customize">Customize</button>
                     <button type="button" class="theme-button-width-alignment">ADD</button> -->
                 </div>
+            </div>
             </div>
             <div>
                     <img src="assets/images/cater/01.png" alt="" class="foodie foodie-theme">

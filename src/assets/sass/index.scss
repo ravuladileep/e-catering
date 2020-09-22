@@ -286,6 +286,8 @@ body {
 
   .orange{
     color: #f08b2d;
+    font-size: 25px;
+    // margin-right: 15px;
   }
 
   .custom-addCart-Btn{
@@ -1286,6 +1288,10 @@ owl-date-time-container{
 
 //theme-ome styles starts here
 
+.select-cart-btns{
+  margin-right: 15px;
+}
+
 .theme-nav{
   margin-top: 92px;
 }
@@ -1338,12 +1344,16 @@ owl-date-time-container{
     display: none !important;
 }
 
-@media (min-width: 992px){
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 0;
-    padding-left: 0;
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff !important;
 }
-}
+
+// @media (min-width: 992px){
+// .navbar-expand-lg .navbar-nav .nav-link {
+//     padding-right: 0;
+//     padding-left: 0;
+// }
+// }
 
 // .navbar-dark .navbar-nav .nav-link {
 //     color: white;
@@ -1388,10 +1398,11 @@ owl-date-time-container{
 
 .label-rating {
     margin-right:10px;
-    color: dimgrey;
+    // color: dimgrey;
     display: inline-block;
     vertical-align: middle;
     font-size: 15px;
+    font-weight: 600;
 }
 
 .card-product .price-old {
@@ -1406,10 +1417,17 @@ owl-date-time-container{
 .title{
     font-size: 1.0rem !important;
     font-weight: 600;
+    font-size: 15px !important;
 }
 
 .desc{
     font-weight: 600;
+}
+
+.order-desc{
+  font-weight: 100 !important;
+  color: dimgrey;
+  font-size: 14px;
 }
 .custom-main-course{
     font-weight: 600;
@@ -1619,3 +1637,17 @@ owl-date-time-container{
 .custom-package-btns{
   padding: 0 0 5px 0px;
 }
+
+.custom-instruction{
+  margin: 0 10px 10px 10px;
+}
+.custom-packg-items{
+  color: #000 !important;
+}
+
+.division-width{
+  width: 170px;
+}
+// .combo-desc-size{
+//   width: 35%;
+// }
