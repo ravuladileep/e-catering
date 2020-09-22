@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CartService } from 'src/app/services/cart.service';
@@ -10,9 +11,11 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cater-theme-one-header.component.scss'],
 })
 export class CaterThemeOneHeaderComponent implements OnInit {
+
   public newMenu = [];
   public category = [];
   public subCategory = [];
+  public p = 1;
   constructor(private cartService: CartService,
               private spinner: NgxSpinnerService) {}
 
@@ -52,6 +55,10 @@ export class CaterThemeOneHeaderComponent implements OnInit {
 
   public loadSubsection(val){
     this.cartService.subSectionId$.next(val.subSectionId);
+  }
+
+  public changeCount(event): void {
+    this.p = 1;
   }
 
 }
