@@ -90,10 +90,16 @@
       </div>
       <div class="mt-3 custom-dialog-specific" *ngIf="itemsList?.length">
       <!-- <p class="custom-weight-font">Items</p> -->
-      <div  *ngFor="let item of itemsList" class="d-flex justify-content-between m-1" >
+      <!-- <div  *ngFor="let item of itemsList" class="d-flex justify-content-between m-1" >
         <p class="custom-item-modal-dialog" >{{item.itemName}}</p>
         <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId" [value]="item.itemQty">
-      </div>
+      </div> -->
+      <ng-container  *ngFor="let item of comboData?.ComboItems">
+        <div *ngIf="item.packageId === '0'"  class="d-flex justify-content-between m-1" >
+          <p class="custom-item-modal-dialog" >{{item.itemName}}</p>
+          <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId" [value]="item.itemQty">
+        </div>
+    </ng-container>
     </div>
     <div class="d-flex justify-content-center">
       <button class="pull-right custom-color-save"  (click)="closeModal()">Close</button>&nbsp;
