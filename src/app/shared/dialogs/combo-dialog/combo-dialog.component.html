@@ -6,33 +6,13 @@
     <div class="d-flex justify-content-between">
         <img src="assets/images/cater/01.png" alt="" class="foodie">
         <div class="division-width">
-      <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}fhjfhjf  hgyhjfh vnhgfhjg</p>
+      <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
       <p>${{comboData?.ComboDetails?.comboCost}}</p>
       <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
       <p class="mr-3" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
     </div>
-    <!-- <div class="custom-bottom-line">
-    <div class="d-flex">
-    <div class="custom-package-items">
-      <p class="custom-weight-font">{{ comboData?.ComboDetails?.comboName}} </p>
-    </div>
-    <div class="custom-currency-dialog">
-      <p class="custom-weight-font ml-1">- ${{comboData?.ComboDetails?.comboCost}}</p>
-      <div class="custom-addCart-Btn">
 
-      </div>
-    </div>
-  </div>
-  <div>
-  <p class="ml-1">{{ comboData?.ComboDetails?.comboDescription}}</p>
-</div>
- <div class="custom-increase-quantity mr-3" >
-    <span class="mr-2 mt-1" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</span>
-      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
-
-        </div>
-    </div> -->
     <div class="custom-dialog-scroll-box">
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper custom-dialog-specific">
         <p class="custom-weight-font  text-primary custom-title-margin"> {{item.packName}}</p>
@@ -85,7 +65,9 @@
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
         <img src="assets/images/cater/01.png" alt="" class="foodie">
-      <p>{{comboData?.ComboDetails?.comboDescription}}</p>
+        <div class="division-width">
+      <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
+    </div>
       <p>${{comboData?.ComboDetails?.comboCost}}</p>
       <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input readonly-number-input custom-quantity-number" min="1" >
       <p class="mr-3" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
@@ -113,13 +95,40 @@
     </div>
     <div class="d-flex justify-content-center">
       <button class="pull-right custom-color-save"  (click)="closeModal()">Close</button>&nbsp;
-      <button class="pull-right" *ngIf="showSummary" (click)="onSave()">confirm</button>
-
+      <button class="pull-right" *ngIf="showSummary" (click)="onSave()">Confirm</button>
     </div>
   </div>
 </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

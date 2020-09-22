@@ -13,7 +13,7 @@
             <div class="custom-image-wrap-container">
             <div class="width-alignments-description">
                 <h4 class="title">{{item.itemName}}</h4>
-                <p class="desc order-desc">2 per order| GF |DF</p>
+                <p class="desc order-desc">{{item.description |slice:0:40}}</p>
                 <div class="d-flex justify-content-between">
                 <p class="label-rating">${{item.price}}</p>
                 <div class="cart-buttons d-flex select-cart-btns">
@@ -26,7 +26,8 @@
             </div>
             </div>
             <div>
-                    <img src="assets/images/cater/01.png" alt="" class="foodie foodie-theme">
+              <img *ngIf="item.blobcontent" [src]="('data:image/JPEG;base64,' + item.blobcontent) | domsanitize" alt="" class="foodie foodie-theme">
+              <img *ngIf="!item.blobcontent" src="assets/images/cater/01.png" alt="" class="foodie foodie-theme">
             </div>
         </div>
         </figcaption>
@@ -40,3 +41,4 @@
 
 
 
+<app-cater-theme-one-cart></app-cater-theme-one-cart>

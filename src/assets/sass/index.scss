@@ -960,7 +960,7 @@ opacity: 0.5;
 
 .alert-info {
   font-family: monospace;
- 
+
 }
 
 .custom-item-modal-dialog{
@@ -1467,7 +1467,7 @@ owl-date-time-container{
   font-weight: 600;
   margin: 0 5px 0px 0px;
   font-size: 15px;
-  
+
 }
 
 
@@ -1594,6 +1594,9 @@ owl-date-time-container{
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+}
+.readonly-number-input{
+  text-align: right;
 }
 @media(max-width:320px) {
   .custom-items-add {

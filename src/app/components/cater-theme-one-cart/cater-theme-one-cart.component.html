@@ -1,10 +1,18 @@
-<div class="card" style="width: 18rem;">
+<!-- <div class="card" style="width: 18rem;">
   <div class="card-header">
     Cart
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+  <ul class="list-group list-group-flush" *ngFor="let item of cart?.menuItems">
+    <li class="list-group-item">{{item.itemName}} x {{item.quantity}}</li>
   </ul>
-</div>
+  <ul class="list-group list-group-flush" *ngFor="let item of cart?.package">
+    <li class="list-group-item">{{item.PackageDetails.packageName}} x {{item.PackageDetails.PkgQty}}</li>
+  </ul>
+  <ul class="list-group list-group-flush" *ngFor="let item of cart?.combo">
+    <li class="list-group-item">{{item.ComboDetails.comboName}} x {{item.ComboDetails.comboQty}}</li>
+  </ul>
+</div> -->
+
+
+
+
