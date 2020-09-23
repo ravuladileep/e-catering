@@ -1,48 +1,25 @@
-<!-- <div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Cart
-  </div>
-  <ul class="list-group list-group-flush" *ngFor="let item of cart?.menuItems">
-    <li class="list-group-item">{{item.itemName}} x {{item.quantity}}</li>
-  </ul>
-  <ul class="list-group list-group-flush" *ngFor="let item of cart?.package">
-    <li class="list-group-item">{{item.PackageDetails.packageName}} x {{item.PackageDetails.PkgQty}}</li>
-  </ul>
-  <ul class="list-group list-group-flush" *ngFor="let item of cart?.combo">
-    <li class="list-group-item">{{item.ComboDetails.comboName}} x {{item.ComboDetails.comboQty}}</li>
-  </ul>
-</div> -->
+
 <div class="custom-bag-items-dropdown">
-  <div class="d-flex justify-content-between cater-bag-items-content">
-<p class="cater-content-items">Spicy Cumin Beef Skewers</p>
-  <span class="cater-items-qauantities">x1</span>
-</div>
-<div class="d-flex justify-content-between cater-bag-items-content">
-    <p class="cater-content-items">Spicy Cumin Beef Skewers</p>
-      <span class="cater-items-qauantities">x1</span>
-    </div>
+  <ng-container *ngFor="let item of cart?.menuItems">
     <div class="d-flex justify-content-between cater-bag-items-content">
-        <p class="cater-content-items">Spicy Cumin Beef Skewers</p>
-          <span class="cater-items-qauantities">x1</span>
-        </div>
-        <div class="d-flex justify-content-between cater-bag-items-content">
-            <p class="cater-content-items">Spicy Cumin Beef Skewers</p>
-              <span class="cater-items-qauantities">x1</span>
-            </div>
-            <div class="d-flex justify-content-between cater-bag-items-content">
-                <p class="cater-content-items">Spicy Cumin Beef Skewers</p>
-                  <span class="cater-items-qauantities">x1</span>
-                </div>
-                <div class="d-flex justify-content-between cater-bag-items-content">
-                    <p class="cater-content-items">Spicy Cumin Beef Skewers hmfhf hjgfhjgjhgj ghjkgjkjgjk</p>
-                      <span class="cater-items-qauantities">x1</span>
-                    </div>
-<!-- <p class="cater-bag-items-content">Spicy Cumin Beef Skewers<span class="cater-items-qauantities">x1</span></p>
-<p class="cater-bag-items-content">Spicy Cumin Beef Skewers<span class="cater-items-qauantities">x1</span></p>
-<p class="cater-bag-items-content">Spicy Cumin Beef Skewers<span class="cater-items-qauantities">x1</span></p>
-<p class="cater-bag-items-content">Spicy Cumin Beef Skewers<span class="cater-items-qauantities">x1</span></p>
-<p class="cater-bag-items-content">Spicy Cumin Beef Skewers<span class="cater-items-qauantities">x1</span></p>
-<p class="cater-bag-items-content">Spicy Cumin Beef Skewers hfhfh hjgjgj hkjguytgyujtguik<span class="cater-items-qauantities">x1</span></p> -->
+      <p class="cater-content-items">{{item.itemName}}</p>
+      <span class="cater-items-qauantities">x{{item.quantity}}</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngFor="let item of cart?.package">
+    <div class="d-flex justify-content-between cater-bag-items-content">
+      <p class="cater-content-items">{{item.PackageDetails.packageName}}</p>
+      <span class="cater-items-qauantities">x{{item.PackageDetails.PkgQty}}</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngFor="let item of cart?.combo">
+    <div class="d-flex justify-content-between cater-bag-items-content">
+      <p class="cater-content-items">{{item.ComboDetails.comboName}}</p>
+      <span class="cater-items-qauantities">x{{item.ComboDetails.comboQty}}</span>
+    </div>
+  </ng-container>
 </div>
 
 
