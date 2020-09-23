@@ -16,7 +16,7 @@
     <div class="custom-dialog-scroll-box">
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper custom-dialog-specific">
         <p class="custom-weight-font  text-primary custom-title-margin"> {{item.packName}}</p>
-        <div class="alert alert-info mt-2" role="alert">
+        <div class="alert alert-info mt-2" role="alert" *ngIf="item.minItems && item.maxItems ">
           <span *ngIf="item.minItems !== item.maxItems"> Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
           <span *ngIf="item.minItems === item.maxItems"> Please select {{item.minItems}} item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
         </div>
