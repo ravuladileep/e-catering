@@ -1,0 +1,25 @@
+.custom-bag-items-dropdown{
+    position: absolute;
+    z-index: 1000;
+    transform: translateZ(0px);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 9px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 10px;
+    left: 5px;
+    background: #fff;
+    overflow-y: scroll;
+    height: 230px;
+}
+
+.cater-items-qauantities{
+    margin-left: 15px;
+}
+
+.cater-bag-items-content{
+    width: 232px;
+}
+
+.cater-bag-items-content:hover{
+    color: #007bff !important;
+    background: lightgrey;
+    cursor: pointer;
+}

@@ -1,3 +1,10 @@
+<div class="custom-bag">
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <div class="bag-items">
+     <app-cater-theme-one-cart></app-cater-theme-one-cart>
+  </div>
+</div>
+
 <div class="custom-theme-description">
   <h3 class="custom-main-course">{{subSectionMenu[0]?.sectionName}}</h3>
   <p class="sub-description-text-cater">{{subSectionMenu[0]?.subSectionName}}</p>
@@ -25,7 +32,7 @@
                 </div>
             </div>
             </div>
-            <div>
+            <div class="cater-image-burger">
               <img *ngIf="item.blobcontent" [src]="('data:image/JPEG;base64,' + item.blobcontent) | domsanitize" alt="" class="foodie foodie-theme">
               <img *ngIf="!item.blobcontent" src="assets/images/cater/01.png" alt="" class="foodie foodie-theme">
             </div>
@@ -41,4 +48,4 @@
 
 
 
-<app-cater-theme-one-cart></app-cater-theme-one-cart>
+

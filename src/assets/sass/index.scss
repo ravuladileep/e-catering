@@ -1372,8 +1372,7 @@ owl-date-time-container{
 
 .custom-theme-description{
   text-align: center;
-  position: relative;
-  top: 45px;
+  // padding-top: 45px;
 }
 
 .card-product .img-wrap {
@@ -1412,8 +1411,8 @@ owl-date-time-container{
 
 
 .card-container {
-  max-width: 1310px !important;
-  margin-top: 92px;
+  max-width: 1306px !important;
+  margin-top: 50px;
 }
 .title{
     font-size: 1.0rem !important;
@@ -1655,3 +1654,42 @@ owl-date-time-container{
 // .combo-desc-size{
 //   width: 35%;
 // }
+
+.cater-image-burger{
+  height: 170px;
+  width: 140px;
+}
+
+
+
+
+
+// a {
+//   text-decoration: none;
+// }
+
+// ul {
+// 	list-style: none;
+//   margin: 0;
+//   max-width: 0% !important;
+// 	padding-left: 0;
+// }
+
+
+
+// ul li ul {
+// 	visibility: hidden;
+//   opacity: 0;
+//   min-width: 5rem;
+// 	position: absolute;
+// 	left: 0;
+//   display: none;
+// }
+
+// ul li:hover > ul,
+// ul li ul:hover {
+//   visibility: visible;
+//   opacity: 1;
+//   display: block;
+// }
+

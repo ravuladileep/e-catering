@@ -1,0 +1,11 @@
+.bag-items{
+  display: none;
+}
+
+.custom-bag:hover .bag-items{
+    display: block;
+}
+
+// .custom-bag{
+//     width: 0%;
+// }
