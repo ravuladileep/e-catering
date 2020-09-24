@@ -2,8 +2,10 @@
 <div class="custom-bag-items-dropdown">
   <ng-container *ngFor="let item of cart?.menuItems">
     <div class="d-flex justify-content-between cater-bag-items-content">
+      
       <p class="cater-content-items">{{item.itemName}}</p>
       <span class="cater-items-qauantities">x{{item.quantity}}</span>
+    
     </div>
   </ng-container>
 
@@ -16,10 +18,24 @@
 
   <ng-container *ngFor="let item of cart?.combo">
     <div class="d-flex justify-content-between cater-bag-items-content">
+      
       <p class="cater-content-items">{{item.ComboDetails.comboName}}</p>
       <span class="cater-items-qauantities">x{{item.ComboDetails.comboQty}}</span>
+   
     </div>
   </ng-container>
+
+  <div class="cart-items-footer-wrapper">
+    <div class="d-flex align-items-center justify-content-between pb-2 border-subtotal-wrapper">
+      <h6 class="cart-items-footer m-0">Subtotal</h6>
+      <h6 class="cart-items-footer m-0">$125</h6>
+    </div>
+    <div class="d-flex align-items-center justify-content-between pb-2 mt-2 custom-total-cart">
+      <h6 class="cart-items-footer m-0">Total</h6>
+      <h6 class="cart-items-footer m-0">$300</h6>
+    </div>
+  </div>
+  
 </div>
 
 

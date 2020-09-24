@@ -3,12 +3,13 @@
     z-index: 1000;
     transform: translateZ(0px);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 9px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    padding: 10px;
+    // padding: 10px;
     left: 5px;
     background: #fff;
     overflow-y: scroll;
     height: 230px;
-    min-width: 320px;
+    width: 300px;
+    padding: 10px;
 }
 
 .cater-items-qauantities{
@@ -17,11 +18,19 @@
 }
 
 .cater-content-items{
-    width: 205px;
+    // width: 205px;
+    // margin-top: 10px !important;
+    
 }
 
 .cater-bag-items-content:hover{
     color: #007bff !important;
     background: lightgrey;
     cursor: pointer;
+}
+
+.cater-bag-items-content{
+    border-bottom: 1px solid lightgrey;
+    // align-items: center;
+    padding: 5px
 }
