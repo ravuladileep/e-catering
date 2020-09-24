@@ -15,6 +15,7 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
   public loginres;
   public customerAddress;
   public totalAmount;
+  public taxAmount;
   constructor(private cartService: CartService,
               private router: Router,
               private spinner: NgxSpinnerService,
@@ -26,6 +27,7 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
     this.getCustomerAdress();
     this.orderDetails = JSON.parse(sessionStorage.getItem('orderDetails'));
     this.totalAmount = this.cartService.cartTotalAmount();
+    this.getTax();
   }
 
   /**
@@ -37,6 +39,19 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
     this.orderService.getCustomerAddress(this.loginres.AuthenticateUser.customerId)
     .subscribe((res) => {
       this.customerAddress = res.CustBillAddressObject;
+    });
+  }
+
+  /**
+   * function : getCustomerAdress
+   * purpose  : getting the customer address to display left side of the place order screen
+   */
+
+  public getTax(){
+    this.orderService.getTaxAmount(this.loginres.AuthenticateUser.newOrderId)
+    .subscribe((data) => {
+      let tax = data;
+      this.taxAmount =  tax.countytaxamount + tax.statetaxamount + tax.othertaxamount;
     });
   }
 
