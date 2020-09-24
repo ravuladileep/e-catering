@@ -16,6 +16,7 @@ export class CaterThemeOneItemsComponent implements OnInit, DoCheck {
 
   public newMenu = [];
   public subSectionMenu = [];
+  public reviewOrdersCount;
 
   constructor(private cartService: CartService,
               private spinner: NgxSpinnerService,
@@ -42,6 +43,7 @@ export class CaterThemeOneItemsComponent implements OnInit, DoCheck {
     });
     this.assignPackageQty();
     this.assignComboQty();
+    this.calcReviewCount();
   }
 
   /**
@@ -189,6 +191,26 @@ export class CaterThemeOneItemsComponent implements OnInit, DoCheck {
       });
     }
 
+  }
+
+  /**
+   * function : calcReviewCount
+   * purpose  : calculating the total quantity
+   * @param product
+   */
+
+  public calcReviewCount() {
+    let count = [];
+    this.cartService.cart.menuItems.forEach((x) => {
+      count.push(+x.quantity);
+    });
+    this.cartService.cart.package.forEach((x) => {
+      count.push(+x.PackageDetails.PkgQty);
+    });
+    this.cartService.cart.combo.forEach((x) => {
+      count.push(+x.ComboDetails.comboQty);
+    });
+    this.reviewOrdersCount = count.reduce((a, b) => a + b, 0);
   }
 
 

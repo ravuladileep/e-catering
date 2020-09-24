@@ -45,7 +45,7 @@
 </div>
 </div>
 
-<button type="button" [routerLink]="['/orders']"   routerLinkActive="router-link-active"class="custom-review cater-custom-review">Review Order<span class="review-seven">1</span></button>
+<button type="button" [routerLink]="['/orders']"   routerLinkActive="router-link-active" *ngIf="reviewOrdersCount>0" class="custom-review cater-custom-review">Review Order<span class="review-seven">{{reviewOrdersCount}}</span></button>
 
 
 
