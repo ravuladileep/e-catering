@@ -57,8 +57,8 @@ export class CaterThemeOneHeaderComponent implements OnInit {
     this.cartService.subSectionId$.next(val.subSectionId);
   }
 
-  public changeCount(event): void {
-    this.p = 1;
-  }
+  // public changeCount(event): void {
+  //   this.p = 1;
+  // }
 
 }
