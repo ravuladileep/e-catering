@@ -7,10 +7,32 @@
 }
 
 .custom-bag{
-    width: 5%;
+   float: right;
+  //  width: 5%;
 }
 
 .cater-custom-review{
-  width: 100% !important;
+  width: 25% !important;
   bottom: 0 !important;
+}
+
+.cater-review-orders-btn{
+  display: flex;
+  justify-content: center;
+}
+
+.cater-shopping-cart{
+  // display: flex;
+  // justify-content: flex-end;
+  // margin: 0 !important;
+  // position: relative;
+  // right: 25px;
+  // top: 15px;
+}
+
+.cater-search{
+  width: 400px;
+  padding: 5px;
+  height: 32px;
+  outline: 0;
 }

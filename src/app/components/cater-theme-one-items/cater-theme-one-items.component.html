@@ -1,15 +1,20 @@
 <div class="custom-bag">
-  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <i class="fa fa-shopping-cart cater-shopping-cart" aria-hidden="true"></i>
   <div class="bag-items">
      <app-cater-theme-one-cart></app-cater-theme-one-cart>
   </div>
 </div>
-
+<div>
 <div class="custom-theme-description">
   <h3 class="custom-main-course">{{subSectionMenu[0]?.sectionName}}</h3>
   <p class="sub-description-text-cater">{{subSectionMenu[0]?.subSectionName}}</p>
 </div>
 
+<div class="d-flex justify-content-around">
+    <input type="text" placeholder="Search.." name="search" class="cater-search">
+    <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+</div>
+</div>
 
 <div class="container card-container">
 <div class="row">
@@ -44,8 +49,9 @@
 
 </div>
 </div>
-
+<div class="cater-review-orders-btn">
 <button type="button" [routerLink]="['/orders']"   routerLinkActive="router-link-active" *ngIf="reviewOrdersCount>0" class="custom-review cater-custom-review">Review Order<span class="review-seven">{{reviewOrdersCount}}</span></button>
+</div>
 
 
 
