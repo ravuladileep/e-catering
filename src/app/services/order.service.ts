@@ -50,4 +50,9 @@ export class OrderService {
     return this.http.get(`${this.webServiceUrl}/getRepeatOrderData?orderId=${orderid}&catererId=menuscat`);
   }
 
+  getTaxAmount(orderid): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/getOrderTaxes?orderId=${orderid}&catererId=menuscat`);
+  }
+
 }
