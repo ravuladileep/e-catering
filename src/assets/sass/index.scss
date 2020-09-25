@@ -1300,6 +1300,12 @@ owl-date-time-container{
   top: 0 !important;
 }
 
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .3rem;
+}
+}
+
 @media(min-width:768px) {
 
   .card-product{
