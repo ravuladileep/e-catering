@@ -151,7 +151,7 @@ export class ComboDialogComponent implements OnInit {
     itemsForValidation.forEach((x, i) => {
       x.forEach(item => {
         // if packtype one
-        if (item[0].packType === "1"){
+        if (item[0].packType === "1" &&  (item[0].maxItems && item[0].minItems)){
           if (item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
           item.filter(y => +y.itemQty > 0).length <= +item[0].maxItems &&
           item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty
@@ -168,7 +168,7 @@ export class ComboDialogComponent implements OnInit {
           }
         }
         // if packtype not equal to one
-        if (item[0].packType !== "1"){
+        if (item[0].packType !== "1" || (!item[0].maxItems && !item[0].minItems)){
           if (item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{

@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { CartService } from 'src/app/services/cart.service';
 export class OrderConfirmationComponent implements OnInit, AfterViewInit {
   public loginres = JSON.parse(sessionStorage.getItem('loginResponse'));
   public totalAmount;
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router,
+              private cartService: CartService,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
     this.totalAmount = this.cartService.cartTotalAmount();
@@ -23,7 +26,7 @@ export class OrderConfirmationComponent implements OnInit, AfterViewInit {
         this.router.navigate(['orders-list']);
       }else {
         this.cartService.clearCartItems();
-        this.router.navigate(['home']);
+        this.authService.redirectToHome();
       }
     }, 5000);
   }

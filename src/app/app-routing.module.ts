@@ -9,10 +9,12 @@ import { MyOrdersListComponent } from './components/my-orders-list/my-orders-lis
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { CaterThemeOneComponent } from './components/cater-theme-one/cater-theme-one.component';
+import { TemplateGuard } from './shared/guards/template.guard';
+import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '', component: AppComponent},
   {path: 'home', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
@@ -21,7 +23,7 @@ const routes: Routes = [
   {path: 'orders-list', component: MyOrdersListComponent},
   {path: 'place-order', component: PlaceOrderComponent},
   {path: 'order-confirmation', component: OrderConfirmationComponent},
-  {path: 'cater-theme-one', component: CaterThemeOneComponent},
+  {path: 'cater-theme-one',  component: CaterThemeOneComponent},
   {path: '**', redirectTo: 'home'}
 
 ];

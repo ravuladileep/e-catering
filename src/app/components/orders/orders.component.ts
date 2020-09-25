@@ -61,4 +61,8 @@ export class OrdersComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  addMore(){
+    this.authService.redirectToHome();
+  }
+
 }

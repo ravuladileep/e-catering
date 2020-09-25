@@ -55,4 +55,9 @@ export class OrderService {
     return this.http.get(`${this.webServiceUrl}/getOrderTaxes?orderId=${orderid}&catererId=menuscat`);
   }
 
+  getTemplate(): Observable<any>{
+    this.getUrl();
+    return this.http.get(`${this.webServiceUrl}/getTemplateValue?catererId=menuscat`);
+  }
+
 }
