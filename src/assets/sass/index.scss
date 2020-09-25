@@ -1600,7 +1600,7 @@ owl-date-time-container{
 }
 @media(max-width:320px) {
   .custom-items-add {
-    font-size: 13px;
+    font-size: 12px;
     width: 50%;
 }
 }
@@ -1661,36 +1661,20 @@ owl-date-time-container{
   width: 140px;
 }
 
+@media(max-width:320px){
+  .custom-orders-list{
+    min-width: 666px;
+  }
+}
 
-
-
-
-// a {
-//   text-decoration: none;
-// }
-
-// ul {
-// 	list-style: none;
-//   margin: 0;
-//   max-width: 0% !important;
-// 	padding-left: 0;
-// }
-
-
-
-// ul li ul {
-// 	visibility: hidden;
-//   opacity: 0;
-//   min-width: 5rem;
-// 	position: absolute;
-// 	left: 0;
-//   display: none;
-// }
-
-// ul li:hover > ul,
-// ul li ul:hover {
-//   visibility: visible;
-//   opacity: 1;
-//   display: block;
-// }
+@media(max-width:320px){
+.custom-successful-order{
+  font-size: 16px;
+}
+}
+@media(max-width:320px){
+.cater-search{
+  width: 290px !important;
+}
+}
 
