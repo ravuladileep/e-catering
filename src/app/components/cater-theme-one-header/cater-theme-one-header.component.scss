@@ -33,4 +33,26 @@
   }
 }
 
+@media(min-width:991px){
+  .custom-scroll-new-theme{
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    margin: 0px 33px 0px 20px;
+   }
+   .scroll-left-icon{
+     left: 0;
+     margin-top: -5px;
+     font-size: 25px;
+     width: 20px;
+     margin-left: 5px;
+   }
+   .scroll-right-icon{
+     right: 0;
+     margin-top: -5px;
+     font-size: 25px;
+     width: 20px;
+     margin-right: 5px;
+   }
+}
 

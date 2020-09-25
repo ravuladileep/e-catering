@@ -17,6 +17,7 @@ export class CaterThemeOneItemsComponent implements OnInit, DoCheck {
   public newMenu = [];
   public subSectionMenu = [];
   public reviewOrdersCount;
+  public searchTerm;
 
   constructor(private cartService: CartService,
               private spinner: NgxSpinnerService,

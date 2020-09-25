@@ -11,14 +11,14 @@
 </div>
 
 <div class="d-flex justify-content-around">
-    <input type="text" placeholder="Search.." name="search" class="cater-search">
+    <input type="text" placeholder="Search.." [(ngModel)]="searchTerm" name="search" class="cater-search">
     <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
 </div>
 </div>
 
 <div class="container card-container">
 <div class="row">
-<div class="col-md-4" *ngFor="let item of subSectionMenu">
+<div class="col-md-4" *ngFor="let item of subSectionMenu|filter:searchTerm;">
     <figure class="card card-product">
         <div class="img-wrap"></div>
         <figcaption class="info-wrap">

@@ -1,4 +1,4 @@
-import { Input, Output } from '@angular/core';
+import { ElementRef, Input, Output, ViewChild } from '@angular/core';
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -11,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cater-theme-one-header.component.scss'],
 })
 export class CaterThemeOneHeaderComponent implements OnInit {
-
+  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
   public newMenu = [];
   public category = [];
   public subCategory = [];
@@ -21,6 +21,15 @@ export class CaterThemeOneHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItems();
+  }
+
+
+  public scrollRight(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  }
+
+  public scrollLeft(): void {
+    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
   }
 
   public getItems(): void {
