@@ -3,29 +3,34 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <span (click)="scrollLeft()" class="position-fixed scroll-left-icon text-white">
+  <!-- <span (click)="scrollLeft()" class="position-fixed scroll-left-icon text-white">
     <i class="fa fa-angle-double-left"></i>
-  </span>
-<div #widgetsContent class="collapse navbar-collapse custom-scroll-new-theme" id="main_nav">
-    <!-- <div class="d-flex custom-scroll-new-theme"> -->
+  </span> -->
+
+  <div  class="collapse navbar-collapse"  id="main_nav" >
 
     <!-- items -->
-    <ul class="navbar-nav"  *ngFor="let item of category;let j=index;">
+    <ul class="navbar-nav"  *ngFor="let item of category| paginate: { itemsPerPage: 8,currentPage: p,totalItems:category?.length}; let j=index">
         <li class="nav-item dropdown"  >
           <a class="nav-link  dropdown-toggle"   href="javascript:void(0)" data-toggle="dropdown">{{item.sectionName}}</a>
             <ul class="dropdown-menu" >
-              <li *ngFor="let sub of subCategory;  let k = index"><a class="dropdown-item" *ngIf="sub.sectionName === category[j].sectionName" href="javascript:void(0)" (click)="loadSubsection(sub)"> {{sub.subSectionName}}</a></li>
+              <li *ngFor="let sub of subCategory;  let k = index"><a class="dropdown-item" *ngIf="sub.sectionName === category[8*(p-1)+j].sectionName" href="javascript:void(0)" (click)="loadSubsection(sub)"> {{sub.subSectionName}}</a></li>
             </ul>
         </li>
     </ul>
+  <ul  class="m-0 p-0">
+    <li class="showmore">
+      <pagination-controls class="hide-page-numbers" autoHide="true" responsive="true" previousLabel=""
+        nextLabel="" (pageChange)="p = $event">
+      </pagination-controls>
+    </li>
+  </ul>
 
-
-  <!-- </div> -->
-</div>
-
+  </div>
+<!--
   <span (click)="scrollRight()" class="position-fixed scroll-right-icon text-white">
     <i class="fa fa-angle-double-right"></i>
-  </span>
+  </span> -->
 
 </nav>
 

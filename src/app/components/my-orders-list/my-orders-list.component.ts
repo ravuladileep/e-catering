@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-my-orders-list',
@@ -17,6 +18,7 @@ export class MyOrdersListComponent implements OnInit {
   constructor(private orderService: OrderService,
               private spinner: NgxSpinnerService,
               private cartService: CartService,
+              private authService: AuthService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class MyOrdersListComponent implements OnInit {
       this.cartService.cart['menuItems'] = res.menuItems;
       this.cartService.cart['package'] = res.package;
       this.cartService.cart['combo'] = res.combo;
-      this.router.navigate(['home']);
+      this.authService.redirectToHome();
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
   }
 

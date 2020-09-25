@@ -11,7 +11,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cater-theme-one-header.component.scss'],
 })
 export class CaterThemeOneHeaderComponent implements OnInit {
-  @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
+  // @ViewChild('widgetsContent', { read: ElementRef }) public widgetsContent: ElementRef<any>;
   public newMenu = [];
   public category = [];
   public subCategory = [];
@@ -24,13 +24,13 @@ export class CaterThemeOneHeaderComponent implements OnInit {
   }
 
 
-  public scrollRight(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
-  }
+  // public scrollRight(): void {
+  //   this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
+  // }
 
-  public scrollLeft(): void {
-    this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
-  }
+  // public scrollLeft(): void {
+  //   this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft - 150), behavior: 'smooth' });
+  // }
 
   public getItems(): void {
     this.spinner.show();

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   public webServiceUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   getUrl(){
     this.webServiceUrl = localStorage.getItem('webServiceUrl');
@@ -24,4 +25,11 @@ export class AuthService {
     return this.http.get(`${this.webServiceUrl}/authenticateUser?userId=null&password=null&catererId=menuscat&guestUserFlag=1`);
   }
 
+  redirectToHome(){
+    if (JSON.parse(sessionStorage.getItem('templateValue')).templatevalue === 1){
+      this.router.navigate(['home']);
+    }else {
+      this.router.navigate(['cater-theme-one']);
+    }
+  }
 }
