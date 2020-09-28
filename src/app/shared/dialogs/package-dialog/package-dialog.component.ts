@@ -11,6 +11,7 @@ declare var $:any;
 })
 export class PackageDialogComponent implements OnInit {
   public packageData;
+  public packageData2; // is for original pkgitemqty when packagetype =0 multiply with total quantity
   public packQuantity;
   public packItemQuantity = [];
   public itemsTotalQuantity;
@@ -26,6 +27,7 @@ export class PackageDialogComponent implements OnInit {
     this.cartService.getPackage(itemId)
     .subscribe((data) => {
       this.packageData = data;
+      this.packageData2 = JSON.parse(JSON.stringify(data));
       this.packageData.PackageDetails.PkgQty = 1;
       this.packQuantity =  +this.packageData.PackageDetails.PkgQty;
       this.assignQuantity();
@@ -34,6 +36,11 @@ export class PackageDialogComponent implements OnInit {
 
   changeTotalQty(e){
     this.packQuantity = +e.target.value;
+    if(this.packageData.PackageDetails.packageType === '0' && this.packQuantity > 0){
+    this.packageData2.PackageItems.forEach((x)=>{
+      $(`#${x.pkgItemId}`).val(+x.pkgItemQty * this.packQuantity);
+    });
+  }
   }
 
   closeModal(){
@@ -53,7 +60,7 @@ export class PackageDialogComponent implements OnInit {
             this.packageData['PackageItems'] = JSON.parse(JSON.stringify(PackageItems));
             // this.packQuantity =  this.packageData.PackageDetails.PkgQty;
             $(`#pkgqty`).val(+this.packageData.PackageDetails.PkgQty);
-            this.packQuantity =  +$(`#pkgqty`).val()
+            this.packQuantity =  +$(`#pkgqty`).val();
             // pkgqty
             this.packageData.PackageItems.forEach((x,i)=>{
               $(`#${x.pkgItemId}`).val(+x.pkgItemQty);

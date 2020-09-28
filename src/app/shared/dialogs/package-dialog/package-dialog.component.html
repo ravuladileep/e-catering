@@ -27,7 +27,7 @@
           packageData?.PackageDetails?.PkgQty>0 &&
          packageData?.PackageDetails?.pkgMinItems ==='0' &&
         packageData?.PackageDetails?.pkgMinItems ==='0'">
-        Note : Please select your items from this list. The total item quantity should be  equal to {{packQuantity}}
+         Please select your items from this list. The total item quantity should be  equal to {{packQuantity}}
       </div>
       <div class="custom-dialog-specific ml-2 mr-2">
       <div *ngFor="let item of packageData?.PackageItems;let i=index;" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper mt-2">
@@ -35,6 +35,9 @@
         <div class="custom-addCart-Btn">
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1'">
             <input type="number" [id]="item.pkgItemId"  class="quantity-input" [value]="item['pkgItemQty']"   min="0">
+          </div>
+          <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '0'">
+            <input type="number" [id]="item.pkgItemId"  class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
           </div>
         </div>
       </div>
@@ -77,6 +80,9 @@
       <div class="custom-addCart-Btn">
         <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '1' ">
           <input type="number" [id]="item.pkgItemId"   class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
+        </div>
+        <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '0'">
+          <input type="number" [id]="item.pkgItemId"  class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
         </div>
       </div>
     </div></ng-container>
