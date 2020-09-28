@@ -62,7 +62,7 @@ export class PlaceOrderComponent implements OnInit, OnDestroy {
 
   public confirmOrder(){
     this.spinner.show();
-    this.orderService.confirmOrder(this.loginres.AuthenticateUser.userId).subscribe((res)=>{
+    this.orderService.confirmOrder(this.loginres.AuthenticateUser.newOrderId).subscribe((res)=>{
       this.router.navigate(['order-confirmation']);
     }, err => { this.spinner.hide(); }, () => {this.spinner.hide(); });
   }

@@ -21,36 +21,36 @@ export class CaterThemeOneHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getItems();
-    // this.dropdownMenu();
+    this.dropdownMenu();
   }
 
-  // ngDoCheck(){
-  //   this.dropdownMenu();
-  // }
+  ngDoCheck(){
+    this.dropdownMenu();
+  }
 
-  // public dropdownMenu(){
-  //     $('.dropdown').on('mouseenter', function() {
-  //       var $btnDropDown = $(this).find('.dropdown-toggle');
-  //       var $listHolder = $(this).find('.dropdown-menu');
-  //       // reset position property for DD container
-  //       $(this).css('position', 'static');
-  //       $listHolder.css({
-  //         // "top": ($btnDropDown.offset().top + $btnDropDown.outerHeight(true)) + "px",
-  //         'left': $btnDropDown.offset().left + 'px'
-  //       });
-  //       $listHolder.data('open', true);
-  //     });
-  //     // add BT DD hide event
-  //     $('.dropdown').on('mouseleave', function() {
-  //       var $listHolder = $(this).find('.dropdown-menu');
-  //       $(this).css('position', '');
-  //       $listHolder.css({
-  //         "top": '',
-  //         'left': ''
-  //       });
-  //       $listHolder.data('open', false);
-  //     });
-  // }
+  public dropdownMenu(){
+      $('.dropdown').on('mouseenter', function() {
+        var $btnDropDown = $(this).find('.dropdown-toggle');
+        var $listHolder = $(this).find('.dropdown-menu');
+        // reset position property for DD container
+        $(this).css('position', 'static');
+        $listHolder.css({
+          // "top": ($btnDropDown.offset().top + $btnDropDown.outerHeight(true)) + "px",
+          'left': $btnDropDown.offset().left + 'px'
+        });
+        $listHolder.data('open', true);
+      });
+      // add BT DD hide event
+      $('.dropdown').on('mouseleave', function() {
+        var $listHolder = $(this).find('.dropdown-menu');
+        $(this).css('position', '');
+        $listHolder.css({
+          "top": '',
+          'left': ''
+        });
+        $listHolder.data('open', false);
+      });
+  }
 
   public scrollRight(): void {
     this.widgetsContent.nativeElement.scrollTo({ left: (this.widgetsContent.nativeElement.scrollLeft + 150), behavior: 'smooth' });
@@ -79,12 +79,12 @@ export class CaterThemeOneHeaderComponent implements OnInit {
           }
           this.category = [...cat.values()];
           this.subCategory = [...sub.values()];
+          this.cartService.subSectionId$.next(this.subCategory[0].subSectionId);
         },
         (err) => {
           this.spinner.hide();
         },
         () => {
-          this.cartService.subSectionId$.next(this.subCategory[0].subSectionId);
           this.spinner.hide();
         }
       );

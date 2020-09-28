@@ -95,18 +95,28 @@ export class ComboDialogComponent implements OnInit {
     });
   }
 
-  public summary(){
-    this.showSummary = true;
+  public onConfirm(){
+    this.showSummary = false;
+    this.takeOrder();
+  }
+
+  public onSave(){
+
     this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
-    this.comboData.ComboItems.forEach((x) => {
-      if (x.packageId !== '0'){
+    this.comboData.ComboItems.forEach((x)=>{
+      if(x.packageId !== '0'){
         x['itemQty'] = $(`#${x.itemId}`).val();
       }
-      if (x.packageId === '0'){
+      if(x.packageId === '0'){
         x['itemQty'] = $(`#${x.itemId}`).val();
       }
     });
 
+    // when there is no package items in combo directly accepting order
+    if(!this.comboData.ComboItems.filter(x => x.packageId !== '0').length){
+      this.takeOrder();
+    }else {
+      // when combo contains package and list items also
     let temp = new Map();
     for (let obj of this.comboData.ComboItems.filter(x => x.itemQty > 0)) {
       if (obj.packageId !== '0') {
@@ -114,19 +124,7 @@ export class ComboDialogComponent implements OnInit {
       }
     }
     this.summaryData = [...temp.values()];
-  }
 
-  public onSave(){
-    this.showSummary = false;
-    // this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
-    // this.comboData.ComboItems.forEach((x)=>{
-    //   if(x.packageId !== '0'){
-    //     x['itemQty'] = $(`#${x.itemId}`).val();
-    //   }
-    //   if(x.packageId === '0'){
-    //     x['itemQty'] = $(`#${x.itemId}`).val();
-    //   }
-    // });
 
     // classifying the selected items data into different arrays according to the packageName
 
@@ -186,14 +184,15 @@ export class ComboDialogComponent implements OnInit {
     });
 
     if (result.includes(false)){
+      this.showSummary = false;
       console.log('err');
-      // this.onValidationError();
-      // alert(`The Total item quantity should be less than or equal to  ${this.comboQuantityTotal}.`)
     }else {
-      console.log('take order');
-      this.takeOrder();
+      this.showSummary = true;
+      // console.log('take order');
+      // this.takeOrder();
     }
 
+  }
 
   }
 

@@ -65,21 +65,22 @@ export class PackageDialogComponent implements OnInit {
   }
 
 
-  summary(){
-    this.showSummary = true;
-    this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
-    this.packageData.PackageItems.forEach((x,i) => {
-      x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
-    });
-  }
-
-  onSave(): void {
-    this.showSummary = false;
-    // assing the quantities onSubmit
+  onConfirm(){
+    // this.showSummary = true;
     // this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
     // this.packageData.PackageItems.forEach((x,i) => {
     //   x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
     // });
+    this.showSummary = false;
+    this.takeOrder();
+  }
+
+  onSave(): void {
+    // assing the quantities onSubmit
+    this.packageData.PackageDetails.PkgQty = +$(`#pkgqty`).val();
+    this.packageData.PackageItems.forEach((x,i) => {
+      x['pkgItemQty'] = +$(`#${x.pkgItemId}`).val();
+    });
 
     // validating whether total quantity lessthan the packageqty
     let Total = []
@@ -97,7 +98,8 @@ export class PackageDialogComponent implements OnInit {
       if(this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length >=  this.packageData.PackageDetails.pkgMinItems
       && this.packageData.PackageItems.filter(x => x.pkgItemQty > 0).length <=  this.packageData.PackageDetails.pkgMaxItems
       && this.itemsTotalQuantity == this.packageData.PackageDetails.PkgQty){
-        this.takeOrder();
+        // this.takeOrder();
+        this.showSummary = true;
       }else {
         if(this.packageData?.PackageDetails?.pkgMinItems !== this.packageData?.PackageDetails?.pkgMaxItems){
           this.modalService.show(ValidationAlertDialogComponent, {
@@ -122,7 +124,8 @@ export class PackageDialogComponent implements OnInit {
     this.packageData.PackageDetails.pkgMaxItems === '0' &&
     this.packageData.PackageDetails.pkgMinItems === '0') {
      if(this.itemsTotalQuantity == this.packageData.PackageDetails.PkgQty){
-       this.takeOrder();
+      //  this.takeOrder();
+      this.showSummary = true;
      }else {
       this.modalService.show(ValidationAlertDialogComponent, {
         class: 'modal-dialog-custom ',
@@ -135,7 +138,8 @@ export class PackageDialogComponent implements OnInit {
 
 
     if(this.packageData.PackageDetails.packageType === '0') {
-       this.takeOrder();
+      //  this.takeOrder();
+      this.showSummary = true;
     }
 
   }
