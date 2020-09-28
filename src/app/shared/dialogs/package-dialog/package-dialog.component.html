@@ -37,7 +37,7 @@
             <input type="number" [id]="item.pkgItemId"  class="quantity-input" [value]="item['pkgItemQty']"   min="0">
           </div>
           <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '0'">
-            <input type="number" [id]="item.pkgItemId"  class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
+            <input type="number" readonly [id]="item.pkgItemId"  class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
           <input type="number" [id]="item.pkgItemId"   class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
         </div>
         <div class=""  *ngIf="packageData?.PackageDetails?.packageType === '0'">
-          <input type="number" [id]="item.pkgItemId"  class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
+          <input type="number" readonly [id]="item.pkgItemId"  class="quantity-input readonly-number-input" [value]="item['pkgItemQty']"   min="0">
         </div>
       </div>
     </div></ng-container>
