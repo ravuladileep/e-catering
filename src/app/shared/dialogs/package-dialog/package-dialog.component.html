@@ -5,13 +5,13 @@
   <div class="custom-bg-package">
   <div class="description-dialog">
       <div class="d-flex justify-content-between">
-          <img src="assets/images/cater/01.png" alt="" class="foodie">
+          <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
           <div class="division-width">
         <p>{{packageData?.PackageDetails?.PkgDescription}}</p>
       </div>
-        <p>${{packageData?.PackageDetails?.packageCost}}</p>
-        <input type="number"  id="comboqtyid"  class="quantity-input custom-quantity-number"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
-        <p class="mr-3" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
+        <p class="para-width">${{packageData?.PackageDetails?.packageCost}}</p>
+        <input type="number"  id="comboqtyid"  class="quantity-input custom-quantity-number custom-input-qty"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
+        <p class="mr-3 custom-total-price" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
       </div>
 
   </div>
@@ -59,13 +59,13 @@
   <div class="custom-bg-package">
   <div class="description-dialog">
       <div class="d-flex justify-content-between">
-          <img src="assets/images/cater/01.png" alt="" class="foodie">
+          <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
           <div class="division-width">
         <p>{{packageData?.PackageDetails?.PkgDescription}}</p>
       </div>
-        <p>${{packageData?.PackageDetails?.packageCost}}</p>
-        <input type="number"  id="comboqtyid"   class="quantity-input  readonly-number-input custom-quantity-number"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
-        <p class="mr-3" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
+        <p class="para-width">${{packageData?.PackageDetails?.packageCost}}</p>
+        <input type="number"  id="comboqtyid"   class="quantity-input  readonly-number-input custom-quantity-number custom-input-qty"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
+        <p class="mr-3 custom-total-price" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
       </div>
 
   </div>

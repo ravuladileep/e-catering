@@ -38,8 +38,13 @@
 }
 
 .cater-search{
-  width: 400px;
-  padding: 5px;
-  height: 32px;
-  outline: 0;
+    width: 400px;
+    padding: 0px 0px 0px 25px;
+    height: 32px;
+    opacity: 0.9;
+    border-radius: 10px;
+    background-color: #fff;
+    outline: 0;
+    max-width: 840px;
+    border: 1px solid lightgrey;
 }

@@ -1,6 +1,7 @@
 body {
   background: #f1f3f5;
   overflow-x: hidden;
+  font-family: sans-serif;
   }
 
 .border-subtotal-wrapper{
@@ -661,7 +662,7 @@ body {
 
   .aquilia-logo{
   width: 100px;
-  margin-right: 10px;
+  margin-right: 165px;
   // height: 70px;
   }
 
@@ -1656,7 +1657,19 @@ owl-date-time-container{
 }
 
 .division-width{
-  width: 170px;
+  width: 300px;
+}
+
+.para-width{
+  width: 120px;
+}
+
+.custom-input-qty{
+  position: relative;
+    right: 25px;
+}
+.custom-total-price{
+  width: 85px;
 }
 // .combo-desc-size{
 //   width: 35%;
@@ -1684,3 +1697,7 @@ owl-date-time-container{
 }
 }
 
+.custom-combo-foodie{
+  height: 120px;
+  width: 98px;
+}

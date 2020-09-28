@@ -4,13 +4,13 @@
   </div>
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
-        <img src="assets/images/cater/01.png" alt="" class="foodie">
+        <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
         <div class="division-width">
       <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
-      <p>${{comboData?.ComboDetails?.comboCost}}</p>
-      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number" min="1" >
-      <p class="mr-3" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
+      <p class="para-width">${{comboData?.ComboDetails?.comboCost}}</p>
+      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number custom-input-qty" min="1" >
+      <p class="mr-3 custom-total-price" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
     </div>
 
     <div class="custom-dialog-scroll-box">
@@ -66,13 +66,13 @@
   </div>
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
-        <img src="assets/images/cater/01.png" alt="" class="foodie">
+        <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
         <div class="division-width">
       <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
-      <p>${{comboData?.ComboDetails?.comboCost}}</p>
-      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input readonly-number-input custom-quantity-number" min="1" >
-      <p class="mr-3" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
+      <p class="para-width">${{comboData?.ComboDetails?.comboCost}}</p>
+      <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input readonly-number-input custom-quantity-number custom-input-qty" min="1" >
+      <p class="mr-3 custom-total-price" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
     </div>
 
     <div class="custom-dialog-scroll-box">
