@@ -1,66 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"  >
   <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"> -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <!-- <span (click)="scrollLeft()" class="position-fixed scroll-left-icon text-white">
+  <span (click)="scrollLeft()" class="position-relative scroll-left-icon text-white">
     <i class="fa fa-angle-double-left"></i>
-  </span> -->
+  </span>
 
-  <div  class="collapse navbar-collapse"  id="main_nav" >
+  <div #widgetsContent  class="collapse navbar-collapse" class="custom-scroll-new-theme" id="main_nav" >
 
     <!-- items -->
-    <ul class="navbar-nav"  *ngFor="let item of category| paginate: { itemsPerPage: 8,currentPage: p,totalItems:category?.length}; let j=index">
+    <ul class="navbar-nav"  *ngFor="let item of category; let j=index">
         <li class="nav-item dropdown"  >
           <a class="nav-link  dropdown-toggle"   href="javascript:void(0)" data-toggle="dropdown">{{item.sectionName}}</a>
             <ul class="dropdown-menu" >
-              <li *ngFor="let sub of subCategory;  let k = index"><a class="dropdown-item" *ngIf="sub.sectionName === category[8*(p-1)+j].sectionName" href="javascript:void(0)" (click)="loadSubsection(sub)"> {{sub.subSectionName}}</a></li>
+              <li *ngFor="let sub of subCategory;  let k = index"><a class="dropdown-item" *ngIf="sub.sectionName === category[j].sectionName" href="javascript:void(0)" (click)="loadSubsection(sub)"> {{sub.subSectionName}}</a></li>
             </ul>
         </li>
     </ul>
-  <ul  class="m-0 p-0">
-    <li class="showmore">
-      <pagination-controls class="hide-page-numbers" autoHide="true" responsive="true" previousLabel=""
-        nextLabel="" (pageChange)="p = $event">
-      </pagination-controls>
-    </li>
-  </ul>
 
   </div>
-<!--
-  <span (click)="scrollRight()" class="position-fixed scroll-right-icon text-white">
+
+  <span (click)="scrollRight()" class="position-relative scroll-right-icon text-white">
     <i class="fa fa-angle-double-right"></i>
-  </span> -->
+  </span>
 
 </nav>
 
-<!--
-<ng-container *ngFor="let item of category; let j=index;" >
-  <div class="custom-text-entrees" >
-     <h1 class="custom-entries" *ngIf="!loading" id="{{item.sectionName}}">{{item.sectionName}}</h1>
-  </div>
-
-  <ng-container *ngFor="let sub of subCategory  let k = index;">
-     <h6 class="sub-sec-align" *ngIf="sub.sectionName === category[j].sectionName && !loading" >{{sub.subSectionName}}</h6>
-     <div class="custom-items-wrapper" >
-        <div class="boxes-wrapper nav"> -->
-
-
-<!-- //items -->
-  <!-- <ul  class="m-0 p-0">
-    <li class="showmore">
-      <pagination-controls class="hide-page-numbers" autoHide="true" responsive="true" previousLabel=""
-        nextLabel="" (pageChange)="p = $event">
-      </pagination-controls>
-    </li>
-  </ul> -->
-  <!-- <ul class="navbar-nav" >
-      <li class="nav-item dropdown">
-        <a class="nav-link  dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">
-          <i class="fa fa-shopping-cart cater-theme-search" aria-hidden="true"></i>
-        </a>
-          <ul class="dropdown-menu" >
-            <app-cart-items></app-cart-items>
-          </ul>
-      </li>
-  </ul> -->
