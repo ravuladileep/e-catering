@@ -203,7 +203,7 @@ body {
   border-radius: 10px;
   background-color: #fff;
   outline: 0;
-  max-width: 840px;
+  max-width: 830px;
   border: 1px solid lightgrey;
   }
 
@@ -1683,7 +1683,19 @@ owl-date-time-container{
 
 @media(max-width:320px){
   .custom-orders-list{
-    min-width: 666px;
+    min-width: 1044px;
+  }
+}
+
+@media(max-width:768px){
+  .custom-orders-list{
+    min-width: 1044px;
+  }
+}
+
+@media(max-width:1024px){
+  .custom-orders-list{
+    min-width: 1044px;
   }
 }
 
