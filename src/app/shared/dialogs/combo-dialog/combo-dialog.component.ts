@@ -11,6 +11,7 @@ declare var $: any;
 })
 export class ComboDialogComponent implements OnInit {
   public comboData;
+  public comboData2;
   public comboQuantityTotal;
   public packNames = [];
   public itemsList = [];
@@ -32,6 +33,7 @@ export class ComboDialogComponent implements OnInit {
     this.cartService.getCombo(itemId)
     .subscribe((data) => {
       this.comboData = data;
+      this.comboData2 =  JSON.parse(JSON.stringify(data));
       this.comboData.ComboDetails.comboQty = 1;
       this.comboQuantityTotal = this.comboData.ComboDetails.comboQty;
       this.removeDuplicate();
@@ -93,6 +95,13 @@ export class ComboDialogComponent implements OnInit {
       $(`#${x.itemId}`).val(+x.itemQty * e.target.value);
       }
     });
+    this.comboData2.ComboItems.forEach((x)=>{
+      // if package type equal to zero multiplying the quantity
+      if(x.packType === '0' && this.comboQuantityTotal > 0){
+        $(`#${x.itemId}`).val(+x.itemQty * this.comboQuantityTotal);
+      }
+    });
+
   }
 
   public onConfirm(){
@@ -104,9 +113,11 @@ export class ComboDialogComponent implements OnInit {
 
     this.comboData.ComboDetails.comboQty =  +$(`#comboqtyid`).val();
     this.comboData.ComboItems.forEach((x)=>{
+      // if packageid is not equal to zero it is package
       if(x.packageId !== '0'){
         x['itemQty'] = $(`#${x.itemId}`).val();
       }
+      // if packageid is zero it is an item
       if(x.packageId === '0'){
         x['itemQty'] = $(`#${x.itemId}`).val();
       }
@@ -166,7 +177,7 @@ export class ComboDialogComponent implements OnInit {
           }
         }
         // if packtype not equal to one
-        if (item[0].packType !== "1" || (!item[0].maxItems && !item[0].minItems)){
+        if (item[0].packType === "1" && (!item[0].maxItems && !item[0].minItems)){
           if (item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
             result.push(true);
           }else{
@@ -178,6 +189,11 @@ export class ComboDialogComponent implements OnInit {
             result.push(false);
             // alert(`For  Package-${item[0].packName} \n The Total item quantity should be equal to  ${this.comboQuantityTotal}.`)
           }
+        }
+
+        // if packtype not equal to zero
+        if (item[0].packType === "0"){
+          result.push(true);
         }
 
       });
