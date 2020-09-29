@@ -43,63 +43,63 @@
         <table class="table table-striped">
           <thead class="table-header-order">
             <tr>
-              <th class="center">#</th>
-              <th>Item</th>
+              <th class="center text-nowrap">#</th>
+              <th class="text-nowrap">Item</th>
               <!-- <th>Description</th> -->
 
-              <th class="right">Qty</th>
-              <th class="center">Unit Price</th>
-              <th class="right">Total</th>
+              <th class="right text-nowrap">Qty</th>
+              <th class="center text-nowrap">Unit Price</th>
+              <th class="right text-nowrap">Total</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of cart.menuItems; let i=index;">
-              <td class="center">{{i+1}}</td>
-              <td class="left strong">{{item.itemName}}</td>
+              <td class="center text-normal">{{i+1}}</td>
+              <td class="left strong text-normal">{{item.itemName}}</td>
               <!-- <td class="left">Extended License</td> -->
 
-              <td class="right">{{item.quantity}}</td>
-              <td class="center">{{item.price}}</td>
-              <td class="right">{{item.quantity * item.price}}</td>
+              <td class="right text-normal">{{item.quantity}}</td>
+              <td class="center text-normal">{{item.price}}</td>
+              <td class="right text-normal">{{item.quantity * item.price}}</td>
             </tr>
             <tr *ngFor="let item of cart.package; let i=index;">
-              <td class="center">{{i+1}}</td>
-              <td class="left strong">{{item.PackageDetails.packageName}}</td>
+              <td class="center text-normal">{{i+1}}</td>
+              <td class="left strong text-normal">{{item.PackageDetails.packageName}}</td>
               <!-- <td class="left">Extended License</td> -->
 
-              <td class="right">{{item.PackageDetails.PkgQty}}</td>
-              <td class="center">{{item.PackageDetails.packageCost}}</td>
-              <td class="right">{{item.PackageDetails.PkgQty * item.PackageDetails.packageCost}}</td>
+              <td class="right text-normal">{{item.PackageDetails.PkgQty}}</td>
+              <td class="center text-normal">{{item.PackageDetails.packageCost}}</td>
+              <td class="right text-normal">{{item.PackageDetails.PkgQty * item.PackageDetails.packageCost}}</td>
             </tr>
             <tr *ngFor="let item of cart.combo; let i=index;">
-              <td class="center">{{i+1}}</td>
-              <td class="left strong">{{item.ComboDetails.comboName}}</td>
+              <td class="center text-normal">{{i+1}}</td>
+              <td class="left strong text-normal">{{item.ComboDetails.comboName}}</td>
               <!-- <td class="left">Extended License</td> -->
 
-              <td class="right">{{item.ComboDetails.comboQty}}</td>
-              <td class="center">{{item.ComboDetails.comboCost}}</td>
-              <td class="right">{{item.ComboDetails.comboQty * item.ComboDetails.comboCost}}</td>
+              <td class="right text-normal">{{item.ComboDetails.comboQty}}</td>
+              <td class="center text-normal">{{item.ComboDetails.comboCost}}</td>
+              <td class="right text-normal">{{item.ComboDetails.comboQty * item.ComboDetails.comboCost}}</td>
             </tr>
             <tr>
-              <td class="center"></td>
-              <td class="left strong"></td>
-              <td class="right"></td>
-              <td class="center">Total</td>
-              <td class="right">{{totalAmount}}</td>
+              <td class="center text-normal"></td>
+              <td class="left strong text-normal"></td>
+              <td class="right text-normal"></td>
+              <td class="center text-normal">Total</td>
+              <td class="right text-normal">{{totalAmount}}</td>
             </tr>
             <tr>
-              <td class="center"></td>
-              <td class="left strong"></td>
-              <td class="right"></td>
-              <td class="center">Tax Amount</td>
-              <td class="right">{{taxAmount}}</td>
+              <td class="center text-normal"></td>
+              <td class="left strong text-normal"></td>
+              <td class="right text-normal"></td>
+              <td class="center text-normal">Tax Amount</td>
+              <td class="right text-normal">{{taxAmount}}</td>
             </tr>
             <tr>
-              <td class="center"></td>
-              <td class="left strong"></td>
-              <td class="right"></td>
-              <td class="center">Grand Total</td>
-              <td class="right">{{taxAmount+totalAmount}}</td>
+              <td class="center text-normal"></td>
+              <td class="left strong text-normal"></td>
+              <td class="right text-normal"></td>
+              <td class="center text-normal">Grand Total</td>
+              <td class="right text-normal">{{taxAmount+totalAmount}}</td>
             </tr>
 
           </tbody>
