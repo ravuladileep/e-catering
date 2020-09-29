@@ -4,7 +4,9 @@
   </div>
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
-        <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
+      <img *ngIf="comboData?.ComboDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + comboData?.ComboDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
+      <img src="assets/images/cater/01.png"  *ngIf="!comboData?.ComboDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
+        <!-- <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie"> -->
         <div class="division-width">
       <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
@@ -68,7 +70,9 @@
   </div>
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
-        <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
+      <img *ngIf="comboData?.ComboDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + comboData?.ComboDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
+      <img src="assets/images/cater/01.png"  *ngIf="!comboData?.ComboDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
+        <!-- <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie"> -->
         <div class="division-width">
       <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
