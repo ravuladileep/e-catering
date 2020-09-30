@@ -1714,3 +1714,7 @@ owl-date-time-container{
   height: 120px;
   width: 98px;
 }
+
+.ngx-pagination a, .ngx-pagination button {
+  outline: 0;
+}
