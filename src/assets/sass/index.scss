@@ -1599,11 +1599,12 @@ owl-date-time-container{
 .readonly-number-input::-webkit-inner-spin-button,
 .readonly-number-input::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: none;
+    -moz-appearance:textfield;
     appearance: none;
     margin: 0;
 }
 .readonly-number-input{
+
   text-align: right;
 }
 @media(max-width:320px) {
