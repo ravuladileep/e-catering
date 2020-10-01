@@ -90,17 +90,27 @@ export class ComboDialogComponent implements OnInit {
 
   public changeItemsQuantity(e){
     this.comboQuantityTotal = +e.target.value;
-    this.itemsList.forEach((x) => {
-      if (e.target.value > 0){
-      $(`#${x.itemId}`).val(+x.itemQty * e.target.value);
-      }
-    });
     this.comboData2.ComboItems.forEach((x)=>{
       // if package type equal to zero multiplying the quantity
-      if(x.packType === '0' && this.comboQuantityTotal > 0){
-        $(`#${x.itemId}`).val(+x.itemQty * this.comboQuantityTotal);
+      if(x.packType === '0' && x.packageId!=='0'&& this.comboQuantityTotal > 0){
+        this.comboData.ComboItems.forEach(element => {
+          if(x.itemId === element.itemId){
+            element['itemQty'] =  +x.itemQty * this.comboQuantityTotal;
+          }
+        });
+        // $(`#${x.itemId}`).val(+x.itemQty * this.comboQuantityTotal);
       }
     });
+    this.comboData.ComboItems.forEach((x) => {
+      this.comboData2.ComboItems.forEach(element => {
+        if(x.packageId === '0' && element.packageId === '0' && x.itemId === element.itemId){
+          x['itemQty'] =  +element.itemQty * this.comboQuantityTotal;
+        }
+      });
+
+      // $(`#${x.itemId}someitem`).val(+x.itemQty * this.comboQuantityTotal);
+    });
+
 
   }
 
@@ -119,7 +129,7 @@ export class ComboDialogComponent implements OnInit {
       }
       // if packageid is zero it is an item
       if(x.packageId === '0'){
-        x['itemQty'] = $(`#${x.itemId}`).val();
+        x['itemQty'] = $(`#${x.itemId}someitem`).val();
       }
     });
 
@@ -160,16 +170,16 @@ export class ComboDialogComponent implements OnInit {
     itemsForValidation.forEach((x, i) => {
       x.forEach(item => {
         // if packtype one
-        if (item[0].packType === "1" &&  (item[0].maxItems && item[0].minItems)){
+        if (item[0].packType === "1" &&  (item[0].maxItems !== '0' && item[0].minItems !== '0')){
           if (item.filter(y => +y.itemQty > 0).length >= +item[0].minItems &&
           item.filter(y => +y.itemQty > 0).length <= +item[0].maxItems &&
-          item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty
+          item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty * item[0].maxItemQty
           ){
             result.push(true);
           }else{
             this.modalService.show(ValidationAlertDialogComponent, {
               class: 'modal-dialog-custom ',
-              initialState: { message : `For  Package- ${item[0].packName.bold()} <br> The Total item quantity should be  equal to  ${this.comboQuantityTotal}.` },
+              initialState: { message : `For  Package- ${item[0].packName.bold()} <br> The Total item quantity should be  equal to  ${this.comboQuantityTotal * item[0].maxItemQty}.` },
               keyboard: false,
             });
             result.push(false);
@@ -177,13 +187,13 @@ export class ComboDialogComponent implements OnInit {
           }
         }
         // if packtype not equal to one
-        if (item[0].packType === "1" && (!item[0].maxItems && !item[0].minItems)){
-          if (item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty){
+        if (item[0].packType === "1" && (item[0].maxItems === '0' && item[0].minItems === '0')){
+          if (item.reduce((a, b) => +a + +b.itemQty, 0) == +this.comboData.ComboDetails.comboQty * item[0].maxItemQty){
             result.push(true);
           }else{
             this.modalService.show(ValidationAlertDialogComponent, {
               class: 'modal-dialog-custom ',
-              initialState: { message : `For  Package- ${item[0].packName.bold()} <br> The Total item quantity should be equal to  ${this.comboQuantityTotal}.` },
+              initialState: { message : `For  Package- ${item[0].packName.bold()} <br> The Total item quantity should be equal to  ${this.comboQuantityTotal * item[0].maxItemQty}.` },
               keyboard: false,
             });
             result.push(false);

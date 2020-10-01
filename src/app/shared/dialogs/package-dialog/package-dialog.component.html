@@ -5,29 +5,38 @@
   <div class="custom-bg-package">
   <div class="description-dialog">
       <div class="d-flex justify-content-between">
-          <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
+          <!-- <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie"> -->
+          <img *ngIf="packageData?.PackageDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + packageData?.PackageDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
+          <img src="assets/images/cater/01.png"  *ngIf="!packageData?.PackageDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
           <div class="division-width">
         <p>{{packageData?.PackageDetails?.PkgDescription}}</p>
       </div>
+      <div>
+        <p class="custom-heading-modal">Price</p>
         <p class="para-width">${{packageData?.PackageDetails?.packageCost}}</p>
-        <input type="number"  id="comboqtyid"  class="quantity-input custom-quantity-number custom-input-qty"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
+      </div>
+      <div>
+        <p class="quantity-modal-content custom-heading-modal">Quantity</p>
+        <input type="number"  id="comboqtyid"  class="quantity-input custom-quantity-number custom-input-qty"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packQuantity" [min]="packageData?.PackageDetails?.pkgMinOrderQty" >
+      </div>
+      <div>
+        <p class="custom-heading-modal">Total</p>
         <p class="mr-3 custom-total-price" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
       </div>
+    </div>
 
   </div>
     <div class="custom-scroll-packages">
       <div class="alert alert-info custom-instruction" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
-                                                              packageData?.PackageDetails?.PkgQty> 0 &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0' &&
                                                               packageData?.PackageDetails?.pkgMinItems !=='0'">
-      <span  *ngIf="packageData?.PackageDetails?.pkgMinItems !== packageData?.PackageDetails?.pkgMaxItems">Please select between {{packageData?.PackageDetails?.pkgMinItems}} and {{packageData?.PackageDetails?.pkgMaxItems}} items from this list. The total item quantity should be  equal to  {{packQuantity}}.</span>
-      <span *ngIf="packageData?.PackageDetails?.pkgMinItems === packageData?.PackageDetails?.pkgMaxItems">Please select {{packageData?.PackageDetails?.pkgMinItems}} item(s) from this list. The total item quantity should be  equal to  {{packQuantity}}.</span>
+      <span  *ngIf="packageData?.PackageDetails?.pkgMinItems !== packageData?.PackageDetails?.pkgMaxItems">Please select between {{packageData?.PackageDetails?.pkgMinItems}} and {{packageData?.PackageDetails?.pkgMaxItems}} items from this list. The total item quantity should be  equal to  {{packQuantity * packageData?.PackageDetails?.pkgMaxSelectItemQty}}.</span>
+      <span *ngIf="packageData?.PackageDetails?.pkgMinItems === packageData?.PackageDetails?.pkgMaxItems">Please select {{packageData?.PackageDetails?.pkgMinItems}} item(s) from this list. The total item quantity should be  equal to  {{packQuantity * packageData?.PackageDetails?.pkgMaxSelectItemQty}}.</span>
       </div>
       <div class="alert alert-info mt-2" role="alert" *ngIf="packageData?.PackageDetails?.packageType === '1' &&
-          packageData?.PackageDetails?.PkgQty>0 &&
          packageData?.PackageDetails?.pkgMinItems ==='0' &&
-        packageData?.PackageDetails?.pkgMinItems ==='0'">
-         Please select your items from this list. The total item quantity should be  equal to {{packQuantity}}
+        packageData?.PackageDetails?.pkgMaxItems ==='0'">
+         Please select your items from this list. The total item quantity should be  equal to {{packQuantity * packageData?.PackageDetails?.pkgMaxSelectItemQty}}
       </div>
       <div class="custom-dialog-specific ml-2 mr-2">
       <div *ngFor="let item of packageData?.PackageItems;let i=index;" class="custom-currency-dialog d-flex justify-content-between custom-border-wrapper mt-2">
@@ -62,14 +71,24 @@
   <div class="custom-bg-package">
   <div class="description-dialog">
       <div class="d-flex justify-content-between">
-          <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
+        <img *ngIf="packageData?.PackageDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + packageData?.PackageDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
+        <img src="assets/images/cater/01.png"  *ngIf="!packageData?.PackageDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
           <div class="division-width">
         <p>{{packageData?.PackageDetails?.PkgDescription}}</p>
       </div>
+      <div>
+      <p class="custom-heading-modal">Price</p>
         <p class="para-width">${{packageData?.PackageDetails?.packageCost}}</p>
-        <input type="number"  id="comboqtyid"   class="quantity-input  readonly-number-input custom-quantity-number custom-input-qty"  (change)="changeTotalQty($event)"  id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty" min="1" >
+      </div>
+      <div>
+      <p class="quantity-modal-content custom-heading-modal">Quantity</p>
+        <input type="number"  id="comboqtyid"   class="quantity-input  readonly-number-input custom-quantity-number custom-input-qty"   id="pkgqty"  [value]="packageData?.PackageDetails?.PkgQty"  >
+      </div>
+      <div>
+      <p class="custom-heading-modal">Total</p>
         <p class="mr-3 custom-total-price" *ngIf="packageData?.PackageDetails?.packageCost > 0">${{(packageData?.PackageDetails?.packageCost * packQuantity).toFixed(2)}}</p>
       </div>
+    </div>
 
   </div>
   <div class="custom-scroll-packages">

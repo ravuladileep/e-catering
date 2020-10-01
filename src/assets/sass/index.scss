@@ -600,7 +600,7 @@ body {
   .custom-total-price{
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid lightgrey;
+  // border-bottom: 1px solid lightgrey;
   margin-bottom: 5px;
   }
   .custom-grilled-fonts{
@@ -1606,11 +1606,12 @@ owl-date-time-container{
 .readonly-number-input::-webkit-inner-spin-button,
 .readonly-number-input::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: none;
+    -moz-appearance:textfield;
     appearance: none;
     margin: 0;
 }
 .readonly-number-input{
+
   text-align: right;
 }
 @media(max-width:320px) {
@@ -1719,9 +1720,17 @@ owl-date-time-container{
 
 .custom-combo-foodie{
   height: 120px;
-  width: 98px;
+  min-width: 98px;
 }
 
 .ngx-pagination a, .ngx-pagination button {
   outline: 0;
+}
+
+.quantity-modal-content{
+  position: relative;
+  right: 32px;
+}
+.custom-heading-modal{
+  font-weight: 600;
 }

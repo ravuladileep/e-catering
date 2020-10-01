@@ -100,7 +100,7 @@
       <input type="number"  formControlName="zipCode" >
       <div class="text-danger" *ngIf="orderDetailsData.zipCode.touched && orderDetailsData.zipCode.errors?.required">zipCode is required</div>
 
-      <span>Notes:</span>
+      <span>Notes</span>
       <textarea formControlName="notes" class="form-control" rows="3"></textarea>
     <div class="custom-align-order-screen">
       <input type="button" name="back" value="Back" [routerLink]="['/orders']" routerLinkActive="router-link-active"  class="submit contact-submit">

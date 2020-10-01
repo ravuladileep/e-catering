@@ -4,22 +4,33 @@
   </div>
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
-        <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
+      <img *ngIf="comboData?.ComboDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + comboData?.ComboDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
+      <img src="assets/images/cater/01.png"  *ngIf="!comboData?.ComboDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
+        <!-- <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie"> -->
         <div class="division-width">
       <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
+    <div>
+      <p class="custom-heading-modal">Price</p>
       <p class="para-width">${{comboData?.ComboDetails?.comboCost}}</p>
+    </div>
+    <div>
+      <p class="quantity-modal-content custom-heading-modal">Quantity</p>
       <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input custom-quantity-number custom-input-qty" min="1" >
+    </div>
+    <div>
+      <p class="custom-heading-modal">Total</p>
       <p class="mr-3 custom-total-price" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
+    </div>
     </div>
 
     <div class="custom-dialog-scroll-box">
       <div *ngFor="let item of packNames;" class="custom-currency-dialog  custom-border-wrapper custom-dialog-specific">
         <p class="custom-weight-font  text-primary custom-title-margin"> {{item.packName}}</p>
         <div class="alert alert-info mt-2" role="alert" *ngIf="item.minItems && item.maxItems && item.packType !== '0'">
-          <span *ngIf="item.minItems !== item.maxItems"> Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
-          <span *ngIf="item.minItems === item.maxItems && item.minItems !=='0'&& item.maxItems !=='0'"> Please select {{item.minItems}} item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
-          <span *ngIf="item.minItems ==='0'&& item.maxItems ==='0'"> Please select item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal}}.</span>
+          <span *ngIf="item.minItems !== item.maxItems"> Please select between {{item.minItems}} and {{item.maxItems}} items from this list. The total item quantity should be equal to  {{comboQuantityTotal * item.maxItemQty}}.</span>
+          <span *ngIf="item.minItems === item.maxItems && item.minItems !=='0'&& item.maxItems !=='0'"> Please select {{item.minItems}} item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal * item.maxItemQty}}.</span>
+          <span *ngIf="item.minItems ==='0'&& item.maxItems ==='0'"> Please select item(s) from this list. The total item quantity should be equal to  {{comboQuantityTotal * item.maxItemQty}}.</span>
         </div>
 
         <ng-container *ngFor="let data of comboData?.ComboItems;let i=index;" >
@@ -36,7 +47,7 @@
       <ng-container  *ngFor="let item of comboData?.ComboItems">
         <div *ngIf="item.packageId === '0'"  class="d-flex justify-content-between m-1" >
           <p class="custom-item-modal-dialog" >{{item.itemName}}</p>
-          <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId" [value]="item.itemQty">
+          <input readonly type="number" class="quantity-input readonly-number-input" [id]="item.itemId+'someitem'" [value]="item.itemQty">
         </div>
      </ng-container>
     </div>
@@ -68,15 +79,25 @@
   </div>
   <div class="description-dialog">
     <div class="d-flex justify-content-between">
-        <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie">
+      <img *ngIf="comboData?.ComboDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + comboData?.ComboDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
+      <img src="assets/images/cater/01.png"  *ngIf="!comboData?.ComboDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
+        <!-- <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie"> -->
         <div class="division-width">
       <p class="combo-desc-size">{{comboData?.ComboDetails?.comboDescription}}</p>
     </div>
+    <div>
+      <p class="custom-heading-modal">Price</p>
       <p class="para-width">${{comboData?.ComboDetails?.comboCost}}</p>
+      </div>
+      <div>
+        <p class="quantity-modal-content custom-heading-modal">Quantity</p>
       <input type="number" (change)="changeItemsQuantity($event)" id="comboqtyid" [value]="comboData?.ComboDetails?.comboQty" class="quantity-input readonly-number-input custom-quantity-number custom-input-qty" min="1" >
+      </div>
+      <div>
+      <p class="custom-heading-modal">Total</p>
       <p class="mr-3 custom-total-price" *ngIf="comboData?.ComboDetails?.comboCost > 0">${{(comboData?.ComboDetails?.comboCost * comboQuantityTotal).toFixed(2)}}</p>
     </div>
-
+    </div>
     <div class="custom-dialog-scroll-box">
       <div *ngFor="let item of summaryData;" class="custom-currency-dialog  custom-border-wrapper custom-dialog-specific">
         <p class="custom-weight-font  text-primary custom-title-margin"> {{item.packName}}</p>
