@@ -4,7 +4,7 @@
   </div>
   <div class="custom-bg-package">
   <div class="description-dialog">
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between combo-wrapper">
           <!-- <img src="assets/images/cater/01.png" alt="" class="foodie custom-combo-foodie"> -->
           <img *ngIf="packageData?.PackageDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + packageData?.PackageDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
           <img src="assets/images/cater/01.png"  *ngIf="!packageData?.PackageDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
@@ -70,7 +70,7 @@
   </div>
   <div class="custom-bg-package">
   <div class="description-dialog">
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between combo-wrapper">
         <img *ngIf="packageData?.PackageDetails?.blobcontent" [src]="('data:image/JPEG;base64,' + packageData?.PackageDetails?.blobcontent) | domsanitize" alt=""  class="foodie custom-combo-foodie">
         <img src="assets/images/cater/01.png"  *ngIf="!packageData?.PackageDetails?.blobcontent" alt="" class="foodie custom-combo-foodie">
           <div class="division-width">
