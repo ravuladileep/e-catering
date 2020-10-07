@@ -57,7 +57,7 @@
              (selected)="selectChange($event)" [itemTemplate]="itemTemplate">
            </ng-autocomplete>
            <ng-template  #itemTemplate let-item>
-             <div>
+             <div class="custom-address">
              <a [innerHTML]="item.street"></a>
              <a [innerHTML]="item.city"></a>
              <a [innerHTML]="item.state"></a>
@@ -102,7 +102,7 @@
 
       <span>Notes</span>
       <textarea formControlName="notes" class="form-control" rows="3"></textarea>
-    <div class="custom-align-order-screen">
+      <div class="custom-align-order-screen">
       <input type="button" name="back" value="Back" [routerLink]="['/orders']" routerLinkActive="router-link-active"  class="submit contact-submit">
       <input type="submit" name="submit"   [disabled]="!orderDetails.valid" value="Place Order" class="submit order-details-submit contact-submit">
     </div>

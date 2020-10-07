@@ -551,7 +551,7 @@ body {
   position: relative;
   right: 80px;
   width: 100%;
-  top: 7px;
+  // top: 7px;
   }
 
   .custom-summer-fonts{
@@ -573,6 +573,7 @@ body {
   width: 30%;
   margin-top: 3px;
   height: 32px;
+  margin-right: 5px;
   }
   .custom-payment-align{
   margin-top: 2px;
@@ -900,6 +901,10 @@ opacity: 0.5;
   display: flex;
   justify-content: center;
   margin-top: 135px;
+}
+
+.custom-address{
+  padding: 10px 0px 0 15px;
 }
 
 .input-group {
